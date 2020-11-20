@@ -6,6 +6,7 @@ from django.db import models
 class Movie(models.Model):
     movie_name = models.CharField(max_length=100)
     rank = models.IntegerField()
+    target_dt = models.CharField(max_length=10)
     # False == old
     rank_old_and_new = models.CharField(max_length=10)
     open_dt = models.CharField(max_length=100)
