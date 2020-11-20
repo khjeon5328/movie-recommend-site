@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<a href="/1" data-toggle="modal" data-target="#exampleModal">모달모달</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog " style="max-width: 935px;">
+    <div class="modal-content" style="border-radius:0;">
+      <div class="modal-body p-0">
+      <!-- 모달 내 이미지-->
+        <div class="position:relative;">
+          <div style="">
+            <img style="width:100%;" src="{% static 'movies/images/sample_pic.jpg' %}" alt="movieimage">
+          </div>
+          <p style="position:absolute;">빽 투 더 퓨 처</p>
+        </div>
+      <!-- 모달 내 컨텐트 -->
+        <div class="p-3">
+          <div class="py-1"> <!-- 제작정보 -->
+            감독 로버트 저메스키 | 개봉 1987.07.17. | 등급 | 12세 관람가 | 장르 SF, 코미디 | 러닝타임 120분
+          </div>
+          <div> <!-- overview-->
+           힐 밸리(Hill Valley)에 사는 주인공 마티 맥플라이(Marty McFly: 마이클 J. 폭스 분)는 록큰롤, 스케이트보드, 그리고 자동차를 좋아하는 명랑 쾌할한 고교생으로, 아버지 죠지(George Douglas McFly: 크리스핀 글로버 분)와 어머니 로레인(Lorraine Baines: 리아 톰슨 분), 그리고 형과 누나가 있는 가정의 평범한 청소년이다. 평소 친하게 지내던 괴상한 발명가 에메트 브라운 박사(Dr. EmmDr. Emmett L. "Doc" Brown: 크리스토퍼 로이드 분)가 스포츠카 드로리안(DeLorean)을 개조해 타임머신을 만들지만, 뜻밖의 사고로 브라운 박사가 테러범들에게 총을 맞고 위험해진 마티는 급기야 30년 전으로 간다. 극장 간판에는 2류 배우인 로널드 레이건이 보이고 청년인 아버지와 어머니를 보게 된다. 그러나 젊은 아버진 여전히 멍청하고, 무엇보다 어머니가 미래의 아들인 마티를 좋아해 야단이다. 마티가 미래로 가는 것을 도와 줄 사람은 30년 전인 젊은 브라운 박사뿐. 댄스 파티가 열리는 날에 아버지와 어머니가 만났던 것을 기억한 마티는 두 사람을 결합시키고자 어머니와 파티장으로 간다. 그런데, 심술장이 밥(Biff Tannen: 토마스 F. 윌슨 분)이 나타나 어머니를 겁탈하려 하나 화가 난 아버지가 일격에 때려 눕혀 그때부터 소심했던 아버지의 성격이 바낀다. 무사히 부모님은 만나 마티의 존재는 없었지지 않지만 마티의 '미래로의 귀환(Back to the future)'이 어려워지는 사태를 맞는데....
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
