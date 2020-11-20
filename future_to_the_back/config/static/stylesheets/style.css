@@ -1,0 +1,60 @@
+body {
+  height: 100%;
+} 
+
+/* base.html */
+
+.logo-size {
+  width: 100px;
+}
+
+.background-size {
+  width: 200px;
+}
+
+.navbar-bg {
+  background-color: black;
+}
+
+.background-blk {
+  background-color: black;
+}
+
+
+/* 검색 결과 영화 관련 */
+
+
+.moviecontainer {
+  background-color : rgb(44, 46, 46);
+  /* max-width: 1200px; */
+  /* margin: auto; */
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.moviecard {
+  position:relative;
+  width:120px;
+  padding: 0 10px;
+  margin: 30px 0;
+}
+
+.moviecard-img {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
+.moviecard-img:hover {
+  background-color: grey;
+  opacity: 0.5;
+}
+
+.movierank {
+  font-size:60px;
+  position: absolute;
+  color: white;
+  padding: 5px 15px;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
