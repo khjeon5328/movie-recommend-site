@@ -5,6 +5,11 @@ import requests
 import json
 from pprint import pprint
 
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup
+
 def movies(request):
     MOVIE_BOX_OFFICE_URL = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json'
     targetDt = '20180428'
@@ -13,45 +18,62 @@ def movies(request):
     payload = {'key': key, 'targetDt': targetDt}
     r = requests.get(MOVIE_BOX_OFFICE_URL, params=payload)
     r_dict = r.json()
-    movie = r_dict["boxOfficeResult"]["dailyBoxOfficeList"][0]
+    movies = r_dict["boxOfficeResult"]["dailyBoxOfficeList"]
 
-    Movie(
-        movie_name=movie['movieNm'],
-        rank=movie['rank'],
-        # False == old
-        rank_old_and_new=movie['rankOldAndNew'],
-        open_dt=movie['openDt'],
-        sales_share=movie['salesShare'],
-        sales_change=movie['salesChange'],
-        sales_acc=movie['salesAcc'],
-        audi_cnt=movie['audiCnt'],
-        audi_change=movie['audiChange'],
-        audi_acc=movie['audiAcc'],
-        scrn_cnt=movie['scrnCnt'],
-        show_cnt=movie['showCnt']
-    ).save()
+    for movie in movies:
+        Movie(
+            movie_name=movie['movieNm'],
+            rank=movie['rank'],
+            # False == old
+            rank_old_and_new=movie['rankOldAndNew'],
+            open_dt=movie['openDt'],
+            sales_share=movie['salesShare'],
+            sales_change=movie['salesChange'],
+            sales_acc=movie['salesAcc'],
+            audi_cnt=movie['audiCnt'],
+            audi_change=movie['audiChange'],
+            audi_acc=movie['audiAcc'],
+            scrn_cnt=movie['scrnCnt'],
+            show_cnt=movie['showCnt']
+        ).save()
     return
+
+def test(request):
+    # naverMovie('테넷')
+    req = requests.get('https://movie.naver.com/movie/search/result.nhn?query=%ED%85%8C%EB%84%B7&section=all&ie=utf8')
+    ## HTML 소스 가져오기
+    html = req.text
+    soup = BeautifulSoup(html, 'html.parser')
+
+    cl = soup.find("p", class_="result_thumb").find("a")["href"]
+    print(cl)
+    return render(request,'index.html')
 
 
 def movieDetail(request):
-    from selenium import webdriver
-    from selenium.webdriver.common.keys import Keys
-    from bs4 import BeautifulSoup
-    from pprint import pprint
+    boxoffice_movies = Movie.objects.all()
+    for box_movie in boxoffice_movies:
+        keyword = box_movie.movie_name
+        naverMovie(keyword)
 
+def naverMovie(keyword):
     try:
         driver = webdriver.Chrome("C:\\Users\\grey\\Downloads\\chromedriver_win32\\chromedriver.exe")
         driver.get("https://movie.naver.com/")
         elem = driver.find_element_by_class_name("ipt_tx_srch")
-        elem.send_keys("어벤져스: 인피니티 워")
+        elem.send_keys(keyword)
         elem.send_keys(Keys.RETURN)
-
-        continue_link = driver.find_element_by_partial_link_text('어벤져스: 인피니티 워')
+        
+        soup.select(
+            '#old_content > ul:nth-child(4) > li > dl > dt > a'
+        )["href"]
+        continue_link = driver.find_element_by_partial_link_text(keyword)
         continue_link.click()
     
     except e:
         print('selenium error')
         return
+
     finally:
         try:
             soup = BeautifulSoup(driver.page_source, 'html.parser')
