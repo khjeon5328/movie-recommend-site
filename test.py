@@ -8,9 +8,10 @@ html = req.text
 soup = BeautifulSoup(html, 'html.parser')
 
 
-relate_movies = []
-relate_movies_thumb = []
 
-relate_movie = soup.find("ul", class_="thumb_link_mv").find_all("li")
 
-print(len('https://s.pstatic.net/movie.phinf/20111223_44/1324635585945KDOJ5_JPEG/movie_image.jpg?type=m133_190_2'))
+  overview = soup.select(
+                '#content > div.article > div.section_group.section_group_frst > div:nth-child(1) > div > div.story_area > p'
+            )[0].text.replace('\xa0', '')
+
+print(overview)

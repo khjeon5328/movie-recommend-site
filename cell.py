@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
 from pprint import pprint
 
-driver = webdriver.Chrome("C:\\Users\\khjeo\\Downloads\\chromedriver_win32\\chromedriver.exe")
+driver = webdriver.Chrome("C:\\Users\\grey\\Downloads\\chromedriver_win32\\chromedriver.exe")
 driver.get("https://movie.naver.com/")
 elem = driver.find_element_by_class_name("ipt_tx_srch")
 elem.send_keys("어벤져스: 인피니티 워")
@@ -136,42 +136,42 @@ movie_detail = {
     "viewer_img" : viewer_img
 }
 
-MovieDetail(
-    movie_id=''
-    overview=movie_detail['overview'],
-    poster=movie_detail['poster'],
-    staff1=movie_detail['staff1'],
-    staff2=movie_detail['staff2'],
-    staff3=movie_detail['staff3'],
-    staff4=movie_detail['staff4'],
-    staff5=movie_detail['staff5'],
-    thumb_staff1=movie_detail['thumb_staff1'],
-    thumb_staff2=movie_detail['ovethumb_staff2rview'],
-    thumb_staff3=movie_detail['thumb_staff3'], 
-    thumb_staff4=movie_detail['thumb_staff4'],
-    thumb_staff5=movie_detail['thumb_staff5'],
-    netizen_score=movie_detail['netizen_score'],
-    special_score=movie_detail['special_score'],
-    running_time=movie_detail['running_time'],
-    genre=movie_detail['genre'],
-    grade=movie_detail['grade'],
-    download_url=movie_detail['download_url'],
-    best_line1_character=movie_detail['best_line1_character'],
-    best_line1=movie_detail['best_line1'],
-    best_line2_character=movie_detail['best_line2_character'],
-    best_line2=movie_detail['best_line2'],
-    relate_movie1 =movie_detail['relate_movie1'],
-    relate_movie2 =movie_detail['relate_movie2'],
-    relate_movie3 =movie_detail['relate_movie3'],
-    relate_movie4 =movie_detail['relate_movie4'],
-    relate_movie5 =movie_detail['relate_movie5'],
-    relate_movies_thumb1 =movie_detail['relate_movies_thumb1'],
-    relate_movies_thumb2 =movie_detail['relate_movies_thumb2'],
-    relate_movies_thumb3=movie_detail['relate_movies_thumb3'],
-    relate_movies_thumb4 =movie_detail['overrelate_movies_thumb4view'],
-    relate_movies_thumb5 =movie_detail['relate_movies_thumb5'],
-    aka_info =movie_detail['aka_info'],
-    viewer_img =movie_detail['viewer_img'],
-)
+# MovieDetail(
+#     movie_id=''
+#     overview=movie_detail['overview'],
+#     poster=movie_detail['poster'],
+#     staff1=movie_detail['staff1'],
+#     staff2=movie_detail['staff2'],
+#     staff3=movie_detail['staff3'],
+#     staff4=movie_detail['staff4'],
+#     staff5=movie_detail['staff5'],
+#     thumb_staff1=movie_detail['thumb_staff1'],
+#     thumb_staff2=movie_detail['ovethumb_staff2rview'],
+#     thumb_staff3=movie_detail['thumb_staff3'], 
+#     thumb_staff4=movie_detail['thumb_staff4'],
+#     thumb_staff5=movie_detail['thumb_staff5'],
+#     netizen_score=movie_detail['netizen_score'],
+#     special_score=movie_detail['special_score'],
+#     running_time=movie_detail['running_time'],
+#     genre=movie_detail['genre'],
+#     grade=movie_detail['grade'],
+#     download_url=movie_detail['download_url'],
+#     best_line1_character=movie_detail['best_line1_character'],
+#     best_line1=movie_detail['best_line1'],
+#     best_line2_character=movie_detail['best_line2_character'],
+#     best_line2=movie_detail['best_line2'],
+#     relate_movie1 =movie_detail['relate_movie1'],
+#     relate_movie2 =movie_detail['relate_movie2'],
+#     relate_movie3 =movie_detail['relate_movie3'],
+#     relate_movie4 =movie_detail['relate_movie4'],
+#     relate_movie5 =movie_detail['relate_movie5'],
+#     relate_movies_thumb1 =movie_detail['relate_movies_thumb1'],
+#     relate_movies_thumb2 =movie_detail['relate_movies_thumb2'],
+#     relate_movies_thumb3=movie_detail['relate_movies_thumb3'],
+#     relate_movies_thumb4 =movie_detail['overrelate_movies_thumb4view'],
+#     relate_movies_thumb5 =movie_detail['relate_movies_thumb5'],
+#     aka_info =movie_detail['aka_info'],
+#     viewer_img =movie_detail['viewer_img'],
+# )
 
 pprint(movie_detail)
