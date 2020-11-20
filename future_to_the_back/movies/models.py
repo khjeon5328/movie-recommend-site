@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Movie(models.Model):
@@ -12,7 +13,7 @@ class Movie(models.Model):
     sales_change = models.FloatField()
     sales_acc = models.BigIntegerField()
     audi_cnt = models.IntegerField()
-    audi_change = models.IntegerField()
+    audi_change = models.FloatField()
     audi_acc = models.BigIntegerField()
     scrn_cnt = models.IntegerField()
     show_cnt = models.IntegerField()
@@ -33,7 +34,7 @@ class MovieDetail(models.Model):
     thumb_staff5 = models.URLField(blank=True, null=True)
     netizen_score = models.FloatField()
     special_score = models.FloatField()
-    running_time = models.IntegerField()
+    running_time = models.CharField(max_length=10)
     genre = models.CharField(max_length=10)
     grade = models.CharField(max_length=10)
     download_url = models.URLField(blank=True, null=True)

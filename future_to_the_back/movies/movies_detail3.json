@@ -1,0 +1,43 @@
+[
+{
+    "model": "movies.moviedetail",
+    "pk": 1,
+    "fields": {
+        "movie_id": 1,
+        "overview": "새로운 조합을 이룬 어벤져스,\n역대 최강 빌런 타노스에 맞서 세계의 운명이 걸린\n인피니티 스톤을 향한 무한 대결이 펼쳐진다!\n\n마블의 클라이맥스를 목격하라!",
+        "poster": "https://movie-phinf.pstatic.net/20180322_242/15216962441485x5Om_JPEG/movie_image.jpg?type=m203_290_2",
+        "staff1": "안소니 루소",
+        "staff2": "로버트 다우니 주니어",
+        "staff3": "조슈 브롤린",
+        "staff4": "크리스 헴스워스",
+        "staff5": "베네딕트 컴버배치",
+        "thumb_staff1": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F185%2F202001131638196161.jpg&type=u111_139&quality=95",
+        "thumb_staff2": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F37%2F201504171519202401.jpg&type=u111_139&quality=95",
+        "thumb_staff3": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F79%2F201509111838166751.gif&type=u111_139&quality=95",
+        "thumb_staff4": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F137%2F201801181126507081.jpg&type=u111_139&quality=95",
+        "thumb_staff5": "https://search.pstatic.net/common/?src=https%3A%2F%2Fssl.pstatic.net%2Fsstatic%2Fpeople%2F44%2F201402241738124951.jpg&type=u111_139&quality=95",
+        "netizen_score": 8.96,
+        "special_score": 7.09,
+        "running_time": "149분 ",
+        "genre": "액션",
+        "grade": "12세 관람가",
+        "download_url": "https://serieson.naver.com/tvstore/detail.nhn?mcode=136315",
+        "best_line1_character": "피터 파커 / 스파이더맨",
+        "best_line1": "제발요 스타크씨 제발 살려줘요. 저 죽기 싫어요..",
+        "best_line2_character": "닥터 스트레인지 / 스티븐 스트레인지",
+        "best_line2": "It's end game",
+        "relate_movie1": "가디언즈 오브 갤럭시 VOL. 2",
+        "relate_movie2": "가디언즈 오브 갤럭시",
+        "relate_movie3": "캡틴 아메리카: 시빌 워",
+        "relate_movie4": "아이언맨 2",
+        "relate_movie5": "토르: 라그나로크",
+        "relate_movies_thumb1": "https://s.pstatic.net/movie.phinf/20170329_6/1490752948552vH5G8_JPEG/movie_image.jpg?type=m133_190_2",
+        "relate_movies_thumb2": "https://s.pstatic.net/movie.phinf/20170811_107/1502432301446njv93_JPEG/movie_image.jpg?type=m133_190_2",
+        "relate_movies_thumb3": "https://s.pstatic.net/movie.phinf/20160427_273/1461725031863moaJw_JPEG/movie_image.jpg?type=m133_190_2",
+        "relate_movies_thumb4": "https://s.pstatic.net/movie.phinf/20111223_163/1324610044306xOc34_JPEG/movie_image.jpg?type=m133_190_2",
+        "relate_movies_thumb5": "https://s.pstatic.net/movie.phinf/20170928_85/1506564710105ua5fS_PNG/movie_image.jpg?type=m133_190_2",
+        "aka_info": "['어벤져스3', 'The Avengers 3: Part 1', '어벤져스: 인피니티 워 Part I', 'Avengers: Infinity War - Part I']",
+        "viewer_img": "https://movie-phinf.pstatic.net/20180509_40/1525832749412sRMS6_JPEG/movie_image.jpg?type=m427_320_2"
+    }
+}
+]
