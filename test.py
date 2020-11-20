@@ -7,8 +7,10 @@ html = req.text
 
 soup = BeautifulSoup(html, 'html.parser')
 
-aka_info = soup.find("div", class_="aka_info").find("p").text.split('|')
-# .strip(' \t\n\r')
-for i in range(len(aka_info)):
-    aka_info[i] = aka_info[i].strip(' \x06\t\n\r')
-print(aka_info)
+
+relate_movies = []
+relate_movies_thumb = []
+
+relate_movie = soup.find("ul", class_="thumb_link_mv").find_all("li")
+
+print(len('https://s.pstatic.net/movie.phinf/20111223_44/1324635585945KDOJ5_JPEG/movie_image.jpg?type=m133_190_2'))
