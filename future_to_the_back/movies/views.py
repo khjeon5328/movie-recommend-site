@@ -41,3 +41,9 @@ def moviedetail(request):
 def home(request):
 
     return render(request, 'movies/home.html')
+
+
+
+def article(request):
+
+    return render(request, 'movies/_article.html')

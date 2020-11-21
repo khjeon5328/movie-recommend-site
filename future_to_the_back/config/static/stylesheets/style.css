@@ -97,6 +97,8 @@ body {
 
 .detailcontainer {
   background-color: white;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 
@@ -147,12 +149,15 @@ body {
 .dymo {
   
   font-family: dymo;
+
   line-height: 62%;
   /* color : rgb(143,24,5); */
-  color : #B50D13;
+  /* color : #B50D13; */
+  color : #f4f814;
   margin-top:10px;
   object-fit: cover;
-  background-color: lightblue;
+  /* background-color: lightblue; */
+  background-color: rgb(114, 18, 3);
   /* color : #1e0492; */
   /* color : #D85116; */
   
@@ -166,13 +171,8 @@ body {
   background-color: lightblue;
   line-height: 1.0;
   color : rgb(44, 46, 46);
-  /* color : rgb(143,24,5); */
-  /* color : #B50D13; */
-  /* color : #1e0492; */
-  /* color : #D85116; */
-
-
-  margin: 0;
+  /* color : #2D9CCE;  */
+  margin: 10px 0px 10px;
 }
 
 
@@ -196,6 +196,16 @@ body {
 
 
 .homebox {
-  background-image: url(../images/metal.jpg);
-  box-shadow: 10px 10px grey;
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  /* border: 8px solid rgb(64, 65, 65); */
+  /* background-image: url(../images/orange-leather.jpg);
+  border: 8px solid #B50D13; */
+
+  background-image: url(../images/pink-leather.jpg);
+  /* border: 8px solid #2D9CCE; */
+  /* border: 8px solid #f57125;
+  border: 8px solid #B50D13; */
+  border: 8px solid #E4801D;
+
 }
