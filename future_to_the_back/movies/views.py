@@ -4,35 +4,29 @@ import requests
 import json
 from pprint import pprint
 from .models import MovieDetail, Movie
+from pprint import pprint
 # Create your views here.
 
 
 def movies(request):
-    # 영진위
-    # MOVIE_BOX_OFFICE_URL = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json'
-
-    # targetDt = '20180428'
-    # key = 'afcff8156929eef627192c4cc730285c'
-    
-    # payload = {'key': key, 'targetDt': targetDt}
-    # r = requests.get(MOVIE_BOX_OFFICE_URL, params=payload)
-    # r_dict = r.json()
-    # pprint(r_dict)
+    movies = []
+    movies = Movie.objects.filter(target_dt='20180428')
+    movies_detail = []
+    for i in movies:
+        movies_detail.append(MovieDetail.objects.get(movie=i))
 
     context = {
-
+        'movies_detail' : movies_detail,
     }
     return render(request, 'movies/movies.html', context)
 
 
-def moviedetail(request):
-    movie_detail = MovieDetail.objects.filter(movie_id_id=1)[0]
-    movie_info = Movie.objects.filter(id=1)[0]
+def moviedetail(request, movie_id):
+    movie_detail = MovieDetail.objects.filter(pk=movie_id)
     print(movie_detail)
-    print(movie_info)
+   
     context = {
-        'movie_info': movie_info,
-        'movie_detail':movie_detail,
+        'movie_detail':movie_detail[0],
     }
 
     return render(request, 'movies/moviedetail.html', context)

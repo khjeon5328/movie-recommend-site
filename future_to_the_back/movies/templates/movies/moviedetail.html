@@ -4,7 +4,7 @@
 {% block content %}
 
 
-  <div class="container detailcontainer p-0" style="max-width:780px;">
+  <div class="container detailcontainer p-0" style="max-width:820px;">
 
     <div class="d-flex flex-column ">
       <!-- 디테일 화면 이미지-->
@@ -12,19 +12,56 @@
         <div style="width:100%;">
           <img style="width:100%;" src={{movie_detail.viewer_img}} alt="movieimage">
         </div>
-        <h1 class="movietitle">{{ movie_info.movie_name}}</h1>
+        <h1 class="movietitle">{{ movie_detail.movie.movie_name}}</h1>
       </div>
       
       <!-- 디테일 내 컨텐트 -->
       <div class="p-3">
         <div class="py-1"> <!-- 제작정보 -->
-          감독 {{movie_detail.staff1}} | 개봉 {{movie_info.open_dt }} | 등급 {{movie_detail.grade}} | 장르 {{movie_detail.genre}} | 러닝타임 {{ movie_detail.running_time}}
+          감독 {{movie_detail.staff1}} | 개봉 {{movie_detail.movie.open_dt }} | 등급 {{movie_detail.grade}} | 장르 {{movie_detail.genre}} | 러닝타임 {{ movie_detail.running_time}}
         </div>
         <div> 
           {{movie_detail.overview}}
-          {% lorem 5 b random %}
         </div>
       </div>
+
+      <div>
+        <div class="d-flex justify-content-center">
+          <div class="m-3">
+            <div>
+              <img src={{movie_detail.thumb_staff1}} alt="">
+            </div>
+            <div>{{movie_detail.staff1}}</div>
+          </div>
+          <div class="m-3">
+            <div>
+              <img src={{movie_detail.thumb_staff2}} alt="">
+            </div>
+            <div>{{movie_detail.staff2}}</div>
+          </div>
+          <div class="m-3">
+            <div>
+              <img src={{movie_detail.thumb_staff3}} alt="">
+            </div>
+            <div>{{movie_detail.staff3}}</div>
+          </div>
+          <div class="m-3">
+            <div>
+              <img src={{movie_detail.thumb_staff4}} alt="">
+            </div>
+            <div>{{movie_detail.staff4}}</div>
+          </div>
+          <div class="m-3">
+            <div>
+              <img src={{movie_detail.thumb_staff5}} alt="">
+            </div>
+            <div>{{movie_detail.staff5}}</div>
+          </div>
+        </div>
+      </div>
+
+
+
 
       <div style="border-bottom=1px solid black; border-top:1px;">
       </div>

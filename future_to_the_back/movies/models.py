@@ -19,8 +19,11 @@ class Movie(models.Model):
     scrn_cnt = models.IntegerField()
     show_cnt = models.IntegerField()
 
+    def __str__(self):
+        return "%s the place" % self.movie_name
+
 class MovieDetail(models.Model):
-    movie_id = models.ForeignKey('Movie', on_delete=models.CASCADE)
+    movie = models.OneToOneField(Movie, primary_key=True, on_delete=models.CASCADE)
     overview = models.TextField()
     poster = models.URLField()
     staff1 = models.CharField(max_length=50, blank=True, null=True)
@@ -55,3 +58,6 @@ class MovieDetail(models.Model):
     relate_movies_thumb5 = models.URLField(blank=True, null=True)
     aka_info = models.CharField(max_length=50)
     viewer_img = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return "%s the movie detail" % self.movie.movie_name
