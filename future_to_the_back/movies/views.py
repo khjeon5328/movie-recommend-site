@@ -26,8 +26,10 @@ def movies(request):
 
 
 def moviedetail(request):
-    movie_detail = MovieDetail.objects.filter(id=1)[0]
+    movie_detail = MovieDetail.objects.filter(movie_id_id=1)[0]
     movie_info = Movie.objects.filter(id=1)[0]
+    print(movie_detail)
+    print(movie_info)
     context = {
         'movie_info': movie_info,
         'movie_detail':movie_detail,

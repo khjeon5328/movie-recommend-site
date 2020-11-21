@@ -2,11 +2,25 @@ body {
   height: 100%;
 } 
 
-input:focus {
-  outline: none;
-  border:0; 
-  border-bottom : 1px solid rgba(0, 0, 0, 0.2);
+
+@font-face {
+  font-family: dymo;
+  src: url('../fonts/dymo.ttf');
+  
 }
+
+
+@font-face {
+  font-family: digital;
+  src: url('../fonts/Digital.ttf');
+}
+
+@font-face {
+  font-family: label;
+  src: url('../fonts/ImpactLabel.ttf');
+}
+
+
 
 
 /* base.html */
@@ -81,10 +95,29 @@ input:focus {
   text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
 
+.detailcontainer {
+  background-color: white;
+}
+
+
+
+/* input */
+
+
 .reviewinput { 
   outline : none;
   border: 0;
 }
+
+
+.reviewinput:focus {
+  outline: none;
+  border:0; 
+}
+
+
+
+
 
 
 
@@ -103,4 +136,66 @@ input:focus {
   object-fit: cover;
   border-radius: 70%;
   overflow: hidden;
+}
+
+
+
+
+
+/*  home */
+
+.dymo {
+  
+  font-family: dymo;
+  line-height: 62%;
+  /* color : rgb(143,24,5); */
+  color : #B50D13;
+  margin-top:10px;
+  object-fit: cover;
+  background-color: lightblue;
+  /* color : #1e0492; */
+  /* color : #D85116; */
+  
+}
+
+
+
+.label {
+  font-family: label;
+  display: inline;
+  background-color: lightblue;
+  line-height: 1.0;
+  color : rgb(44, 46, 46);
+  /* color : rgb(143,24,5); */
+  /* color : #B50D13; */
+  /* color : #1e0492; */
+  /* color : #D85116; */
+
+
+  margin: 0;
+}
+
+
+
+.digitalinput {
+  font-family: digital;
+  outline: none;
+  border : 0;
+  width: 100%;
+  height: 60px;
+  font-size: 60px;
+  background-color: black;
+  text-align: center;
+  font-style:italic;
+  color : greenyellow;
+  letter-spacing: 10px;
+  line-height: 100%;
+}
+
+
+
+
+.homebox {
+  background-image: url(../images/metal.jpg);
+  box-shadow: 10px 10px grey;
 }
