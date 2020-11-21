@@ -9,5 +9,6 @@ urlpatterns = [
     # path('make/', views.makeMovie, name=""),
     path('detail/', views.moviedetail, name="moviedetail"),
     path('home/', views.home, name="home"),
+    path('article/', views.article, name="article"),
     
 ]
