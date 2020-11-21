@@ -3,6 +3,7 @@ from django.shortcuts import render
 import requests
 import json
 from pprint import pprint
+from .models import MovieDetail, Movie
 # Create your views here.
 
 
@@ -25,4 +26,16 @@ def movies(request):
 
 
 def moviedetail(request):
-    return render(request, 'movies/moviedetail.html')
+    movie_detail = MovieDetail.objects.filter(id=1)[0]
+    movie_info = Movie.objects.filter(id=1)[0]
+    context = {
+        'movie_info': movie_info,
+        'movie_detail':movie_detail,
+    }
+
+    return render(request, 'movies/moviedetail.html', context)
+
+
+def home(request):
+
+    return render(request, 'movies/home.html')
