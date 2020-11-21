@@ -60,5 +60,5 @@ def logout(request):
 
 
 
-def profile(request):
+def profile(request, username):
     return 
