@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-
 {% block content %}
   <div class="bg-white">
     <div class="d-flex justify-content-center">
@@ -8,11 +7,7 @@
         <form action="" method="post">
           {% csrf_token %}
           {% bootstrap_form form %}
-          {% buttons %}
-            <button type="submit" class="btn btn-primary">
-              Submit
-            </button>
-          {% endbuttons %}
+          <button class="btn btn-primary">update</button>
         </form>
       </div>
     </div>

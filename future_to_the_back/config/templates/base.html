@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'js/bootstrap.bundle.js' %}">
   <link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
+  <link rel="stylesheet" href="{% static 'stylesheets/custom.css' %}">
   <title>FUTURE TO THE BACK</title>
 </head>
 <body class="background-blk">
@@ -18,19 +20,22 @@
       </a>
     </div>
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+      <ul class="navbar-nav mr-5">
+        {% if not request.user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'accounts:signup' %}">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'accounts:login' %}">LogIn</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'accounts:profile' request.user.username %}">{{request.user.username}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'accounts:logout' %}">Log out</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </nav>
