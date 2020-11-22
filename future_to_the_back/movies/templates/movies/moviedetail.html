@@ -18,45 +18,122 @@
       <!-- 디테일 내 컨텐트 -->
       <div class="p-3">
         <div class="py-1"> <!-- 제작정보 -->
-          감독 {{movie_detail.staff1}} | 개봉 {{movie_detail.movie.open_dt }} | 등급 {{movie_detail.grade}} | 장르 {{movie_detail.genre}} | 러닝타임 {{ movie_detail.running_time}}
+          <b>감독</b> {{movie_detail.staff1}} | <b>개봉</b> {{movie_detail.movie.open_dt }} | <b>등급</b> {{movie_detail.grade}} | <b>장르</b> {{movie_detail.genre}} | <b>러닝타임</b> {{ movie_detail.running_time}}
         </div>
         <div> 
           {{movie_detail.overview}}
         </div>
       </div>
 
-      <div>
+      <div> <!-- 제작진 정보 -->
+        <div class="px-3"><b>제작진</b></div>
         <div class="d-flex justify-content-center">
-          <div class="m-3">
-            <div>
-              <img src={{movie_detail.thumb_staff1}} alt="">
+          {% if movie_detail.thumb_staff1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.thumb_staff1}} alt="">
+              </div>
+              <div>{{movie_detail.staff1}}</div>
             </div>
-            <div>{{movie_detail.staff1}}</div>
-          </div>
-          <div class="m-3">
-            <div>
-              <img src={{movie_detail.thumb_staff2}} alt="">
+          {% endif %}
+          {% if movie_detail.thumb_staff2 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.thumb_staff2}} alt="">
+              </div>
+              <div>{{movie_detail.staff2}}</div>
             </div>
-            <div>{{movie_detail.staff2}}</div>
-          </div>
-          <div class="m-3">
-            <div>
-              <img src={{movie_detail.thumb_staff3}} alt="">
+          {% endif %}
+          {% if movie_detail.thumb_staff3 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.thumb_staff3}} alt="">
+              </div>
+              <div>{{movie_detail.staff3}}</div>
             </div>
-            <div>{{movie_detail.staff3}}</div>
-          </div>
-          <div class="m-3">
-            <div>
-              <img src={{movie_detail.thumb_staff4}} alt="">
+          {% endif %}
+          {% if movie_detail.thumb_staff4 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.thumb_staff4}} alt="">
+              </div>
+              <div>{{movie_detail.staff4}}</div>
             </div>
-            <div>{{movie_detail.staff4}}</div>
-          </div>
-          <div class="m-3">
-            <div>
-              <img src={{movie_detail.thumb_staff5}} alt="">
+          {% endif %}
+          {% if movie_detail.thumb_staff5 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.thumb_staff5}} alt="">
+              </div>
+              <div>{{movie_detail.staff5}}</div>
             </div>
-            <div>{{movie_detail.staff5}}</div>
+          {% endif %}
+        </div>
+      </div>
+
+
+      <div> <!-- 명대사 -->
+        
+        {% if movie_detail.best_line1 != 'null' %}
+        <div class="px-3"><b>명대사</b></div>
+          <div class="d-flex flex-column">
+            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line1}}</p>
+            
+            <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line1_character}} </p>
           </div>
+        {% endif %}
+        {% if movie_detail.best_line2 != 'null' %}
+          <div class="d-flex flex-column">
+            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line1}}</p>
+            <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line2_character}} </p>
+          </div>
+        {% endif %}
+      </div>
+
+
+      <div> <!-- 관련영화 정보 -->
+        <div class="px-3"><b>관련영화</b></div>
+        <div class="px-3 d-flex justify-content-center">
+          {% if movie_detail.relate_movie1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.relate_movies_thumb1}} alt="">
+              </div>
+              <div>{{movie_detail.relate_movie1}}</div>
+            </div>
+          {% endif %}
+          {% if movie_detail.relate_movie1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.relate_movies_thumb2}} alt="">
+              </div>
+              <div>{{movie_detail.relate_movie1}}</div>
+            </div>
+          {% endif %}
+          {% if movie_detail.relate_movie1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.relate_movies_thumb3}} alt="">
+              </div>
+              <div>{{movie_detail.relate_movie1}}</div>
+            </div>
+          {% endif %}
+          {% if movie_detail.relate_movie1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.relate_movies_thumb4}} alt="">
+              </div>
+              <div>{{movie_detail.relate_movie1}}</div>
+            </div>
+          {% endif %}
+          {% if movie_detail.relate_movie1 != 'null' %}
+            <div class="m-3">
+              <div>
+                <img src={{movie_detail.relate_movies_thumb5}} alt="">
+              </div>
+              <div>{{movie_detail.relate_movie1}}</div>
+            </div>
+          {% endif %}
         </div>
       </div>
 
@@ -73,7 +150,7 @@
       </div>
 
 
-
+ 
       <!-- 댓글 -->
       {% comment %} <div class="container m-0 p-3" style="max-width:800px; width=100%;"> 
         <div class="row">
