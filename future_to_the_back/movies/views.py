@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 import requests
 import json
@@ -9,8 +9,15 @@ from pprint import pprint
 
 
 def movies(request):
+    # home에서 받은 정보로 dt만들기
+    month = request.GET.get('month')
+    year = request.GET.get('year')
+    day = request.GET.get('day')
+    target_dt= year + month + day
+
     movies = []
-    movies = Movie.objects.filter(target_dt='20180428')
+    # movies = Movie.objects.filter(target_dt='20180428')
+    movies = Movie.objects.filter(target_dt=target_dt)
     movies_detail = []
     for i in movies:
         movies_detail.append(MovieDetail.objects.get(movie=i))
@@ -35,7 +42,6 @@ def moviedetail(request, movie_id):
 def home(request):
 
     return render(request, 'movies/home.html')
-
 
 
 def article(request):
