@@ -22,6 +22,13 @@ body {
 
 
 
+@font-face {
+  font-family: hollywood;
+  src: url('../fonts/hollywood.ttf');
+}
+
+
+
 
 /* base.html */
 
@@ -39,6 +46,11 @@ body {
 
 .background-blk {
   background-color: black;
+}
+
+.nav-item-name {
+  font-family: hollywood;
+  font-size: 2rem;
 }
 
 
@@ -103,6 +115,29 @@ body {
 
 
 
+
+/* form */
+
+.formcontainer {
+  /* background-color: white; */
+  background-image: url(../images/dblue-leather.jpg);
+  color:lightblue;
+  color: #F0A81A;
+  margin-top: 15px;
+  margin-bottom: 100px;
+  max-width:600px;
+  padding:  15px;
+}
+
+.formdiv {
+  border: 1px solid #F0A81A; width:100%; height:100%
+}
+
+.form-inner-box {
+  padding: 20px 50px 40px 50px;
+}
+
+
 /* input */
 
 
@@ -145,6 +180,11 @@ body {
   position: relative;
 }
 
+
+.profile-container {
+  height: 200px; 
+  width: 200px;
+}
 
 
 
@@ -212,4 +252,58 @@ body {
   border: 8px solid #B50D13; */
   border: 8px solid #E4801D;
 
+}
+
+
+.light-grey {
+  color:black;
+}
+
+.light-green {
+  color: greenyellow;
+}
+
+
+
+
+
+
+
+
+/* button */
+
+
+.cumstom-button {
+  font-family: hollywood;
+  display: inline-block;
+  font-weight: 800;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  padding: 0.2rem 0.3rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 5px solid transparent;
+  color : #B50D13;
+  background-color: #F7DC11;
+
+}
+
+.form-button {
+  font-size: x-large;
+  line-height: 1.0;
+}
+
+.lg-button {
+  font-size: xx-large;
+  background-color:#003366;
+  color:#F0A81A;
+  line-height: 1.0;
+  padding: 5px;
 }
