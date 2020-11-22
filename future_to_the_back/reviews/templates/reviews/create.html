@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+  <div class="d-flex justify-content-center">
+    <div class="bg-white p-5" style="width:800px">
+      <h1>create review page</h1>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button class="btn btn-primary">create review</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

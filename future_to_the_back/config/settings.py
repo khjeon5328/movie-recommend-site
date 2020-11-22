@@ -34,9 +34,11 @@ INSTALLED_APPS = [
     # in apps
     'accounts',
     'movies',
+    'reviews',
 
     # library
     'bootstrap4',
+    'imagekit',
     
     'django.contrib.admin',
     'django.contrib.auth',
