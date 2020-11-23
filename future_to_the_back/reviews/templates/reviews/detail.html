@@ -160,8 +160,7 @@
         axios.post(COMMENT_DELETE_URL, {}, options)
           .then(res => {
             const { is_delete, count } = res.data
-            console.log(is_delete)
-            if (is_delete) {
+             if (is_delete) {
               previousComment.remove()
               const commentCount = document.querySelector('.comment-count')
               commentCount.innerText = count
