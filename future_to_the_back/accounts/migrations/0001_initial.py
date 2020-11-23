@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> b666fe6a3e73ac138e68f86cf9dd0a07b377ad8e
 from django.conf import settings
 import django.contrib.auth.models
 import django.contrib.auth.validators
