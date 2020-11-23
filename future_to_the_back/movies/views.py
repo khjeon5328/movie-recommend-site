@@ -33,9 +33,9 @@ def movies(request):
 def moviedetail(request, movie_id):
     movie_detail = MovieDetail.objects.filter(pk=movie_id)
     movie = Movie.objects.get(id=movie_id)
-    print(movie)
-    reviews = movie.review_set.order_by('-created_at') 
-    print(reviews)
+    # print(movie)
+    # reviews = movie.review_set.order_by('-created_at') 
+    # print(reviews)
     context = {
         'movie_detail':movie_detail[0],
     }
