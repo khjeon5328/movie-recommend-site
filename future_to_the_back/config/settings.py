@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     # library
     'bootstrap4',
     'imagekit',
+    'django_seed',
+    
     
     'django.contrib.admin',
     'django.contrib.auth',

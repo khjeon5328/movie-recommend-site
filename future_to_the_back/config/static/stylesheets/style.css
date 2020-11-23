@@ -144,12 +144,14 @@ body {
 .reviewinput { 
   outline : none;
   border: 0;
+  border-bottom: 1px solid rgb(212, 211, 211);
 }
 
 
 .reviewinput:focus {
   outline: none;
   border:0; 
+  border-bottom: 1px solid rgb(44, 46, 46);
 }
 
 
@@ -173,6 +175,7 @@ body {
   object-fit: cover;
   border-radius: 70%;
   overflow: hidden;
+  margin: 3px;
 }
 
 .profile-image {
@@ -306,4 +309,79 @@ body {
   color:#F0A81A;
   line-height: 1.0;
   padding: 5px;
+}
+
+
+/* review detail */
+
+.review-title {
+  display: inline;
+  clear: both;
+  font-weight: 500;
+}
+
+
+.review-title-date {
+  display: inline-block;
+  position: absolute;
+  right: 60px;
+  /* bottom: 0; */
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.empty-rv {
+  width:100%;
+  height:100%; 
+  border: 1px solid rgb(236, 233, 233);
+}
+
+
+
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+	        animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+@-webkit-keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}@keyframes tracking-in-expand{0%{letter-spacing:-.5em;opacity:0}40%{opacity:.6}100%{opacity:1}}
+
+
+.rating {
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  color: #888888;
+  font-size: 25px;
+  height: 25px;
+  width: auto;
+  margin: 0;
+  position: relative;
+  padding: 0;
+}
+
+.rating-upper {
+  color: #c52b2f;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.rating-lower {
+  padding: 0;
+  display: flex;
+  z-index: 0;
 }

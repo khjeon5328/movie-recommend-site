@@ -55,7 +55,7 @@
     </div>
     <!--comment create start-->
     {% if request.user.is_authenticated %}
-      <form id="create-comment-form" data-review-id="{{ review.pk }}" action="{% url 'reviews:create_comment' review.pk %}" method="post">
+      <form id="create-comment-form" data-review-id="{{ review.pk }}">
         {% csrf_token %}
         <div class="d-flex  align-items-baseline ml-3">
           <i class="fas fa-user-circle">{{ user.username }}</i>
@@ -86,7 +86,7 @@
         </div>
         {% if request.user == comment.author %}
           <div class="mr-3">
-              <form class="comment-delete-form" data-comment-id="{{ comment.pk }}" action="{% url 'reviews:delete_comment' review.pk comment.pk %}" method="post">
+              <form id="comment-delete-form" data-comment-id="{{ comment.id }}">
                 {% csrf_token %}
                 <button>
                   <i class="fas fa-trash-alt"></i>
@@ -97,14 +97,11 @@
       </div>
       <hr>
     {% endfor %}
-
             
     <div class="comment-list-item">
     </div>
     <!--comment list end-->
-
     </div>
-
   </div>
 {% endblock content %}
 
@@ -149,7 +146,8 @@
     /*
       2. comment delete
     */
-    const commentDeleteForm = document.querySelector('#comment-delete-form')
+    commentDeleteForm = document.querySelector('#comment-delete-form')
+    console.log(commentDeleteForm)
     if (commentDeleteForm) {
       commentDeleteForm.addEventListener('submit', (e) => {
         e.preventDefault()
@@ -162,8 +160,7 @@
         axios.post(COMMENT_DELETE_URL, {}, options)
           .then(res => {
             const { is_delete, count } = res.data
-            console.log(is_delete)
-            if (is_delete) {
+             if (is_delete) {
               previousComment.remove()
               const commentCount = document.querySelector('.comment-count')
               commentCount.innerText = count
@@ -175,7 +172,7 @@
             console.log(error)
           })
       })
-    }//if
+    }//if 
 
   
 

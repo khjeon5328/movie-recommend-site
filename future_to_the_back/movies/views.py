@@ -5,6 +5,7 @@ import json
 from pprint import pprint
 from .models import MovieDetail, Movie
 from pprint import pprint
+from reviews.models import Review
 # Create your views here.
 
 
@@ -28,15 +29,19 @@ def movies(request):
     return render(request, 'movies/movies.html', context)
 
 
+
 def moviedetail(request, movie_id):
     movie_detail = MovieDetail.objects.filter(pk=movie_id)
-    print(movie_detail)
-   
+    movie = MovieDetail.objects.get(pk=movie_id)
+    reviews = movie.review_set.all()
+
     context = {
         'movie_detail':movie_detail[0],
+        'reviews':reviews,
     }
-
     return render(request, 'movies/moviedetail.html', context)
+
+
 
 
 def home(request):

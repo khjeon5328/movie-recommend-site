@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from imagekit.models import ProcessedImageField
 from imagekit.processors import Thumbnail
-
+from movies.models import Movie, MovieDetail
 
 # Create your models here.
 class Review(models.Model):
@@ -28,6 +28,8 @@ class Review(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    movie = models.ForeignKey(MovieDetail, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return f'{self.author} - {self.title}'
