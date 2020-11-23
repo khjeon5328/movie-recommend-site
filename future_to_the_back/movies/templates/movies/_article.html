@@ -4,14 +4,14 @@
 {% block content %}
 
  <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+{% comment %} <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
 
-<a href="/1" data-toggle="modal" data-target="#exampleModal">모달모달</a>
+<a href="/1" data-toggle="modal" data-target="#exampleModal">모달모달</a> {% endcomment %}
 
  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="post-{{ movie_detail.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="max-width:780px;" >
     <div class="modal-content d-flex flex-column" style="border-radius:0; border:none;" > 
       {% comment %} <div class="px-3 py-2" style=""><b> 리뷰 </b></div> {% endcomment %}
