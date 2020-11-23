@@ -339,7 +339,7 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
-
+}
 
 .empty-rv {
   width:100%;
