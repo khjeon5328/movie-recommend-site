@@ -35,7 +35,7 @@ body {
 
 @font-face {
   font-family: notoR;
-  src: url('../fonts/notoR.ttf');
+  src: url('../fonts/notoR.otf');
 }
 
 
@@ -47,7 +47,7 @@ body {
 
 @font-face {
   font-family: serif;
-  src: url('../fonts/serif.ttf');
+  src: url('../fonts/serif.otf');
 }
 
 
@@ -81,6 +81,12 @@ body {
 /* 검색 결과 영화 관련 */
 
 
+.imgfit {
+  width:111px;
+}
+
+
+
 .moviecontainer {
   background-color : rgb(44, 46, 46);
   /* max-width: 1200px; */
@@ -105,7 +111,7 @@ body {
 
 .moviecard-img:hover {
   background-color: grey;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .movierank {
@@ -367,6 +373,29 @@ body {
 
 
 
+.download {
+  display: inline-block;
+  font-weight: 800;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  padding: 0.2rem 0.3rem;
+  font-size: 1rem;
+  line-height: 2;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 5px solid transparent;
+  color: #2D9CCE;
+  background-color:#F7DC11;
+  /* border: 1px solid rgb(177, 176, 176); */
+  border-radius:0.25rem;
+  outline: none;
+}
+
 
 
 
@@ -494,3 +523,5 @@ input[type=number] {
   display: flex;
   z-index: 0;
 }
+
+
