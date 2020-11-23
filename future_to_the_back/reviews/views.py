@@ -11,6 +11,7 @@ from .forms import (
 )
 import json
 from django.http import JsonResponse
+from movies.models import MovieDetail, Movie
 # Create your views here.
 
 
@@ -24,14 +25,16 @@ def reviews(request):
 
 @login_required
 @require_http_methods(['GET', 'POST'])
-def create_review(request):
+def create_review(request, movie_id):
+    movie = get_object_or_404(MovieDetail, pk=movie_id)
     if request.method == 'POST':
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
             review = form.save(commit=False)
             review.author = request.user
+            review.movie = movie
             review.save()
-            return redirect('reviews:reviews')
+            return redirect('movies:moviedetail', movie_id)
     else:
         form = ReviewForm()
     context = {
