@@ -19,18 +19,18 @@
       
         <div class="row">
 
-          <div class="col d-flex flex-column justify-content-center align-items-center">
-            <input class="digitalinput " type="text" name="month">
-            <h1 class="dymo">MONTH</h1>
-          </div>
-
           <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-            <input class="digitalinput" type="text" name="year">
+            <input class="digitalinput" type="number" id="year" name="year" min="1" max="2020">
             <h1 class="dymo">YEAR</h1>
           </div>
 
           <div class="col d-flex flex-column justify-content-center align-items-center">
-            <input class="digitalinput " type="text" name="day">
+            <input class="digitalinput " type="number" id="month" name="month" min="1" max="12">
+            <h1 class="dymo">MONTH</h1>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <input class="digitalinput " type="number" id="day" name="day" min="1" max="31">
             <h1 class="dymo">DAY</h1>
           </div>
 
@@ -70,30 +70,45 @@
 {% endblock content %}
 
 
-
-{% comment %} <script>
-$(document).on("keyup", "input[name^=month]", function() {
-    var val= $(this).val();
-
-    if(val.replace(/[0-9]/g, "").length > 0) {
-        alert("숫자만 입력해 주십시오.");
-        $(this).val('');
-    }
-
-    if(val < 1 || val > 100) {
-        alert("1~100 범위로 입력해 주십시오.");
-        $(this).val('');
-    }
-});
-</script> {% endcomment %}
-
-
 {% block script %}
-  <script>
-    const now = new Date()
-    const nowHour = now.getHours()
-    const nowMin = now.getMinutes()
 
+  <script>
+    document.getElementById("year").onkeyup= function() {
+       var input=parseInt(this.value);
+       if(input<0 || input>2020) {
+        alert("Value should be between 0 - 2020");
+        this.value = ''
+       }
+       return;
+    }    
+    document.getElementById("month").onkeyup= function() {
+       var input=parseInt(this.value);
+       if(input<0 || input>12) {
+        alert("Value should be between 1 - 12");
+        this.value = ''
+       }
+       return;
+    }    
+    document.getElementById("day").onkeyup= function() {
+       var input=parseInt(this.value);
+       if(input<0 || input>31) {
+        alert("Value should be between 1 - 31");
+        this.value = ''
+       }
+       return;
+    }    
+
+    function addZero (i){
+      parseInt(i)
+      if (i < 10) {
+        i = "0" + i;
+      }
+      return i;
+    }
+    const now = new Date()
+    
+    const nowHour = addZero(now.getHours())
+    const nowMin = addZero(now.getMinutes())
 
     const amLight = document.querySelector('#amlight')
     const pmLight = document.querySelector('#pmlight') 
