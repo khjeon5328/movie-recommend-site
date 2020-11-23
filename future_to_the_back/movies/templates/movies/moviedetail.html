@@ -16,28 +16,27 @@
       </div>
       
       <!-- score start-->
-      <div>
-        <div>
-          <span>네티즌 평점 {{ movie_detail.netizen_score }}</span>
-          <div class="rating">
-              <div class="rating-upper netizen-score" style="width: 0%">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-              </div>
-              <div class="rating-lower">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-              </div>
-          </div>
+      <div class="" style="padding: 16px 16px 0 16px;">
+        <span><b>네티즌 평점 </b>{{ movie_detail.netizen_score }}</span>
+        <div class="rating">
+            <div class="rating-upper netizen-score" style="width: 0%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </div>
+            <div class="rating-lower">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </div>
         </div>
+
         <div>
-          <span>전문가 평점 {{ movie_detail.special_score }}</span>
+          <span><b>전문가 평점 </b>{{ movie_detail.special_score }}</span>
           <div class="rating">
             <div class="rating-upper special-score" style="width: 0%">
                 <span>★</span>
@@ -63,7 +62,7 @@
       <!-- score end-->
 
       <!-- 디테일 내 컨텐트 -->
-      <div class="p-3">
+      <div class="px-3" style="padding-top:8px;">
         <div class="py-1"> <!-- 제작정보 -->
           <b>감독</b> {{movie_detail.staff1}} | <b>개봉</b> {{movie_detail.movie.open_dt }} | <b>등급</b> {{movie_detail.grade}} | <b>장르</b> {{movie_detail.genre}} | <b>러닝타임</b> {{ movie_detail.running_time}}
         </div>
@@ -76,46 +75,46 @@
       </div>
 
       <div> <!-- 제작진 정보 -->
-        <div class="px-3"><b>제작진</b></div>
+        <div class="px-3" style="padding-top:10px;"><b>제작진</b></div>
         <div class="d-flex justify-content-center">
           {% if movie_detail.thumb_staff1 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center imgfit">
               <div>
                 <img src={{movie_detail.thumb_staff1}} alt="">
               </div>
-              <div>{{movie_detail.staff1}}</div>
+              <div style="text-align: center;">{{movie_detail.staff1}}</div>
             </div>
           {% endif %}
           {% if movie_detail.thumb_staff2 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center imgfit">
               <div>
                 <img src={{movie_detail.thumb_staff2}} alt="">
               </div>
-              <div>{{movie_detail.staff2}}</div>
+              <div style="text-align: center;">{{movie_detail.staff2}}</div>
             </div>
           {% endif %}
           {% if movie_detail.thumb_staff3 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center imgfit">
               <div>
                 <img src={{movie_detail.thumb_staff3}} alt="">
               </div>
-              <div>{{movie_detail.staff3}}</div>
+              <div style="text-align: center;">{{movie_detail.staff3}}</div>
             </div>
           {% endif %}
           {% if movie_detail.thumb_staff4 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center imgfit">
               <div>
                 <img src={{movie_detail.thumb_staff4}} alt="">
               </div>
-              <div>{{movie_detail.staff4}}</div>
+              <div style="text-align: center;">{{movie_detail.staff4}}</div>
             </div>
           {% endif %}
           {% if movie_detail.thumb_staff5 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center imgfit">
               <div>
                 <img src={{movie_detail.thumb_staff5}} alt="">
               </div>
-              <div>{{movie_detail.staff5}}</div>
+              <div style="text-align: center;">{{movie_detail.staff5}}</div>
             </div>
           {% endif %}
         </div>
@@ -129,19 +128,20 @@
           <div class="d-flex flex-column">
             <p class="px-3 best-line">{{movie_detail.best_line1}}</p>
             
-            <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line1_character}} </p>
+            <p class="px-5" style="text-align:end;"> - {{movie_detail.best_line1_character}} </p>
           </div>
         {% endif %}
         {% if movie_detail.best_line2 != 'null' %}
           <div class="d-flex flex-column">
             <p class="px-3 best-line">{{movie_detail.best_line2}}</p>
-            <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line2_character}} </p>
+            <p class="px-5" style="text-align:end;"> - {{movie_detail.best_line2_character}} </p>
           </div>
         {% endif %}
       </div>
 
-      <div class="d-flex justify-content-center"> <!--영화 다운로드 url-->
-        <a class="btn btn-danger" href="{{movie_detail.download_url}}">
+      <div class="d-flex justify-content-center my-5"> <!--영화 다운로드 url-->
+        <!-- <a class="btn btn-danger" href="{{movie_detail.download_url}}"> -->
+        <a class="download" href="{{movie_detail.download_url}}">
           {{ movie_detail.movie.movie_name }} 다운받으러 가기
         </a>
       </div>
@@ -150,43 +150,43 @@
         <div class="px-3"><b>관련영화</b></div>
         <div class="px-3 d-flex justify-content-center">
           {% if movie_detail.relate_movie1 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center">
               <div>
                 <img src={{movie_detail.relate_movies_thumb1}} alt="">
               </div>
-              <div>{{movie_detail.relate_movie1}}</div>
+              <div style="text-align: center;">{{movie_detail.relate_movie1}}</div>
             </div>
           {% endif %}
           {% if movie_detail.relate_movie2 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center">
               <div>
                 <img src={{movie_detail.relate_movies_thumb2}} alt="">
               </div>
-              <div>{{movie_detail.relate_movie2}}</div>
+              <div style="text-align: center;">{{movie_detail.relate_movie2}}</div>
             </div>
           {% endif %}
           {% if movie_detail.relate_movie3 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center">
               <div>
                 <img src={{movie_detail.relate_movies_thumb3}} alt="">
               </div>
-              <div>{{movie_detail.relate_movie3}}</div>
+              <div style="text-align: center;">{{movie_detail.relate_movie3}}</div>
             </div>
           {% endif %}
           {% if movie_detail.relate_movie4 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center">
               <div>
                 <img src={{movie_detail.relate_movies_thumb4}} alt="">
               </div>
-              <div>{{movie_detail.relate_movie4}}</div>
+              <div style="text-align: center;">{{movie_detail.relate_movie4}}</div>
             </div>
           {% endif %}
           {% if movie_detail.relate_movie5 != 'null' %}
-            <div class="m-3">
+            <div class="m-3 d-flex flex-column justify-content-start align-items-center">
               <div>
                 <img src={{movie_detail.relate_movies_thumb5}} alt="">
               </div>
-              <div>{{movie_detail.relate_movie5}}</div>
+              <div style="text-align: center;">{{movie_detail.relate_movie5}}</div>
             </div>
           {% endif %}
         </div>
@@ -214,7 +214,8 @@
         
         {% if reviews|length %}
         {% for review in reviews  %}
-        <p class="px-2"style="margin-bottom:5px;"><a href="" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a> {{review.author}} | {{review.created_at | date:"Y-d-m"}} </p>
+        <p class="px-2"style="margin-bottom:5px;"><a href="" data-toggle="modal" data-target="#post-{{review.pk}}">
+        {{review.title}}</a> {{review.author}} | {{review.created_at | date:"Y-d-m"}} </p>
         
         
 
