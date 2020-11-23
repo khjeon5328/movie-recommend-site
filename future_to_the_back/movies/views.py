@@ -5,7 +5,9 @@ import json
 from pprint import pprint
 from .models import MovieDetail, Movie
 from pprint import pprint
-from reviews.models import Review
+from reviews.models import Review, Comment
+from reviews.forms import Review, CommentForm
+
 # Create your views here.
 
 
@@ -38,6 +40,7 @@ def moviedetail(request, movie_id):
     context = {
         'movie_detail':movie_detail[0],
         'reviews':reviews,
+        'comment_form' : CommentForm(),
     }
     return render(request, 'movies/moviedetail.html', context)
 

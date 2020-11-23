@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
 
 
@@ -230,25 +229,25 @@
                   <div class="d-flex justify-content-between">
                     <div class="p-2" style="display:relative">
                       <span class="review-title">{{review.title}}</span>
+                    
                       {% comment %} <span class="review-title-date">{{review.created_at}}</span> {% endcomment %}
                     </div>
                     {% if request.user != review.author %}
                     <div class="d-flex justify-content-center align-self-center m-2">
-                      <form id="formlike" data-reviewId="{{ review.pk }}" action="{% url 'reviews:like' review.id %}" method="POST">
+                      <span id="like-count-{{ review.pk }}">
+                        {{ review.like_users.all|length }} 명이 이 글을 좋아합니다.
+                      </span>
+                      <form id="formlike" data-reviewId="{{ review.pk }}">
                         {% csrf_token %}
                         {% if request.user in review.like_users.all %}
                           <!--star-fill-->
-                          <button class="iconbtn">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill like icon star-{{review.id}}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                            </svg>
+                          <button class="iconbtn ">
+                            <i class="far fa-star star-{{review.id}}"></i>
                           </button>
                         {% else %}
-                        <button class="iconbtn">
-                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star icon nolike star-{{review.id}}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                          </svg>
-                        </button>
+                          <button class="iconbtn">
+                            <i class="fas fa-star star-{{review.id}}"></i>
+                          </button>
                         <!--star-->
                         {% endif %}
                       </form>
@@ -279,13 +278,11 @@
                     {{review.content}}
                   </div>
                   
-                  
-                
                 </div>
                 
                 <!-- 댓글 입력 -->
                 <hr>
-                <div class="px-3"><b>댓글 00개 </b></div>
+                <div class="px-3 comment-count"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
                 <div class="container m-0 p-3" style="max-width:800px; width=100%;"> 
                   <div class="row py-3">
                     <!-- 댓글입력-->
@@ -296,26 +293,40 @@
                       </div>
                     </div>
                     <div class="col-11" style="padding-left:0;">
-                      <form action="">
-                        <input class="reviewinput" type="text" size="75">
-                        <input type="reset" class="cancelbtn nobuttonfocus" value="취소">
-                        <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
-                      </form>
+                      <!--comment create start-->
+                      {% if request.user.is_authenticated %}
+                        <form id="create-comment-form" data-review-id="{{ review.pk }}">
+                          {% csrf_token %}
+                           <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75">
+                          <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
+                        </form>
+                      {% else %}
+                        <a href="{% url 'accounts:login' %}">
+                          <h5>Write comments need login</h5>
+                        </a>
+                      {% endif %}
+                      <!--comment create end-->
+
                     </div>
                   </div>
                   <!-- 댓글 보여주기 -->
-                  <div class="row py-3">
-                    <div class="col-1" style="">
-                      <div class="mini-prf-container">
-                        <!-- 로그인 된 유저 정보로 할 것-->
-                        <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                  <div class="comment-list-{{ review.pk }}">
+                    {% for comment in review.comment_set.all %}
+                    <div class="row py-3">
+                      <div class="col-1" style="">
+                        <div class="mini-prf-container">
+                          <!-- 로그인 된 유저 정보로 할 것-->
+                          <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                        </div>
+                      </div>
+                      <div class="col-11" style="padding-left:0;">
+                        <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
+                        <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
                       </div>
                     </div>
-                    <div class="col-11" style="padding-left:0;">
-                      <p class="m-0" style="font-weight: 500;">{% lorem w random %}</p>
-                      <p class="m-0" style="padding-right:40px;">{% lorem 2 b random %}</p>
-                    </div>
+                    {% endfor %}
                   </div>
+
                 </div>
 
               </div> <!-- modal-content end-->
@@ -330,20 +341,12 @@
               <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p>
             </div>
           </div>
-          
         {% endif %}
-        
         <hr class="m-0">
-
-
       </div>
-
       <!-- {{ movie_detail.aka_info }}    -->
     </div>
   </div>
-  
-
-
 {% endblock content %}
 
 
@@ -351,38 +354,121 @@
 
 {% block script %}
 
+<script id="template-comment-list-item" type="text/template">
+  <div class="row py-3">
+    <div class="col-1" style="">
+      <div class="mini-prf-container">
+        <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+      </div>
+    </div>
+    <div class="col-11" style="padding-left:0;">
+      <p class="m-0" style="font-weight: 500;">{author}</p>
+      <p class="m-0" style="padding-right:40px;">{content}</p>
+    </div>
+  </div>
+</script>
+
+
+
 
 <script>
-  const likeBtnForm = document.querySelector('#formlike')
-  likeBtnForm.addEventListener('submit', function (e) {
-    e.preventDefault()
-    // console.log(likeBtnForm.dataset)
+  const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value
+  
+  const likeBtnForms = document.querySelectorAll('#formlike')
+  likeBtnForms.forEach(likeBtnForm => {
     const reviewId = likeBtnForm.dataset.reviewid
-    console.log(reviewId)
-    const API_URL = `/reviews/${reviewId}/like/`
-    const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value
-    const options = {headers: {'X-CSRFToken': csrfToken}}
-    
-    axios.post(API_URL, {}, options)
-      .then(res => {
-        const {is_like, like_count } = res.data
-    
-        const likeStar = document.querySelector(`.star-${reviewId}`)
-        likeStar.classList.toggle('like')
-        likeStar.classList.toggle('nolike')
-        // if (is_like) {
-        // likeStar.classList.replace('nolike', 'like')
-        // console.log('like')
-        // } else {
-        // likeStar.classList.replace('like', 'nolike')
-        // console.log('nolike')
+    likeBtnForm.addEventListener('submit', function (e) {
+      e.preventDefault()
+      // console.log(likeBtnForm.dataset)
+      const API_URL = `http://127.0.0.1:8000/reviews/${reviewId}/like/`
+      const options = {headers: {'X-CSRFToken': csrfToken}}
 
-      })
-      .catch(err => {
-        console.error(err)
-      })
+      axios.post(API_URL, {}, options)
+        .then(res => {
+          const {is_like, like_count } = res.data
+          const likeStar = document.querySelector(`.star-${reviewId}`)
+          const likeCount = document.querySelector(`#like-count-${reviewId}`)
+          likeCount.innerText = `${like_count} 명이 이 글을 좋아합니다.`
 
+          if (is_like) {
+            likeStar.style.color = 'crimson'
+          } else {
+            likeStar.style.color = ''
+          }
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    })
   })
+
+
+
+    /*
+  1. comment create
+  */
+  
+  //<int:pk>/comments
+  const commentCreateForms = document.querySelectorAll('#create-comment-form')
+  commentCreateForms.forEach(commentCreateForm =>{
+    const reviewIdForComment = commentCreateForm.dataset.reviewId
+    commentCreateForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const commentInput = document.querySelector(`#comment-input-${reviewIdForComment}`).value
+      const COMMENT_CREATE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForComment}/comments/`
+      const data = {
+        'content' : commentInput
+      }
+      const options = {headers: {'X-CSRFToken': csrfToken}}
+      axios.post(COMMENT_CREATE_URL, data, options)
+        .then(res => {
+          const commentList = document.querySelector(`.comment-list-${reviewIdForComment}`)
+          let { author, content, count } = res.data
+
+          const html = document.querySelector("#template-comment-list-item").innerHTML;
+          const resultHtml = html.replace("{author}", author)
+                                  .replace("{content}", content)
+          commentList.innerHTML += resultHtml
+          const commentCount = document.querySelector('.comment-count')
+          commentCount.innerText = count
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    })
+  })
+  
+  
+  /*
+    2. comment delete
+  */
+  {% comment %} commentDeleteForm = document.querySelector('#comment-delete-form')
+  console.log(commentDeleteForm)
+  if (commentDeleteForm) {
+    commentDeleteForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const commentId = commentDeleteForm.dataset.commentId
+      const COMMENT_DELETE_URL = `/reviews/${reviewId}/comments/${commentId}/delete/`
+      const previousComment = document.querySelector(`.previous-comment-${commentId}`)
+      console.log(previousComment)
+      const options = {headers: {'X-CSRFToken': csrftoken}}
+
+      axios.post(COMMENT_DELETE_URL, {}, options)
+        .then(res => {
+          const { is_delete, count } = res.data
+            if (is_delete) {
+            previousComment.remove()
+            const commentCount = document.querySelector('.comment-count')
+            commentCount.innerText = count
+          } else{
+            alert('delte failed')
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    })
+  } {% endcomment %}
 
 </script>
 

@@ -93,6 +93,8 @@ def delete(request, review_id):
 def create_comment(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     comment_form = CommentForm(json.loads(request.body.decode('utf-8')))
+    print('asdljkflasdkjf')
+    print(comment_form)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.review = review
