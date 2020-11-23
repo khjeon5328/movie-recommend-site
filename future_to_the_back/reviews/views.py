@@ -103,7 +103,7 @@ def create_comment(request, review_id):
     }
     return render(request, 'reviews/detail.html', context)
 
-
+@require_http_methods(['POST'])
 def delete_comment(request, review_id, comment_id):
     if request.user.is_authenticated:
         comment = get_object_or_404(Comment, pk=comment_id)
@@ -114,5 +114,6 @@ def delete_comment(request, review_id, comment_id):
                 'is_delete' : True,
                 'count': review.comment_set.count(),
             }
+            print(data)
             return JsonResponse(data)
-    return redirect('reviews:detail', review_id)
+    return render(request, 'reviews/detail.html')
