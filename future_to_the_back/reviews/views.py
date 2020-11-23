@@ -28,8 +28,12 @@ def create_review(request):
 
 def detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
+    comment_form = CommentForm()
+    comments = article.comment_set.all()
     context = {
-        'review': review
+        'review': review,
+        'comment_form' : comment_form,
+        'comments' : comments,
     }
     return render(request, 'reviews/detail.html', context)
 
@@ -51,3 +55,8 @@ def update(request, review_id):
 def delete(request, review_id):
     get_object_or_404(Review, pk=review_id).delete()
     return redirect('reviews:reviews')
+
+
+def create_comment(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    

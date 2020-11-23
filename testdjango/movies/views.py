@@ -46,14 +46,16 @@ def movies(request):
     return render(request, 'index.html')
 
 def test(request):
-    MovieDetail.objects.all().delete()
+    Movie.objects.all().delete()
     return render(request,'index.html')
 
 
 
 
 def naverMovie(keyword, movie_id):
-    driver = webdriver.Chrome("C:\\Users\\khjeo\\Downloads\\chromedriver_win32\\chromedriver.exe")
+    options = webdriver.ChromeOptions()
+    options.add_argument('headless')
+    driver = webdriver.Chrome("C:\\Users\\grey\\Downloads\\chromedriver_win32\\chromedriver.exe", options=options)
     try:
         driver.get("https://movie.naver.com/")
         elem = driver.find_element_by_class_name("ipt_tx_srch")
@@ -229,7 +231,7 @@ def naverMovie(keyword, movie_id):
             movie_detail[f'relate_movies_thumb{i+1}'] = relate_movies_thumb[i]
 
         MovieDetail(
-            movie_id=Movie.objects.get(pk=movie_id),
+            movie=Movie.objects.get(pk=movie_id),
             overview=movie_detail['overview'],
             poster=movie_detail['poster'],
             staff1=movie_detail['staff1'],
@@ -275,6 +277,6 @@ def movieDetail(request):
         keyword = box_movie.movie_name
         movie_id = box_movie.id
         naverMovie(keyword, movie_id)
-        time.sleep(5)
+        time.sleep(2)
     # naverMovie('인턴', 4)
     return render(request, 'index.html')
