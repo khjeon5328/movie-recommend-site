@@ -15,6 +15,53 @@
         <h1 class="movietitle">{{ movie_detail.movie.movie_name}}</h1>
       </div>
       
+      <!-- score start-->
+      <div>
+        <div>
+          <span>네티즌 평점 {{ movie_detail.netizen_score }}</span>
+          <div class="rating">
+              <div class="rating-upper netizen-score" style="width: 0%">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+              </div>
+              <div class="rating-lower">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+              </div>
+          </div>
+        </div>
+        <div>
+          <span>전문가 평점 {{ movie_detail.special_score }}</span>
+          <div class="rating">
+            <div class="rating-upper special-score" style="width: 0%">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </div>
+            <div class="rating-lower">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        document.querySelector(".netizen-score").style.width = {{ movie_detail.netizen_score }}*10 + "%"
+        document.querySelector(".special-score").style.width = {{ movie_detail.special_score }}*10 + "%"
+      </script>
+      <!-- score end-->
+
       <!-- 디테일 내 컨텐트 -->
       <div class="p-3">
         <div class="py-1"> <!-- 제작정보 -->
@@ -22,6 +69,9 @@
         </div>
         <div> 
           {{movie_detail.overview}}
+        </div>
+        <div>
+          
         </div>
       </div>
 
@@ -84,12 +134,17 @@
         {% endif %}
         {% if movie_detail.best_line2 != 'null' %}
           <div class="d-flex flex-column">
-            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line1}}</p>
+            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line2}}</p>
             <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line2_character}} </p>
           </div>
         {% endif %}
       </div>
 
+      <div class="d-flex justify-content-center"> <!--영화 다운로드 url-->
+        <a class="btn btn-danger" href="{{movie_detail.download_url}}">
+          {{ movie_detail.movie.movie_name }} 다운받으러 가기
+        </a>
+      </div>
 
       <div> <!-- 관련영화 정보 -->
         <div class="px-3"><b>관련영화</b></div>
@@ -254,8 +309,8 @@
 
       </div>
 
+      {{ movie_detail.aka_info }}   
     </div>
-    
   </div>
   
   
@@ -264,5 +319,4 @@
     </div>
   </div>
 </div> {% endcomment %}
-
 {% endblock content %}
