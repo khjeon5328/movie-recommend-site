@@ -12,15 +12,15 @@
               <img class="moviecard-img" src={{movie.poster}} alt="">
             </a>
             <div class="text-white card-list">
-              <div class="card-list-item">
-                예매율 : {{ movie.movie.sales_share }}
+              <div class="card-list-item d-flex justify-content-between">
+                <div>예매율</div>
+                <div class="text-danger font-weight-bold">{{ movie.movie.sales_share }}%</div>
               </div>
-              <div class="card-list-item">
+              <div class="card-list-item" style="font-size:0.8em;">
                 개봉일 : {{ movie.movie.open_dt }}
               </div>
               <div class="card-list-item" style="font-size:0.5em;">
-                등급 : {{ movie.grade }}
-                장르 : {{ movie.genre }}
+                등급 : {{ movie.grade }}  |  장르 : {{ movie.genre }}
               </div>
             </div>
           </div>

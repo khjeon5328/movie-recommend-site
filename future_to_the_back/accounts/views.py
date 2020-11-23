@@ -31,7 +31,7 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('accounts:index')
+            return redirect('accounts:login')
     else:
         form = CustomUserCreationForm()
     context = {
@@ -52,7 +52,7 @@ def login(request):
         if form.is_valid():
             auth_login(request, form.get_user())
             print(request.GET.get('next'))
-            # return redirect(request.GET.get('next') or 'articles:index')
+            return redirect(request.GET.get('next') or 'movies:home')
             return redirect('movies:home')
     else:
         form = AuthenticationForm()
