@@ -144,12 +144,14 @@ body {
 .reviewinput { 
   outline : none;
   border: 0;
+  border-bottom: 1px solid rgb(212, 211, 211);
 }
 
 
 .reviewinput:focus {
   outline: none;
   border:0; 
+  border-bottom: 1px solid rgb(44, 46, 46);
 }
 
 
@@ -173,6 +175,7 @@ body {
   object-fit: cover;
   border-radius: 70%;
   overflow: hidden;
+  margin: 3px;
 }
 
 .profile-image {
@@ -306,4 +309,21 @@ body {
   color:#F0A81A;
   line-height: 1.0;
   padding: 5px;
+}
+
+
+/* review detail */
+
+.review-title {
+  display: inline;
+  clear: both;
+  font-weight: 500;
+}
+
+
+.review-title-date {
+  display: inline-block;
+  position: absolute;
+  right: 60px;
+  /* bottom: 0; */
 }
