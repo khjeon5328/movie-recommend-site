@@ -456,7 +456,7 @@ input[type=number] {
   font-style:italic;
   text-align:center;
   font-size:1.5rem;
-
+}
 
 .tracking-in-expand {
 	-webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
@@ -493,3 +493,4 @@ input[type=number] {
   padding: 0;
   display: flex;
   z-index: 0;
+}
