@@ -114,5 +114,5 @@ def delete_comment(request, review_id, comment_id):
                 'is_delete' : True,
                 'count': review.comment_set.count(),
             }
-            return JsonResponse(data)
+            return (data)
     return redirect('reviews:detail', review_id)
