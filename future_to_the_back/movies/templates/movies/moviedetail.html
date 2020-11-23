@@ -125,16 +125,16 @@
       <div> <!-- 명대사 -->
         
         {% if movie_detail.best_line1 != 'null' %}
-        <div class="px-3"><b>명대사</b></div>
+        <div class="px-3" style="margin-bottom:10px;"><b>명대사</b></div>
           <div class="d-flex flex-column">
-            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line1}}</p>
+            <p class="px-3 best-line">{{movie_detail.best_line1}}</p>
             
             <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line1_character}} </p>
           </div>
         {% endif %}
         {% if movie_detail.best_line2 != 'null' %}
           <div class="d-flex flex-column">
-            <p class="px-3" style="text-align:center; font-size:1.5rem;">{{movie_detail.best_line2}}</p>
+            <p class="px-3 best-line">{{movie_detail.best_line2}}</p>
             <p class="px-3" style="text-align:end;"> - {{movie_detail.best_line2_character}} </p>
           </div>
         {% endif %}
@@ -197,68 +197,95 @@
 
       <div style="border-bottom=1px solid black; border-top:1px;">
       </div>
-      <div class="p-3 ">
-        <div class="px-3 d-flex justify-content-between">
+      <div class="p-3">
+        <div class="d-flex justify-content-between">
           <b>리뷰</b>
           <div class="">
             <a href="{% url 'reviews:create_review' movie_detail.pk %}">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
               </svg>
             </a>
           </div>
         </div>
-        <hr>
+        <hr class="m-2">
+        
+        
+        
         {% if reviews|length %}
-          {% for review in reviews  %}
-          <p style="margin-bottom:5px;"><a href="" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a> {{ review.id }} {{review.author}} | {{review.created_at | date:"Y-d-m"}} </p>
-          
+        {% for review in reviews  %}
+        <p class="px-2"style="margin-bottom:5px;"><a href="" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a> {{review.author}} | {{review.created_at | date:"Y-d-m"}} </p>
+        
         
 
-          <!--modal-->
+          <!--modal : reviewdetail & comment-->
           <div class="modal fade" id="post-{{review.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="max-width:780px;" >
               <div class="modal-content d-flex flex-column" style="border-radius:0; border:none;" > 
                 {% comment %} <div class="px-3 py-2" style=""><b> 리뷰 </b></div> {% endcomment %}
                 <div class="p-3">
                   <hr class="m-0">
-                  <div class="d-flex">
+
+                  <!--상단 제목부분 start-->
+                  <div class="d-flex justify-content-between">
                     <div class="p-2" style="display:relative">
                       <span class="review-title">{{review.title}}</span>
-                      <span class="review-title-date">{{review.created_at}}</span>
+                      {% comment %} <span class="review-title-date">{{review.created_at}}</span> {% endcomment %}
                     </div>
-                    {% comment %} {% if request.user != article.author %} {% endcomment %}
-                    <div class="d-flex flex-column justify-content-center align-self-center">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-                      </svg>
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                      </svg>
+                    {% if request.user != review.author %}
+                    <div class="d-flex justify-content-center align-self-center m-2">
+                      <form id="formlike" data-reviewId="{{ review.pk }}" action="{% url 'reviews:like' review.id %}" method="POST">
+                        {% csrf_token %}
+                        {% if request.user in review.like_users.all %}
+                          <!--star-fill-->
+                          <button class="iconbtn">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill like icon star-{{review.id}}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg>
+                          </button>
+                        {% else %}
+                        <button class="iconbtn">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star icon nolike star-{{review.id}}" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                          </svg>
+                        </button>
+                        <!--star-->
+                        {% endif %}
+                      </form>
                     </div>
-                    {% comment %} {% else %}
-                    <div class="d-flex flex-column justify-content-center align-self-center">
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-scissors" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                      </svg>
-                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                      </svg>
+                    {% else %}
+                    <div class="d-flex justify-content-center align-self-center m-2">
+                      <a href="{% url 'reviews:update' review.id %}">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-scissors icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                        </svg>
+                      </a>
+                      <form action="{% url 'reviews:delete' review.id %}" method="POST">
+                        {% csrf_token %}
+                        <button class="iconbtn">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                          </svg>
+                        </button>
+                      </form>
                     </div>
-                    {% endif %} {% endcomment %}
+                    {% endif %}
                   </div>
+                  <!--상단 제목 부분 end-->
+
                   <hr class="m-0">
                   <div class="p-1">
                     {{review.content}}
                   </div>
+                  
                   
                 
                 </div>
                 
                 <!-- 댓글 입력 -->
                 <hr>
-                <div class="px-3"><b>댓글  몇개 </b></div>
+                <div class="px-3"><b>댓글 00개 </b></div>
                 <div class="container m-0 p-3" style="max-width:800px; width=100%;"> 
                   <div class="row py-3">
                     <!-- 댓글입력-->
@@ -270,9 +297,9 @@
                     </div>
                     <div class="col-11" style="padding-left:0;">
                       <form action="">
-                        <input class="reviewinput" type="text" style=" width=500px;" size="75">
-                        <button class="" name="comment">등록</button>
-                        <input type="reset" value="취소">
+                        <input class="reviewinput" type="text" size="75">
+                        <input type="reset" class="cancelbtn nobuttonfocus" value="취소">
+                        <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
                       </form>
                     </div>
                   </div>
@@ -296,6 +323,7 @@
           </div> 
           {% endfor %} <!-- 리뷰 보여주는 포문-->
         {% else %}
+        <!-- 리뷰 없을때 -->
           <div class="p-0 empty-rv">
             <div class="d-flex flex-column justify-content-center align-items-center p-3" >
               <p class="m-0" style="font-weight:lighter;">아직 리뷰가 없어요.</p>
@@ -304,7 +332,8 @@
           </div>
           
         {% endif %}
-
+        
+        <hr class="m-0">
 
 
       </div>
@@ -313,10 +342,56 @@
     </div>
   </div>
   
-  
 
-{% comment %} 
-    </div>
-  </div>
-</div> {% endcomment %}
+
 {% endblock content %}
+
+
+
+
+{% block script %}
+
+
+<script>
+  const likeBtnForm = document.querySelector('#formlike')
+  likeBtnForm.addEventListener('submit', function (e) {
+    e.preventDefault()
+    // console.log(likeBtnForm.dataset)
+    const reviewId = likeBtnForm.dataset.reviewid
+    console.log(reviewId)
+    const API_URL = `/reviews/${reviewId}/like/`
+    const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value
+    const options = {headers: {'X-CSRFToken': csrfToken}}
+    
+    axios.post(API_URL, {}, options)
+      .then(res => {
+        const {is_like, like_count } = res.data
+    
+        const likeStar = document.querySelector(`.star-${reviewId}`)
+        likeStar.classList.toggle('like')
+        likeStar.classList.toggle('nolike')
+        // if (is_like) {
+        // likeStar.classList.replace('nolike', 'like')
+        // console.log('like')
+        // } else {
+        // likeStar.classList.replace('like', 'nolike')
+        // console.log('nolike')
+
+      })
+      .catch(err => {
+        console.error(err)
+      })
+
+  })
+
+</script>
+
+
+
+
+
+{% endblock script %}
+
+
+
+

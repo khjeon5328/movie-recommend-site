@@ -38,9 +38,11 @@ def create_review(request, movie_id):
     else:
         form = ReviewForm()
     context = {
-        'form' : form
+        'form' : form,
+        'form_name': "새로운 리뷰 작성",
+        'button_name' : 'POST',
     }
-    return render(request, 'reviews/create.html', context)
+    return render(request, 'accounts/form.html', context)
 
 
 @login_required
@@ -61,18 +63,20 @@ def detail(request, review_id):
 @require_http_methods(['GET', 'POST'])
 def update(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-    if request.user == review.author:
-        if request.method == 'POST':
+    if request.method == 'POST':
+        if request.user == review.author:
             form = ReviewForm(request.POST, instance=review)
             if form.is_valid():
                 form.save()
-                return redirect('reviews:detail', review_id)
+                return redirect('movies:moviedetail', review.movie_id)
     else:
         form = ReviewForm(instance=review)
     context = {
         'form' : form,
+        'form_name': "글 수정",
+        'button_name' : 'UPDATE',
     }
-    return render(request, 'reviews/update.html', context)
+    return render(request, 'accounts/form.html', context)
 
 
 @login_required
@@ -81,7 +85,7 @@ def delete(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     if request.user == review.author:
         review.delete()
-    return redirect('reviews:reviews')
+    return redirect('movies:moviedetail', review.movie_id)
 
 
 @login_required
@@ -106,6 +110,8 @@ def create_comment(request, review_id):
     }
     return render(request, 'reviews/detail.html', context)
 
+
+
 @require_http_methods(['POST'])
 def delete_comment(request, review_id, comment_id):
     if request.user.is_authenticated:
@@ -117,5 +123,25 @@ def delete_comment(request, review_id, comment_id):
                 'is_delete' : True,
                 'count': review.comment_set.count(),
             }
-            return (data)
-    return redirect('reviews:detail', review_id)
+            print(data)
+            return JsonResponse(data)
+    return render(request, 'reviews/detail.html')
+
+
+
+def like(request, review_id):
+    review = get_object_or_404(Review, pk=review_id) 
+    if request.user.is_authenticated:
+        me = request.user
+        if review.like_users.filter(pk=me.pk).exists():
+            review.like_users.remove(me)
+            is_like = False
+        else:
+            review.like_users.add(me)
+            is_like = True
+        data = {
+            'is_like': is_like,
+            'like_count': review.like_users.count(),
+        }
+        return JsonResponse(data)
+    return redirect('movies:moviedetail', review.movie_id)

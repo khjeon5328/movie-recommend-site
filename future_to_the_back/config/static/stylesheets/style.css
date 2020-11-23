@@ -28,6 +28,30 @@ body {
 }
 
 
+@font-face {
+  font-family: notoT;
+  src: url('../fonts/notoT.otf');
+}
+
+@font-face {
+  font-family: notoR;
+  src: url('../fonts/notoR.ttf');
+}
+
+
+@font-face {
+  font-family: dh;
+  src: url('../fonts/dh.ttf');
+}
+
+
+@font-face {
+  font-family: serif;
+  src: url('../fonts/serif.ttf');
+}
+
+
+
 
 
 /* base.html */
@@ -136,6 +160,16 @@ body {
 .form-inner-box {
   padding: 20px 50px 40px 50px;
 }
+
+
+.formtitle {
+  text-align: center;
+  font-family: dh;
+}
+
+
+
+
 
 
 /* input */
@@ -312,12 +346,37 @@ body {
 }
 
 
+/* review-comment */
+.reviewbtn {
+  color: white;
+  background-color: rgb(167, 162, 162);
+  border-radius:0.25rem;
+  border: none;
+}
+
+.cancelbtn {
+  color: rgb(77, 75, 75);
+  background-color: white;
+  border: 1px solid rgb(177, 176, 176);
+  border-radius:0.25rem;
+}
+
+.nobuttonfocus:focus {
+  outline: none;
+}
+
+
+
+
+
+
 /* review detail */
 
 .review-title {
   display: inline;
   clear: both;
   font-weight: 500;
+  vertical-align: middle;
 }
 
 
@@ -347,6 +406,56 @@ input[type=number] {
   border: 1px solid rgb(236, 233, 233);
 }
 
+
+
+/* icons */
+
+
+.iconbtn {
+  border:none;
+  background-color:transparent;
+  outline:none;
+}
+
+.iconbtn:focus {
+  outline:none;
+}
+
+.iconcolor {
+  color: rgb(167, 162, 162);
+}
+
+
+.iconcolor:hover {
+  color: rgb(44, 46, 46);
+}
+
+
+.icon {
+  margin: 5px;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+
+
+.like {
+  color:crimson;
+}
+
+.nolike {
+  color: black;
+}
+
+
+
+
+
+.best-line {
+  font-family: serif;
+  font-style:italic;
+  text-align:center;
+  font-size:1.5rem;
 
 
 .tracking-in-expand {
@@ -384,4 +493,3 @@ input[type=number] {
   padding: 0;
   display: flex;
   z-index: 0;
-}
