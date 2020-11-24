@@ -1,17 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load bootstrap4 %}
 
 {% block content %}
   <div class="container detailcontainer mt-5" style="max-width:900px;">
 
     <header class="row d-flex p-3">
       <!--profile 사진-->
-      <section class="col-4 d-flex justify-content-center">
+      <section class="col-4">
           {% if person.photo.exists %}
             <div class="mx-auto"><img class="profile-photo" src="{{ person.photo.url }}" alt=""></div>
           {% else %}
             <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
           {% endif %}
+
+          <form action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form layout='inline'%}
+            <input type="submit">
+          </form>
       </section>
 
     
@@ -111,7 +118,7 @@
 {% block script %}
   <script>
     const followBtnForm = document.querySelector('#followBtnForm')
-    followBtnForm.addEventListener('submit', function (e) {
+    followBtnForm.addEventListener('submit', (e) => {
       e.preventDefault() 
 
       console.log(followBtnForm.dataset)
@@ -136,9 +143,6 @@
         .catch(err => {
          console.error(err)
        })
-
     }) 
   </script>
-
-
 {% endblock script %}

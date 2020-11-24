@@ -3,10 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import (
     CustomUserCreationForm,
     CustomUserChangeForm,
+    CustomUserProfileChangeForm
 )
 from django.contrib.auth.forms import (
     AuthenticationForm,
-    PasswordChangeForm
+    PasswordChangeForm,
 )
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login as auth_login
@@ -71,7 +72,7 @@ def login(request):
 def logout(request):
     auth_logout(request)
     messages.info(request, 'logout success')
-    return redirect('movies:home')
+    return redirect(request.GET.get('next') or 'movies:home')
 
 
 @login_required
@@ -119,6 +120,25 @@ def profile(request, username):
     person = get_object_or_404(User, username=username)
     context = {
         'person' : person,
+        'form' : CustomUserProfileChangeForm(instance=request.user)
+    }
+    return render(request, 'accounts/profile1.html', context) 
+
+
+@require_POST
+def profile_image(request, username):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    User = get_user_model()
+    person = get_object_or_404(User, username=username)
+    form = CustomUserProfileChangeForm(request.POST, request.FILES,instance=request.user) 
+    if form.is_valid():
+        form.save()
+    else:
+        form =  CustomUserProfileChangeForm(instance=request.user)
+    context = {
+        'person' : person,
+        'form' : form,
     }
     return render(request, 'accounts/profile1.html', context) 
 
