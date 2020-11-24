@@ -316,16 +316,28 @@
                   <!-- 댓글 보여주기 -->
                   <div class="comment-list-{{ review.pk }}">
                     {% for comment in review.comment_set.all %}
-                    <div class="row py-3">
+                    <div class="row py-3 previous-comment-{{comment.id}}">
                       <div class="col-1" style="">
                         <div class="mini-prf-container">
                           <!-- 로그인 된 유저 정보로 할 것-->
                           <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
                         </div>
                       </div>
-                      <div class="col-11" style="padding-left:0;">
-                        <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
-                        <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
+                      <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
+                        <div>
+                          <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
+                          <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
+                        </div>
+                        {% if request.user == comment.author %}
+                          <div class="mr-3">
+                              <form id="comment-delete-form" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
+                                {% csrf_token %}
+                                <button class="btn btn-link">
+                                  <i class="fas fa-trash" style="color:crimson;"></i>
+                                </button>
+                              </form>
+                            </div>
+                        {% endif %}
                       </div>
                     </div>
                     {% endfor %}
@@ -359,19 +371,29 @@
 {% block script %}
 
 <script id="template-comment-list-item" type="text/template">
-  <div class="row py-3">
+  <div class="row py-3 previous-comment-{comment_id}">
     <div class="col-1" style="">
       <div class="mini-prf-container">
         <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
       </div>
     </div>
-    <div class="col-11" style="padding-left:0;">
-      <p class="m-0" style="font-weight: 500;">{author}</p>
-      <p class="m-0" style="padding-right:40px;">{content}</p>
+    <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
+      <div>
+        <p class="m-0" style="font-weight: 500;">{author}</p>
+        <p class="m-0" style="padding-right:40px;">{content}</p>
+      </div>
+      
+      <div class="mr-3">
+        <form id="comment-delete-form" data-review-id="{review_id}" data-comment-id="{comment_id}">
+          {% csrf_token %}
+          <button class="btn btn-link">
+            <i class="fas fa-trash" style="color:crimson;"></i>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </script>
-
 
 
 
@@ -406,12 +428,9 @@
     })
   })
 
-
-
     /*
   1. comment create
   */
-  
   //<int:pk>/comments
   const commentCreateForms = document.querySelectorAll('#create-comment-form')
   commentCreateForms.forEach(commentCreateForm =>{
@@ -427,35 +446,37 @@
       axios.post(COMMENT_CREATE_URL, data, options)
         .then(res => {
           const commentList = document.querySelector(`.comment-list-${reviewIdForComment}`)
-          let { author, content, count } = res.data
+          let { author, content, count, review_id, comment_id } = res.data
 
           const html = document.querySelector("#template-comment-list-item").innerHTML;
           const resultHtml = html.replace("{author}", author)
                                   .replace("{content}", content)
+                                  .replace("{review_id}", review_id)
+                                  .replace("{comment_id}", comment_id)
+                                  .replace("{comment_id}", comment_id)
           commentList.innerHTML += resultHtml
           const commentCount = document.querySelector('.comment-count')
-          commentCount.innerText = count
+          commentCount.innerText = `댓글 ${count}개`
         })
         .catch(error => {
           console.log(error)
         })
     })
   })
-  
-  
+
   /*
     2. comment delete
   */
-  {% comment %} commentDeleteForm = document.querySelector('#comment-delete-form')
-  console.log(commentDeleteForm)
-  if (commentDeleteForm) {
+  const commentDeleteForms = document.querySelectorAll('#comment-delete-form')
+  commentDeleteForms.forEach(commentDeleteForm => {
     commentDeleteForm.addEventListener('submit', (e) => {
       e.preventDefault()
       const commentId = commentDeleteForm.dataset.commentId
-      const COMMENT_DELETE_URL = `/reviews/${reviewId}/comments/${commentId}/delete/`
+      const reviewIdForCommentDelete = commentDeleteForm.dataset.reviewId
+      const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForCommentDelete}/comments/${commentId}/delete/`
       const previousComment = document.querySelector(`.previous-comment-${commentId}`)
       console.log(previousComment)
-      const options = {headers: {'X-CSRFToken': csrftoken}}
+      const options = {headers: {'X-CSRFToken': csrfToken}}
 
       axios.post(COMMENT_DELETE_URL, {}, options)
         .then(res => {
@@ -495,10 +516,6 @@
 
 
 </script>
-
-
-
-
 
 {% endblock script %}
 

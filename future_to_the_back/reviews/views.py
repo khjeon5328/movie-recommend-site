@@ -93,8 +93,6 @@ def delete(request, review_id):
 def create_comment(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     comment_form = CommentForm(json.loads(request.body.decode('utf-8')))
-    print('asdljkflasdkjf')
-    print(comment_form)
     if comment_form.is_valid():
         comment = comment_form.save(commit=False)
         comment.review = review
@@ -104,6 +102,8 @@ def create_comment(request, review_id):
             'content' : comment.content,
             'author' : str(comment.author),
             'count' : review.comment_set.count(),
+            'review_id' : review_id,
+            'comment_id' : comment.id,
         }
         return JsonResponse(data)
     context = {
@@ -124,13 +124,13 @@ def delete_comment(request, review_id, comment_id):
             data = {
                 'is_delete' : True,
                 'count': review.comment_set.count(),
+              
             }
-            print(data)
             return JsonResponse(data)
     return render(request, 'reviews/detail.html')
 
 
-
+@login_required
 def like(request, review_id):
     review = get_object_or_404(Review, pk=review_id) 
     if request.user.is_authenticated:
