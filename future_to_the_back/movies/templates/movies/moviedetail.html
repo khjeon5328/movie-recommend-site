@@ -233,72 +233,88 @@
               <div class="modal-content d-flex flex-column" style="border-radius:0; border:none;" > 
                 {% comment %} <div class="px-3 py-2" style=""><b> 리뷰 </b></div> {% endcomment %}
                 <div class="p-3">
-                  <hr class="m-0">
 
                   <!--상단 제목부분 start-->
-                  <div class="d-flex justify-content-between">
-                    <div class="p-2" style="display:relative">
-                      <span class="review-title">{{review.title}}</span>
-                    
-                      {% comment %} <span class="review-title-date">{{review.created_at}}</span> {% endcomment %}
+                  <div class=""><b>{{review.movie.movie.movie_name}}의 리뷰</b></div>
+                  {% comment %} <hr class="mb-0 mt-1"> {% endcomment %}
+                  <div class="d-flex justify-content-between mt-2" style="border-top:1px solid rgb(190,190,190); border-bottom:1px solid rgb(190,190,190); height:45px;">
+                    <div class="px-2 py-0 d-flex d-flex align-items-center" style="display:relative">
+                      <span class="review-title align-self-center" style="line-height:2;">{{review.title}}</span>
                     </div>
-                    {% if request.user != review.author %}
-                    <div class="d-flex justify-content-center align-self-center m-2">
-                      <span id="like-count-{{ review.pk }}">
-                        {{ review.like_users.all|length }} 명이 이 글을 좋아합니다.
-                      </span>
-                      <form id="formlike" data-reviewId="{{ review.pk }}">
-                        {% csrf_token %}
-                        {% if request.user in review.like_users.all %}
-                          <!--star-fill-->
-                          <button class="iconbtn ">
-                            <i class="far fa-star star-{{review.id}}"></i>
-                          </button>
-                        {% else %}
-                          <button class="iconbtn">
-                            <i class="fas fa-star star-{{review.id}}"></i>
-                          </button>
-                        <!--star-->
-                        {% endif %}
-                      </form>
-                    </div>
-                    {% else %}
-                    <div class="d-flex justify-content-center align-self-center m-2">
-                      <a href="{% url 'reviews:update' review.id %}" title="수정하기">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-scissors icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                        </svg>
-                      </a>
-                      <form action="{% url 'reviews:delete' review.id %}" method="POST">
-                        {% csrf_token %}
-                        <button class="iconbtn" title="삭제하기">
-                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    <div class="d-flex justify-content-center">
+                      {% if request.user != review.author %}
+                      <div class="d-flex justify-content-center align-self-center m-2">
+                        <span id="like-count-{{ review.pk }}">
+                          {% comment %} {{ review.like_users.all|length }} 명이 이 글을 좋아합니다. {% endcomment %}
+                        </span>
+                        <form id="formlike" data-reviewId="{{ review.pk }}">
+                          {% csrf_token %}
+                          {% if request.user in review.like_users.all %}
+                            <!--star-fill-->
+                            <button class="iconbtn ">
+                              <i class="far fa-star star-{{review.id}}"></i>
+                            </button>
+                          {% else %}
+                            <button class="iconbtn">
+                              <i class="fas fa-star star-{{review.id}}"></i>
+                            </button>
+                          <!--star-->
+                          {% endif %}
+                        </form>
+                      </div>
+                      {% else %}
+                      <div class="d-flex justify-content-center align-self-center m-2">
+                        <a href="{% url 'reviews:update' review.id %}" title="수정하기">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-scissors icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                           </svg>
-                        </button>
-                      </form>
+                        </a>
+                        <form action="{% url 'reviews:delete' review.id %}" method="POST">
+                          {% csrf_token %}
+                          <button class="iconbtn" title="삭제하기">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                          </button>
+                        </form>
+                      </div>
+                      {% endif %}
                     </div>
-                    {% endif %}
                   </div>
                   <!--상단 제목 부분 end-->
 
-                  <hr class="m-0">
-                  <div class="p-1">
+                  <div class="" style="border-bottom: 1px solid rgb(200,200,200);">
+                    <ul class="d-flex m-0 p-0 justify-content-end align-items-center" style=""> 
+                      <li class="m-1 px-1 align-self-center" style="list-style-type: none;">{{ review.author}}</li> | 
+                      <li class="m-1 px-1 align-self-center" style="list-style-type: none;">평점 {{ review.rate }}</li> | 
+                      <li class="m-1 px-1 align-self-center" style="list-style-type: none;">작성일 {{ review.created_at|date:'Y-m-d'}}</li> | 
+                      <li class="m-1 px-1 align-self-center" style="list-style-type: none;">수정일 {{ review.updated_at|date:'Y-m-d'}}</li>
+                    </ul>
+                  </div>
+
+
+                  <!--내용-->
+                  {% if review.photo %}
+                  <div style="padding:16px 16px 0 16px;"> 
+                    <img style="width:100%;object-fit: cover;"src="{{review.photo.url}}" alt="review_image">
+                  </div>
+                  {% endif %}
+                  <div class="" style="padding:16px 16px 0 16px;">
                     {{review.content}}
                   </div>
                   
                 </div>
                 
                 <!-- 댓글 -->
-                <hr>
-                <div class="px-3 comment-count"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
-                
+
+                <div class="m-3 pb-2 comment-count" style="border-bottom:1px solid rgb(190,190,190);"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
+                <hr class="mt-1 mb-0">
                 <!-- 로그인한사람에게 뜨는 댓글입력창-->
                 {% if request.user.is_authenticated %}
-                <div class="container m-0 p-3" style="max-width:800px; width:100%;"> 
+                <div class="container m-0 px-3 pb-3 pt-0" style="max-width:800px; width:100%;"> 
                   
-                  <div class="row p-3">
+                  <div class="row px-3 pb-3 pt-0">
                     <!-- 댓글입력-->
                     <div class="col-1">
                       <div class="mini-prf-container">
@@ -308,17 +324,12 @@
                     </div>
                     <div class="col-11" style="padding-left:0;">
                       <!--comment create start-->
-                      {% if request.user.is_authenticated %}
-                        <form id="create-comment-form" data-review-id="{{ review.pk }}" >
-                          {% csrf_token %}
-                           <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75" style="width:620px;">
-                          <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
-                        </form>
-                      {% else %}
-                        <a href="{% url 'accounts:login' %}">
-                          <h5>Write comments need login</h5>
-                        </a>
-                      {% endif %}
+                      <form id="create-comment-form" data-review-id="{{ review.pk }}" >
+                        {% csrf_token %}
+                          <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75" style="width:620px;">
+                        <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
+                      </form>
+ 
                       <!--comment create end-->
                     </div>
                   </div>
@@ -336,7 +347,7 @@
                       </div>
                       <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
                         <div class="">
-                          <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
+                          <p class="m-0" style="font-weight: 500; font-family:notoR;">{{ comment.author }}</p>
                           <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
                         </div>
                         {% if request.user == comment.author %}
@@ -388,7 +399,7 @@
               <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p>
             </div>
           </div>
-          <hr class="" style="margin-top:16px; margin-bottom:0;">
+          <hr class="{% url 'accounts:login' %}" style="margin-top:16px; margin-bottom:0;">
         {% endif %}
       </div>
       <!-- {{ movie_detail.aka_info }}    -->

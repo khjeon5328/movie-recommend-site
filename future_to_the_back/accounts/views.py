@@ -33,9 +33,10 @@ def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            auth_login(request,user)
             messages.info(request, 'signup success')
-            return redirect('accounts:login')
+            return redirect(request.GET.get('next') or 'movies:home')
     else:
         form = CustomUserCreationForm()
     context = {
@@ -123,7 +124,7 @@ def profile(request, username):
         'person' : person,
         'form' : CustomUserProfileChangeForm(instance=request.user)
     }
-    return render(request, 'accounts/profile1.html', context) 
+    return render(request, 'accounts/profile.html', context) 
 
 
 @require_POST
