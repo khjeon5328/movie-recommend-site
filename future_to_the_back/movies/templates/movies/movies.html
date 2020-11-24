@@ -3,12 +3,16 @@
 
 {% block content %}
   
+  {% comment %} <div class="bg-white" style="font-size:1.5rem">
+    {{ rank_1_movie_title }}에 숨겨진 명작 
+    <a href="{% url 'movies:moviedetail' hidden_movie.movie_id %}">{{ hidden_movie.movie.movie_name }}</a>
+  </div> {% endcomment %}
+  <div class="container">
+    <h1 class="mt-4 pt-4 mb-0 pb-0" style="color:white; text-align:center; font-family:dh;">{{ rank_1_movie_title }}에 가려진 명작 
+    <a href="{% url 'movies:moviedetail' hidden_movie.movie_id %}">{{ hidden_movie.movie.movie_name }}</a></h1>
+  </div>
 
   <div class="container moviecontainer mx-auto d-flex flex-column justify-content-center">
-    <div class="bg-white" style="font-size:1.5rem">
-      {{ rank_1_movie_title }}에 숨겨진 명작 
-      <a href="{% url 'movies:moviedetail' hidden_movie.movie_id %}">{{ hidden_movie.movie.movie_name }}</a>
-    </div>
     <div class="row row-cols-5 d-flex justify-content-around">
       {% for movie in movies_detail %}
         <div class="col moviecard d-flex justify-content-start">
