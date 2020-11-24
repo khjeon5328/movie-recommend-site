@@ -5,10 +5,13 @@
   
 
   <div class="container moviecontainer mx-auto d-flex flex-column justify-content-center">
+    <div class="bg-white" style="font-size:1.5rem">
+      {{ rank_1_movie_title }}에 숨겨진 명작 
+      <a href="{% url 'movies:moviedetail' hidden_movie.movie_id %}">{{ hidden_movie.movie.movie_name }}</a>
+    </div>
     <div class="row row-cols-5 d-flex justify-content-around">
       {% for movie in movies_detail %}
         <div class="col moviecard d-flex justify-content-start">
-        {% comment %} <div class="col moviecard"> {% endcomment %}
           <div>
             <a href="{% url 'movies:moviedetail' movie.movie_id %}">
               <img class="moviecard-img" src={{movie.poster}} alt="">
@@ -18,12 +21,6 @@
                 <div style="color:rgb(212, 208, 208);">예매율</div>
                 <div class="font-weight-bold" style="color:#B50D13;">{{ movie.movie.sales_share }}%</div>
               </div>
-              {% comment %} <div class="card-list-item" style="font-size:0.5em;">
-                개봉일 : {{ movie.movie.open_dt }}
-              </div>
-              <div class="card-list-item" style="font-size:0.5em;">
-                등급 : {{ movie.grade }}  |  장르 : {{ movie.genre }}
-              </div> {% endcomment %}
               <div class="card-list-item" style="font-size:0.5em; text-align:start; color:rgb(212, 208, 208);">
                 {{ movie.movie.open_dt }}개봉|{{ movie.grade }} | {{ movie.genre }} 
               </div>
