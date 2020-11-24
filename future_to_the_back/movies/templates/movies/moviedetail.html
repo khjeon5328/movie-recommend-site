@@ -293,7 +293,7 @@
                   <!--내용-->
                   {% if review.photo %}
                   <div style="padding:16px 16px 0 16px;"> 
-                    <img style="width:100%;object-fit: cover;"src="{{review.photo.url}}" alt="review_image">
+                    <img style="width:100%;object-fit: cover;" src="{{review.photo.url}}" alt="review_image">
                   </div>
                   {% endif %}
                   <div class="" style="padding:16px 16px 0 16px;">
@@ -315,7 +315,11 @@
                     <div class="col-1">
                       <div class="mini-prf-container">
                         <!-- 로그인 된 유저 정보로 할 것-->
-                        <img class="profile-photo" src="{{request.user.profile_image.url}}" alt="profile">
+                        {% if request.user.profile_image  %}
+                          <img class="profile-photo" src="{{request.user.profile_image.url}}" alt="profile">
+                        {% else %}
+                          <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                        {% endif %}
                       </div>
                     </div>
                     <div class="col-11" style="padding-left:0;">
@@ -338,7 +342,12 @@
                       <div class="col-1" style="">
                         <div class="mini-prf-container">
                           <!-- 로그인 된 유저 정보로 할 것-->
-                          <img class="profile-photo" src="{{comment.author.profile_image.url}}" alt="profile">
+                          {% if comment.author.profile_image %}
+                            <img class="profile-photo" src="{{comment.author.profile_image.url}}" alt="profile">
+                          {% else %}
+                            <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                          {% endif %}
+
                         </div>
                       </div>
                       <div class="col-11 d-flex justify-content-between" style="padding-left:0;">

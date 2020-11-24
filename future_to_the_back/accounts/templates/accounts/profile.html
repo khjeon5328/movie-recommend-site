@@ -11,8 +11,7 @@
           {% if person.profile_image %}
             <div class="mx-auto"><img class="profile-photo" src="{{ person.profile_image.url }}" alt="{{ person.profile_image}}"></div>
           {% else %}
-            <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
-           
+            <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src="{% static 'images/profile_dft.png' %}"  alt=""></div>
           {% endif %}
 
           <form action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
