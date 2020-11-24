@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+  <div class="container formcontainer">
+    <div class="d-flex justify-content-center">
+      <div class="p-2 formdiv">
+        <h1 class="m-3 formtitle">{{ form_name }}</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-start form-inner-box">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button class="cumstom-button form-button align-self-center" style="margin-top:20px;">{{ button_name }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

@@ -42,7 +42,7 @@ def create_review(request, movie_id):
         'form_name': "새로운 리뷰 작성",
         'button_name' : 'POST',
     }
-    return render(request, 'accounts/form.html', context)
+    return render(request, 'reviews/form.html', context)
 
 
 @login_required
@@ -76,7 +76,7 @@ def update(request, review_id):
         'form_name': "글 수정",
         'button_name' : 'UPDATE',
     }
-    return render(request, 'accounts/form.html', context)
+    return render(request, 'reviews/form.html', context)
 
 
 @login_required

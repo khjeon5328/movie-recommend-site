@@ -284,11 +284,15 @@
                   
                 </div>
                 
-                <!-- 댓글 입력 -->
+                <!-- 댓글 -->
                 <hr>
                 <div class="px-3 comment-count"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
-                <div class="container m-0 p-3" style="max-width:800px; width=100%;"> 
-                  <div class="row py-3">
+                
+                <!-- 로그인한사람에게 뜨는 댓글입력창-->
+                {% if request.user.is_authenticated %}
+                <div class="container m-0 p-3" style="max-width:800px; width:100%;"> 
+                  
+                  <div class="row p-3">
                     <!-- 댓글입력-->
                     <div class="col-1">
                       <div class="mini-prf-container">
@@ -299,9 +303,9 @@
                     <div class="col-11" style="padding-left:0;">
                       <!--comment create start-->
                       {% if request.user.is_authenticated %}
-                        <form id="create-comment-form" data-review-id="{{ review.pk }}">
+                        <form id="create-comment-form" data-review-id="{{ review.pk }}" >
                           {% csrf_token %}
-                           <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75">
+                           <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75" style="width:620px;">
                           <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
                         </form>
                       {% else %}
@@ -310,13 +314,14 @@
                         </a>
                       {% endif %}
                       <!--comment create end-->
-
                     </div>
                   </div>
+
+
                   <!-- 댓글 보여주기 -->
-                  <div class="comment-list-{{ review.pk }}">
+                  <div class="comment-list-{{ review.pk }} px-3">
                     {% for comment in review.comment_set.all %}
-                    <div class="row py-3 previous-comment-{{comment.id}}">
+                    <div class="row pt-3 previous-comment-{{comment.id}}">
                       <div class="col-1" style="">
                         <div class="mini-prf-container">
                           <!-- 로그인 된 유저 정보로 할 것-->
@@ -324,18 +329,25 @@
                         </div>
                       </div>
                       <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
-                        <div>
+                        <div class="">
                           <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
                           <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
                         </div>
                         {% if request.user == comment.author %}
-                          <div class="mr-3">
-                              <form id="comment-delete-form" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
-                                {% csrf_token %}
-                                <button class="btn btn-link">
-                                  <i class="fas fa-trash" style="color:crimson;"></i>
-                                </button>
-                              </form>
+                          <div class="d-flex justify-content-center align-items-center">
+                            <form id="comment-delete-form" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
+                              {% csrf_token %}
+                              <button class="iconbtn" title="삭제하기">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle  icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                  <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                              </button>
+                              {% comment %} 
+                              <button class="btn btn-link">
+                                <i class="fas fa-trash icon iconcolor" style="color:crimson;"></i>
+                              </button> {% endcomment %}
+                            </form>
                             </div>
                         {% endif %}
                       </div>
@@ -344,11 +356,24 @@
                   </div>
 
                 </div>
+                <!-- 로그인 안한 사람에게 보여지는 댓글창-->
+                {% else %}
+                  <div class="p-3">
+                    <div class="d-flex flex-column justify-content-center align-items-center empty-rv p-3" >
+                      <a href=""><p class="m-0" style="font-weight:lighter;">로그인하고 댓글 보기</p></a>
+                      {% comment %} <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p> {% endcomment %}
+                    </div>
+                  </div>
+                {% endif %}
+                <!-- 댓글보여주기 end-->
+
+
 
               </div> <!-- modal-content end-->
             </div> <!-- modal dialog end-->
           </div> 
           {% endfor %} <!-- 리뷰 보여주는 포문-->
+          <hr class="" style="margin-bottom:0px; margin-top:7px;">
         {% else %}
         <!-- 리뷰 없을때 -->
           <div class="p-0 empty-rv">
@@ -357,8 +382,8 @@
               <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p>
             </div>
           </div>
+          <hr class="" style="margin-top:16px; margin-bottom:0;">
         {% endif %}
-        <hr class="" style="margin-top:16px; margin-bottom:0;">
       </div>
       <!-- {{ movie_detail.aka_info }}    -->
     </div>
@@ -467,51 +492,51 @@
   /*
     2. comment delete
   */
-  const commentDeleteForms = document.querySelectorAll('#comment-delete-form')
-  commentDeleteForms.forEach(commentDeleteForm => {
-    commentDeleteForm.addEventListener('submit', (e) => {
-      e.preventDefault()
-      const commentId = commentDeleteForm.dataset.commentId
-      const reviewIdForCommentDelete = commentDeleteForm.dataset.reviewId
-      const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForCommentDelete}/comments/${commentId}/delete/`
-      const previousComment = document.querySelector(`.previous-comment-${commentId}`)
-      console.log(previousComment)
-      const options = {headers: {'X-CSRFToken': csrfToken}}
+  // const commentDeleteForms = document.querySelectorAll('#comment-delete-form')
+  // commentDeleteForms.forEach(commentDeleteForm => {
+  //   commentDeleteForm.addEventListener('submit', (e) => {
+  //     e.preventDefault()
+  //     const commentId = commentDeleteForm.dataset.commentId
+  //     const reviewIdForCommentDelete = commentDeleteForm.dataset.reviewId
+  //     const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForCommentDelete}/comments/${commentId}/delete/`
+  //     const previousComment = document.querySelector(`.previous-comment-${commentId}`)
+  //     console.log(previousComment)
+  //     const options = {headers: {'X-CSRFToken': csrfToken}}
 
-      axios.post(COMMENT_DELETE_URL, {}, options)
-        .then(res => {
-          const { is_delete, count } = res.data
-            if (is_delete) {
-            previousComment.remove()
-            const commentCount = document.querySelector('.comment-count')
-            commentCount.innerText = count
-          } else{
-            alert('delte failed')
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    })
-  } {% endcomment %}
+  //     axios.post(COMMENT_DELETE_URL, {}, options)
+  //       .then(res => {
+  //         const { is_delete, count } = res.data
+  //           if (is_delete) {
+  //           previousComment.remove()
+  //           const commentCount = document.querySelector('.comment-count')
+  //           commentCount.innerText = count
+  //         } else{
+  //           alert('delte failed')
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.log(error)
+  //       })
+  //   })
+  // } 
 
 
 
   /* add modal url */
 
-  const reviewModals = document.querySelectorAll('#reviewmodal')
-  reviewModals.forEach(reviewModal =>{
-    const rvwId = reviewModal.dataset.rvwId
-    reviewModal.addEventListener('click', (e) => {
-      history.replaceState({ data: 'replace' }, '', `/reviews/${rvwId}/`)
-    })
-    const movieId = reviewModal.dataset.movieId
-    const modalcontent = document.querySelector(`#post-${rvwId}`)
-    console.log(modalcontent)
-    modalcontent.addEventListener('click', (e) => {
-      history.replaceState({ data: 'replace' }, '', `/movies/${movieId}/`)
-    })
-  })
+  // const reviewModals = document.querySelectorAll('#reviewmodal')
+  // reviewModals.forEach(reviewModal =>{
+  //   const rvwId = reviewModal.dataset.rvwId
+  //   reviewModal.addEventListener('click', (e) => {
+  //     history.replaceState({ data: 'replace' }, '', `/reviews/${rvwId}/`)
+  //   })
+  //   const movieId = reviewModal.dataset.movieId
+  //   const modalcontent = document.querySelector(`#post-${rvwId}`)
+  //   console.log(modalcontent)
+  //   modalcontent.addEventListener('click', (e) => {
+  //     history.replaceState({ data: 'replace' }, '', `/movies/${movieId}/`)
+  //   })
+  // })
   
 
 
