@@ -409,10 +409,13 @@
       </div>
       
       <div class="mr-3">
-        <form id="new-comment-delete-form" data-review-id="{review_id}" data-comment-id="{comment_id}">
+        <form id="comment-delete-form-{review_id}-{comment_id}" data-review-id="{review_id}" data-comment-id="{comment_id}">
           {% csrf_token %}
           <button class="btn btn-link">
-            <i class="fas fa-trash" style="color:crimson;"></i>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle  icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
           </button>
         </form>
       </div>
@@ -478,12 +481,33 @@
             const resultHtml = html.replace("{author}", author)
                                     .replace("{content}", content)
                                     .replace("{review_id}", review_id)
+                                    .replace("{review_id}", review_id)
+                                    .replace("{comment_id}", comment_id)
                                     .replace("{comment_id}", comment_id)
                                     .replace("{comment_id}", comment_id)
             commentList.innerHTML += resultHtml
             const commentCount = document.querySelector('.comment-count')
             commentCount.innerText = `댓글 ${count}개`
             document.querySelector(`#comment-input-${reviewIdForComment}`).value = ''
+            document.querySelector(`#comment-delete-form-${review_id}-${comment_id}`).addEventListener('submit', (e) =>{
+              e.preventDefault()
+              const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${review_id}/comments/${comment_id}/delete/`
+              const options = {headers: {'X-CSRFToken': csrfToken}}
+              axios.post(COMMENT_DELETE_URL, {}, options)
+                .then(res => {
+                  const { is_delete, count } = res.data
+                  if (is_delete) {
+                    document.querySelector(`.previous-comment-${comment_id}`).remove()
+                    document.querySelector('.comment-count').innerText = count
+                  } else{
+                    alert('delte failed')
+                  }
+                  })
+                  .catch(error => {
+                    console.log(error)
+                  })
+            })//addEventListener
+
           })
           .catch(error => {
             console.log(error)
@@ -495,33 +519,33 @@
   /*
     2. comment delete
   */
-  // const commentDeleteForms = document.querySelectorAll('#comment-delete-form')
-  // commentDeleteForms.forEach(commentDeleteForm => {
-  //   commentDeleteForm.addEventListener('submit', (e) => {
-  //     e.preventDefault()
-  //     const commentId = commentDeleteForm.dataset.commentId
-  //     const reviewIdForCommentDelete = commentDeleteForm.dataset.reviewId
-  //     const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForCommentDelete}/comments/${commentId}/delete/`
-  //     const previousComment = document.querySelector(`.previous-comment-${commentId}`)
-  //     console.log(previousComment)
-  //     const options = {headers: {'X-CSRFToken': csrfToken}}
+  const commentDeleteForms = document.querySelectorAll('#comment-delete-form')
+  commentDeleteForms.forEach(commentDeleteForm => {
+    commentDeleteForm.addEventListener('submit', (e) => {
+      e.preventDefault()
+      const commentId = commentDeleteForm.dataset.commentId
+      const reviewIdForCommentDelete = commentDeleteForm.dataset.reviewId
+      const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForCommentDelete}/comments/${commentId}/delete/`
+      const previousComment = document.querySelector(`.previous-comment-${commentId}`)
+      console.log(previousComment)
+      const options = {headers: {'X-CSRFToken': csrfToken}}
 
-  //     axios.post(COMMENT_DELETE_URL, {}, options)
-  //       .then(res => {
-  //         const { is_delete, count } = res.data
-  //           if (is_delete) {
-  //           previousComment.remove()
-  //           const commentCount = document.querySelector('.comment-count')
-  //           commentCount.innerText = count
-  //         } else{
-  //           alert('delte failed')
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.log(error)
-  //       })
-  //   })
-  // } 
+      axios.post(COMMENT_DELETE_URL, {}, options)
+        .then(res => {
+          const { is_delete, count } = res.data
+          if (is_delete) {
+            previousComment.remove()
+            const commentCount = document.querySelector('.comment-count')
+            commentCount.innerText = count
+          } else{
+            alert('delte failed')
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    })
+  }) 
 
 
 
