@@ -113,7 +113,7 @@ def create_comment(request, review_id):
     return render(request, 'reviews/detail.html', context)
 
 
-
+@login_required
 @require_http_methods(['POST'])
 def delete_comment(request, review_id, comment_id):
     if request.user.is_authenticated:
@@ -131,6 +131,7 @@ def delete_comment(request, review_id, comment_id):
 
 
 @login_required
+@require_http_methods(['POST'])
 def like(request, review_id):
     review = get_object_or_404(Review, pk=review_id) 
     if request.user.is_authenticated:

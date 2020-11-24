@@ -72,6 +72,7 @@ def login(request):
 def logout(request):
     auth_logout(request)
     messages.info(request, 'logout success')
+    print(request.GET.get('next'))
     return redirect(request.GET.get('next') or 'movies:home')
 
 
@@ -129,13 +130,13 @@ def profile(request, username):
 def profile_image(request, username):
     if not request.user.is_authenticated:
         return redirect('accounts:login')
-    User = get_user_model()
-    person = get_object_or_404(User, username=username)
     form = CustomUserProfileChangeForm(request.POST, request.FILES,instance=request.user) 
     if form.is_valid():
         form.save()
     else:
         form =  CustomUserProfileChangeForm(instance=request.user)
+
+    person = get_object_or_404(get_user_model(), username=username)
     context = {
         'person' : person,
         'form' : form,

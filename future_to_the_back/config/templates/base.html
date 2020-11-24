@@ -32,7 +32,7 @@
             <a class="nav-link text-blue" href="{% url 'accounts:profile' request.user.username %}" title="나의 프로필 보기">{{request.user.username}}</a>
           </li>
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:logout' %}" title="로그아웃">Logout</a>
+            <a class="nav-link text-white" href="{% url 'accounts:logout' %}?next={{ request.path | urlencode }}" title="로그아웃">Logout</a>
           </li>
         {% endif %}
       </ul>
@@ -45,7 +45,7 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-       <img src="close.soon" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
+       <img src="" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
     </div>
   {% endfor %}
 {% endif %} 

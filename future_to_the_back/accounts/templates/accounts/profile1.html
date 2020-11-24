@@ -8,8 +8,8 @@
     <header class="row d-flex p-3">
       <!--profile 사진-->
       <section class="col-4">
-          {% if person.photo.exists %}
-            <div class="mx-auto"><img class="profile-photo" src="{{ person.photo.url }}" alt=""></div>
+          {% if person.profile_image %}
+            <div class="mx-auto"><img class="profile-photo" src="{{ person.profile_image.url }}" alt="{{ person.profile_image}}"></div>
           {% else %}
             <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
           {% endif %}
