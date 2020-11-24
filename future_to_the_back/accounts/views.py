@@ -20,11 +20,39 @@ from django.contrib.auth import update_session_auth_hash
 from django.http import JsonResponse
 
 from django.contrib import messages
-
+from random import *
 
 # Create your views here.
-def index(request):
-    return render(request, 'accounts/index.html')
+# def index(request):
+#     return render(request, 'accounts/index.html')
+
+
+
+
+
+# @require_http_methods(['GET', 'POST'])
+# def signup(request):
+#     if request.user.is_authenticated:
+#         return redirect('accounts:index')
+#     if request.method == "POST":
+#         form = CustomUserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             auth_login(request,user)
+#             messages.info(request, 'signup success')
+#             return redirect(request.GET.get('next') or 'movies:home')
+#     else:
+#         form = CustomUserCreationForm()
+#     context = {
+#         'form' : form,
+#         'form_name': "회원가입",
+#         'button_name' : 'SIGN UP',
+#     }
+#     return render(request, 'accounts/form.html', context)
+
+
+
+
 
 @require_http_methods(['GET', 'POST'])
 def signup(request):
@@ -33,7 +61,16 @@ def signup(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+            if not user.profile_image :
+                base = '../static/images/'
+                color = ['blue', 'dblue', 'ivory', 'orange','pink','purple','red','violet','yellow']
+                rest = '-leather.jpg'
+                idx = randint(0, len(color)-1)
+                profiledefault = base + color[idx]+ rest
+                user.profile_image = profiledefault
+                user.save()
+
             auth_login(request,user)
             messages.info(request, 'signup success')
             return redirect(request.GET.get('next') or 'movies:home')
@@ -45,6 +82,9 @@ def signup(request):
         'button_name' : 'SIGN UP',
     }
     return render(request, 'accounts/form.html', context)
+
+
+
 
 
 @require_http_methods(['GET', 'POST'])
@@ -67,6 +107,7 @@ def login(request):
         'button_name' : 'LOG IN',
     }
     return render(request, 'accounts/form.html', context)
+
 
 @login_required
 # @require_POST
