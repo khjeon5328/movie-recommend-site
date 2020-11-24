@@ -534,7 +534,6 @@ input[type=number] {
   list-style-type: none;
   margin: 0 0 7px 20px;
   color: rgb(80, 80, 80);
-;
 }
 
 
@@ -573,3 +572,5 @@ input[type=number] {
 .tolistbtn:focus {
   outline:none;
 }
+
+
