@@ -56,7 +56,7 @@ def detail(request, review_id):
         'comment_form' : comment_form,
         'comments' : comments,
     }
-    return render(request, 'reviews/detail.html', context)
+    return render(request, 'reviews/detail1.html', context)
 
 
 @login_required
