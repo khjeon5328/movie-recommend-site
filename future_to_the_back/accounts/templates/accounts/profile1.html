@@ -4,70 +4,101 @@
 {% block content %}
   <div class="container detailcontainer mt-5" style="max-width:900px;">
 
-  <header class="row d-flex p-3">
-    <!--profile 사진-->
-    <section class="col-4 d-flex justify-content-center">
-        {% if person.photo.exists %}
-          <div class="mx-auto"><img class="profile-photo" src="{{ person.photo.url }}" alt=""></div>
-        {% else %}
-          <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
-        {% endif %}
-    </section>
-
-   
-    <section class="col-8">
-      <!--ID, follow버튼, 설정-->
-      <div class="d-flex align-items-center">
-        <p class="m-0" style="font-size:2rem;">{{ person.username }}</p>
-        {% if request.user != person %}
-          <form id="followBtnForm" data-personName="{{person.username}}" action="{% url 'accounts:follow' person.username %}" method="POST">
-            {% csrf_token %}
-            {% if request.user in person.followers.all %}
-              <button class="btn btn-outline-secondary ml-3 followBtn">UNFOLLOW</button>
-            {% else %}
-              <button class="btn btn-primary ml-3 followBtn">FOLLOW</button>
-          </form>
-
+    <header class="row d-flex p-3">
+      <!--profile 사진-->
+      <section class="col-4 d-flex justify-content-center">
+          {% if person.photo.exists %}
+            <div class="mx-auto"><img class="profile-photo" src="{{ person.photo.url }}" alt=""></div>
+          {% else %}
+            <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
           {% endif %}
-        <!--나의 프로필 화면-->
-        {% else %}
-          <form action="{% url 'accounts:update' %}" method="">
-            <button class="btn btn-outline-secondary follow ml-3" style="color:black;"><b>프로필편집</b></button>
-          </form>
-          <div class="pl-3 ">
-            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-gear-wide" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"/>
-            </svg>
-          </div>
-        {% endif %}
-      
-      </div> 
-      <!--게시물 수, 팔로워 수, 팔로잉 수-->
-      <div>
-        <ul class="d-flex my-2 p-1" style=""> <!--margin-rignt=40px;-->
-          <li class=" mx-3" style="list-style-type: none;"><b>게시물 </b> {{ person.article_set.count }}</li>
-          <li class=" mx-3" style="list-style-type: none;"> <b>팔로워 </b><span id="follower_count"> {{ person.followers.count}}</span></li>
-          <li class=" mx-3" style="list-style-type: none;"> <b>팔로잉 </b><span id="following_count"> {{ person.followings.count}}</span></li>
-        </ul>
-      </div>
-
-      <!--이름-->
-      <div>
-        <p><b> {{person.last_name}} {{person.first_name}} </b></p> <!--이름 입력받을때 한꺼번에입력받기-->
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi non porro! Libero similique quisquam molestiae veritatis, aspernatur praesentium consequatur assumenda id velit animi deserunt perferendis est ullam minima quaerat?</p>
-      </div> 
-    </section>
-
+      </section>
 
     
+      <section class="col-8">
+        <!--ID, follow버튼, 설정-->
+        <div class="d-flex align-items-center">
+          <p class="m-0" style="font-size:2rem;">{{ person.username }}</p>
+          {% if request.user != person %}
+            <form id="followBtnForm" data-personName="{{person.username}}" action="{% url 'accounts:follow' person.username %}" method="POST">
+              {% csrf_token %}
+              {% if request.user in person.followers.all %}
+                <button class="btn btn-outline-secondary ml-3 followBtn">UNFOLLOW</button>
+              {% else %}
+                <button class="btn btn-primary ml-3 followBtn">FOLLOW</button>
+            </form>
 
-   
-    {% comment %} <h2>{{ person.username }}님이 작성한 글</h2> {% endcomment %}
-    {% comment %} {% for article in person.article_set.all %}
-        <div>{{article.title}}</div>
-    {% endfor %}
-     {% endcomment %}
+            {% endif %}
+          <!--나의 프로필 화면-->
+          {% else %}
+            <form action="{% url 'accounts:update' %}" method="">
+              <button class="btn btn-outline-secondary follow ml-3" style="color:black;"><b>프로필편집</b></button>
+            </form>
+            <div class="pl-3 ">
+              <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-gear-wide" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"/>
+              </svg>
+            </div>
+          {% endif %}
+        
+        </div> 
+        <!--게시물 수, 팔로워 수, 팔로잉 수-->
+        <div>
+          <ul class="d-flex my-2 p-1" style=""> <!--margin-rignt=40px;-->
+            <li class=" mx-3" style="list-style-type: none;"><b>게시물 </b> {{ person.reviews.count }}</li>
+            <li class=" mx-3" style="list-style-type: none;"> <b>팔로워 </b><span id="follower_count"> {{ person.followers.count}}</span></li>
+            <li class=" mx-3" style="list-style-type: none;"> <b>팔로잉 </b><span id="following_count"> {{ person.followings.count}}</span></li>
+          </ul>
+        </div>
 
+        <!--이름-->
+        <div>
+          <p><b> {{person.last_name}} {{person.first_name}} </b></p> <!--이름 입력받을때 한꺼번에입력받기-->
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione modi non porro! Libero similique quisquam molestiae veritatis, aspernatur praesentium consequatur assumenda id velit animi deserunt perferendis est ullam minima quaerat?</p>
+        </div> 
+      </section>
+    </header>
+    <hr>
+    <div>
+
+      <p class="mx-3 notofont" style=""><b>{{person.username}} 님이 작성한 게시글</b></p>
+      <hr>
+      {% if person.reviews.all|length %}
+        {% for review in person.reviews.all %}
+          <ul class="d-flex m-0 p-0 justify-content-start" style=""> 
+            <li class="review-list-item" style=""><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</b></li>
+            <li class="review-list-item" style="">{{review.title}}</li>
+            <li class="review-list-item" style="">2020-08-28</li>
+          </ul>
+        {% endfor %}
+      {% else %}
+        <div class="p-0 empty-rv">
+          <div class="d-flex flex-column justify-content-center align-items-center p-3" >
+            <p class="m-0" style="font-weight:lighter;">아직 리뷰가 없어요.</p>
+            <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p>
+          </div>
+        </div>
+      {% endif %}
+      <hr>
+
+      <p class="mx-3 notofont"><b>{{person.username}} 님이 좋아하는 게시글</b></p>
+      <hr>
+      <div class="p-0 empty-rv">
+        <div class="d-flex flex-column justify-content-center align-items-center p-3" >
+          <p class="m-0 my-3" style="font-weight:lighter;">좋아하는 게시글이 없어요.</p>
+          {% comment %} <p class="m-0" style="font-weight:lighter;"></p> {% endcomment %}
+        </div>
+      </div>
+      {% comment %} <ul class="d-flex m-0 p-0" style=""> 
+        <li class="review-list-item" style=""><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</b></li>
+        <li class="review-list-item" style="">{% lorem 10 w random %}</li>
+        <li class="review-list-item" style="">{% lorem 1 w random %}</li>
+        <li class="review-list-item" style="">2020-08-28</li>
+      </ul> {% endcomment %}
+      <hr style="margin-bottom:0; padding-bottom:16px;">  
+    </div>
+
+  
 
     {% comment %} <h2>{{ person.username }}님이 좋아요한 글</h2>
     {% for article in person.like_articles.all %}

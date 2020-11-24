@@ -60,4 +60,4 @@ class MovieDetail(models.Model):
     viewer_img = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return "%s the movie detail" % self.movie.movie_name
+        return self.movie.movie_name
