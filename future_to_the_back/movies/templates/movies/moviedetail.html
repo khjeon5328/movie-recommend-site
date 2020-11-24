@@ -145,7 +145,6 @@
       </div>
 
       <div class="d-flex justify-content-center my-5"> <!--영화 다운로드 url-->
-        <!-- <a class="btn btn-danger" href="{{movie_detail.download_url}}"> -->
         <a class="download" href="{{movie_detail.download_url}}">
           {{ movie_detail.movie.movie_name }} 다운받으러 가기
         </a>
@@ -219,7 +218,6 @@
         
         {% if reviews|length %}
         {% for review in reviews  %}
-        {% comment %} <p class="px-2"style="margin-bottom:5px;">  |  </p> {% endcomment %}
           <ul class="d-flex m-0 p-0" style=""> 
             <li class="review-list-item" style="list-style-type: none;"><a href="" id="reviewmodal" data-rvw-id="{{ review.pk }}"  data-movie-id="{{movie_detail.pk}}" title="이 리뷰 자세히 보기" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a></li>
             <li class="review-list-item" style="list-style-type: none;">{{review.author}}</li>
@@ -231,12 +229,10 @@
           <div class="modal fade" id="post-{{review.pk}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" style="max-width:780px;" >
               <div class="modal-content d-flex flex-column" style="border-radius:0; border:none;" > 
-                {% comment %} <div class="px-3 py-2" style=""><b> 리뷰 </b></div> {% endcomment %}
                 <div class="p-3">
 
                   <!--상단 제목부분 start-->
                   <div class=""><b>{{review.movie.movie.movie_name}}의 리뷰</b></div>
-                  {% comment %} <hr class="mb-0 mt-1"> {% endcomment %}
                   <div class="d-flex justify-content-between mt-2" style="border-top:1px solid rgb(190,190,190); border-bottom:1px solid rgb(190,190,190); height:45px;">
                     <div class="px-2 py-0 d-flex d-flex align-items-center" style="display:relative">
                       <span class="review-title align-self-center" style="line-height:2;">{{review.title}}</span>
@@ -319,7 +315,7 @@
                     <div class="col-1">
                       <div class="mini-prf-container">
                         <!-- 로그인 된 유저 정보로 할 것-->
-                        <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                        <img class="profile-photo" src="{{request.user.profile_image.url}}" alt="profile">
                       </div>
                     </div>
                     <div class="col-11" style="padding-left:0;">
@@ -342,7 +338,7 @@
                       <div class="col-1" style="">
                         <div class="mini-prf-container">
                           <!-- 로그인 된 유저 정보로 할 것-->
-                          <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                          <img class="profile-photo" src="{{comment.author.profile_image.url}}" alt="profile">
                         </div>
                       </div>
                       <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
@@ -378,7 +374,6 @@
                   <div class="p-3">
                     <div class="d-flex flex-column justify-content-center align-items-center empty-rv p-3" >
                       <a href=""><p class="m-0" style="font-weight:lighter;">로그인하고 댓글 보기</p></a>
-                      {% comment %} <p class="m-0" style="font-weight:lighter;">첫 번째 리뷰를 남겨주세요.</p> {% endcomment %}
                     </div>
                   </div>
                 {% endif %}
@@ -402,7 +397,6 @@
           <hr class="{% url 'accounts:login' %}" style="margin-top:16px; margin-bottom:0;">
         {% endif %}
       </div>
-      <!-- {{ movie_detail.aka_info }}    -->
     </div>
   </div>
 {% endblock content %}

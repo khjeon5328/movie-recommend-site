@@ -12,6 +12,7 @@
             <div class="mx-auto"><img class="profile-photo" src="{{ person.profile_image.url }}" alt="{{ person.profile_image}}"></div>
           {% else %}
             <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src={% static 'images/profile_dft.png' %}  alt=""></div>
+           
           {% endif %}
 
           <form action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
@@ -110,18 +111,14 @@
       <hr class="mt-1" style="margin-bottom:0; padding-bottom:16px;">  
     </div>
 
-  
-
-    {% comment %} <h2>{{ person.username }}님이 좋아요한 글</h2>
-    {% for article in person.like_articles.all %}
-        <div>{{article.title}}</div>
-    {% endfor %} {% endcomment %}
-    
 
 {% endblock content %}
 
 {% block script %}
   <script>
+
+
+    // follow
     const followBtnForm = document.querySelector('#followBtnForm')
     followBtnForm.addEventListener('submit', (e) => {
       e.preventDefault() 
@@ -149,5 +146,9 @@
          console.error(err)
        })
     }) 
+
+
+
+
   </script>
 {% endblock script %}
