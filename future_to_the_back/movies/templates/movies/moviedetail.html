@@ -384,7 +384,7 @@
       </div>
       
       <div class="mr-3">
-        <form id="comment-delete-form" data-review-id="{review_id}" data-comment-id="{comment_id}">
+        <form id="new-comment-delete-form" data-review-id="{review_id}" data-comment-id="{comment_id}">
           {% csrf_token %}
           <button class="btn btn-link">
             <i class="fas fa-trash" style="color:crimson;"></i>
@@ -438,29 +438,32 @@
     commentCreateForm.addEventListener('submit', (e) => {
       e.preventDefault()
       const commentInput = document.querySelector(`#comment-input-${reviewIdForComment}`).value
-      const COMMENT_CREATE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForComment}/comments/`
-      const data = {
-        'content' : commentInput
-      }
-      const options = {headers: {'X-CSRFToken': csrfToken}}
-      axios.post(COMMENT_CREATE_URL, data, options)
-        .then(res => {
-          const commentList = document.querySelector(`.comment-list-${reviewIdForComment}`)
-          let { author, content, count, review_id, comment_id } = res.data
+      if(commentInput.trim()) {
+        const COMMENT_CREATE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForComment}/comments/`
+        const data = {
+          'content' : commentInput
+        }
+        const options = {headers: {'X-CSRFToken': csrfToken}}
+        axios.post(COMMENT_CREATE_URL, data, options)
+          .then(res => {
+            const commentList = document.querySelector(`.comment-list-${reviewIdForComment}`)
+            let { author, content, count, review_id, comment_id } = res.data
 
-          const html = document.querySelector("#template-comment-list-item").innerHTML;
-          const resultHtml = html.replace("{author}", author)
-                                  .replace("{content}", content)
-                                  .replace("{review_id}", review_id)
-                                  .replace("{comment_id}", comment_id)
-                                  .replace("{comment_id}", comment_id)
-          commentList.innerHTML += resultHtml
-          const commentCount = document.querySelector('.comment-count')
-          commentCount.innerText = `댓글 ${count}개`
-        })
-        .catch(error => {
-          console.log(error)
-        })
+            const html = document.querySelector("#template-comment-list-item").innerHTML;
+            const resultHtml = html.replace("{author}", author)
+                                    .replace("{content}", content)
+                                    .replace("{review_id}", review_id)
+                                    .replace("{comment_id}", comment_id)
+                                    .replace("{comment_id}", comment_id)
+            commentList.innerHTML += resultHtml
+            const commentCount = document.querySelector('.comment-count')
+            commentCount.innerText = `댓글 ${count}개`
+            document.querySelector(`#comment-input-${reviewIdForComment}`).value = ''
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
     })
   })
 
@@ -501,3 +504,29 @@
 
 
 
+{% comment %} <script>
+ const newCommentDeleteForm = document.querySelector('#new-comment-delete-form')
+            newCommentDeleteForm.addEventListener('submit', (e) => {
+              e.preventDefault()
+              const newCommentId = newCommentDeleteForm.dataset.commentId
+              const reviewIdForNewCommentDelete = newCommentDeleteForm.dataset.reviewId
+              const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForNewCommentDelete}/comments/${newCommentId}/delete/`
+              const previousNewComment = document.querySelector(`.previous-comment-${newCommentId}`)
+              const options = {headers: {'X-CSRFToken': csrfToken}}
+              axios.post(COMMENT_DELETE_URL, {}, options)
+                .then(res => {
+                  const { is_delete, count } = res.data
+                    if (is_delete) {
+                    previousNewComment.remove()
+                    const newCommentCount = document.querySelector('.comment-count')
+                    newCommentCount.innerText = count
+                  } else{
+                    alert('delte failed')
+                  }
+                })
+                .catch(error => {
+                  console.log(error)
+                })
+</script> {% endcomment %}
+
+{% comment %} }) {% endcomment %}
