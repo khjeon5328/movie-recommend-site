@@ -60,14 +60,14 @@
     </header>
     <hr>
     <div>
-
+      <!--작성글-->
       <p class="mx-3 notofont" style=""><b>{{person.username}} 님이 작성한 게시글</b></p>
       <hr>
       {% if person.reviews.all|length %}
         {% for review in person.reviews.all %}
-          <ul class="d-flex m-0 p-0 justify-content-start" style=""> 
-            <li class="review-list-item" style=""><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</b></li>
-            <li class="review-list-item" style="">{{review.title}}</li>
+          <ul class="d-flex m-0 p-0 justify-content-start align-items-baseline" style=""> 
+            <li class="review-list-item" style=""><a title="영화 자세히보기" href="{% url 'movies:moviedetail' review.movie.pk %}"><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</a></b></li>
+            <li class="review-list-item" style=""><a title="리뷰 자세히보기" style="color:black;" href="{% url 'reviews:detail' review.pk %}">{{review.title}}</a></li>
             <li class="review-list-item" style="">2020-08-28</li>
           </ul>
         {% endfor %}
@@ -79,23 +79,28 @@
           </div>
         </div>
       {% endif %}
-      <hr>
-
+      <hr class="mt-1">
+      <!-- 좋아요 글-->
       <p class="mx-3 notofont"><b>{{person.username}} 님이 좋아하는 게시글</b></p>
       <hr>
-      <div class="p-0 empty-rv">
-        <div class="d-flex flex-column justify-content-center align-items-center p-3" >
-          <p class="m-0 my-3" style="font-weight:lighter;">좋아하는 게시글이 없어요.</p>
-          {% comment %} <p class="m-0" style="font-weight:lighter;"></p> {% endcomment %}
+
+      {% if person.like_articles.all|length %}
+        {% for review in person.like_articles.all %}
+          <ul class="d-flex m-0 p-0 justify-content-start align-items-baseline" style=""> 
+            <li class="review-list-item" style=""><a title="영화 자세히보기" href="{% url 'movies:moviedetail' review.movie.pk %}"><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</a></b></li>
+            <li class="review-list-item" style=""><a title="리뷰 자세히보기" style="color:black;" href="{% url 'reviews:detail' review.pk %}">{{review.title}}</a></li>
+            <li class="review-list-item" style=""><a title="프로필 보기" style="color:black;" href="{% url 'accounts:profile' review.author.username%}">{{review.author}}</a></li>
+            <li class="review-list-item" style="">2020-08-28</li>
+          </ul>
+        {% endfor %}
+      {% else %}
+        <div class="p-0 empty-rv">
+          <div class="d-flex flex-column justify-content-center align-items-center p-3" >
+            <p class="m-0 my-3" style="font-weight:lighter;">좋아하는 게시글이 없어요.</p>
+          </div>
         </div>
-      </div>
-      {% comment %} <ul class="d-flex m-0 p-0" style=""> 
-        <li class="review-list-item" style=""><b style="font-family:notoR; color:rgb(140, 140, 140);">{{review.movie}}</b></li>
-        <li class="review-list-item" style="">{% lorem 10 w random %}</li>
-        <li class="review-list-item" style="">{% lorem 1 w random %}</li>
-        <li class="review-list-item" style="">2020-08-28</li>
-      </ul> {% endcomment %}
-      <hr style="margin-bottom:0; padding-bottom:16px;">  
+      {% endif %}
+      <hr class="mt-1" style="margin-bottom:0; padding-bottom:16px;">  
     </div>
 
   
