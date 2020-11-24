@@ -207,7 +207,7 @@
             </a>
           </div>
         </div>
-        <hr class="mx-2 my-3" style="width:772px;">
+        <hr class="mx-0 my-3">
         
         
         
@@ -215,7 +215,7 @@
         {% for review in reviews  %}
         {% comment %} <p class="px-2"style="margin-bottom:5px;">  |  </p> {% endcomment %}
           <ul class="d-flex m-0 p-0" style=""> 
-            <li class="review-list-item" style="list-style-type: none;"><a href="" title="이 리뷰 자세히 보기" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a></li>
+            <li class="review-list-item" style="list-style-type: none;"><a href="" id="reviewmodal" data-rvw-id="{{ review.pk }}"  data-movie-id="{{movie_detail.pk}}" title="이 리뷰 자세히 보기" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a></li>
             <li class="review-list-item" style="list-style-type: none;">{{review.author}}</li>
             <li class="review-list-item" style="list-style-type: none;">{{review.created_at | date:"Y-d-m"}}</li>
           </ul>
@@ -358,7 +358,7 @@
             </div>
           </div>
         {% endif %}
-        <hr class="m-2">
+        <hr class="" style="margin-top:16px; margin-bottom:0;">
       </div>
       <!-- {{ movie_detail.aka_info }}    -->
     </div>
@@ -496,7 +496,28 @@
           console.log(error)
         })
     })
+  } {% endcomment %}
+
+
+
+  /* add modal url */
+
+  const reviewModals = document.querySelectorAll('#reviewmodal')
+  reviewModals.forEach(reviewModal =>{
+    const rvwId = reviewModal.dataset.rvwId
+    reviewModal.addEventListener('click', (e) => {
+      history.replaceState({ data: 'replace' }, '', `/reviews/${rvwId}/`)
+    })
+    const movieId = reviewModal.dataset.movieId
+    const modalcontent = document.querySelector(`#post-${rvwId}`)
+    console.log(modalcontent)
+    modalcontent.addEventListener('click', (e) => {
+      history.replaceState({ data: 'replace' }, '', `/movies/${movieId}/`)
+    })
   })
+  
+
+
 </script>
 
 {% endblock script %}
