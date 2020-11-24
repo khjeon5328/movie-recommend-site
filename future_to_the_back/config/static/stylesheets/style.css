@@ -91,7 +91,7 @@ body {
   background-color : rgb(44, 46, 46);
   /* max-width: 1200px; */
   /* margin: auto; */
-  margin-top: 100px;
+  margin-top: 60px;
   margin-bottom: 100px;
 }
 
@@ -101,6 +101,8 @@ body {
   padding: 0 10px;
   margin: 30px 0;
 }
+
+
 
 .moviecard-img {
   width: 100%;
@@ -539,4 +541,10 @@ input[type=number] {
 .notofont {
   font-family:notoR;
   letter-spacing:1px;
+}
+
+
+
+.recommend {
+  
 }
