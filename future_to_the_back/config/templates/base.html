@@ -45,14 +45,11 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
+       <img src="close.soon" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
     </div>
   {% endfor %}
 {% endif %} 
 
-
-
-출처: https://jjinisystem.tistory.com/47 [IT BOX]
-  
 
 
   {% block content %}
