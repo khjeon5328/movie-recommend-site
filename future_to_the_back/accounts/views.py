@@ -18,6 +18,8 @@ from django.views.decorators.http import require_http_methods, require_POST
 from django.contrib.auth import update_session_auth_hash
 from django.http import JsonResponse
 
+from django.contrib import messages
+
 
 # Create your views here.
 def index(request):
@@ -31,6 +33,7 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'signup success')
             return redirect('accounts:login')
     else:
         form = CustomUserCreationForm()
@@ -52,8 +55,8 @@ def login(request):
         if form.is_valid():
             auth_login(request, form.get_user())
             print(request.GET.get('next'))
+            messages.info(request, 'login success')
             return redirect(request.GET.get('next') or 'movies:home')
-            return redirect('movies:home')
     else:
         form = AuthenticationForm()
     context = {
@@ -67,6 +70,7 @@ def login(request):
 # @require_POST
 def logout(request):
     auth_logout(request)
+    messages.info(request, 'logout success')
     return redirect('movies:home')
 
 
@@ -77,6 +81,7 @@ def update(request):
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            messages.info(request, 'updated success')
             return redirect('accounts:profile', request.user)
     else:
         form = CustomUserChangeForm(instance=request.user)
@@ -96,6 +101,7 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)
+            messages.info(request, 'change password success')
             return redirect('accounts:profile', request.user.username)
     else:
         form = PasswordChangeForm(request.user)

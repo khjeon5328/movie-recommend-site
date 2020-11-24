@@ -133,5 +133,4 @@ STATICFILES_DIRS = [
     BASE_DIR / 'config'/ 'static', 
 ]
 
-
 AUTH_USER_MODEL = 'accounts.User'
