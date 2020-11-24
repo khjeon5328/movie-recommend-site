@@ -141,7 +141,7 @@ body {
 
 .detailcontainer {
   background-color: white;
-  margin-top: 100px;
+  margin-top: 60px;
   margin-bottom: 100px;
 }
 
@@ -534,6 +534,7 @@ input[type=number] {
   list-style-type: none;
   margin: 0 0 7px 20px;
   color: rgb(80, 80, 80);
+;
 }
 
 
@@ -544,7 +545,31 @@ input[type=number] {
 }
 
 
+.tolist-div {
+  position:sticky;
+  left:80px;
+  top:380px; 
+  color:white; 
+  width: 100px; 
+  height:100px; 
+  vertical-align:middle; 
+  font-family:dh;
+}
 
-.recommend {
-  
+.tolistbtn {
+  width:150px;
+  background-color: transparent;
+  font-size: xx-large;
+  color:white;
+  border:none;
+  outline:none;
+  letter-spacing: 3px;
+}
+
+.tolistbtn:hover {
+  color: #ffb347;
+}
+
+.tolistbtn:focus {
+  outline:none;
 }
