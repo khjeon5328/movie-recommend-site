@@ -525,3 +525,18 @@ input[type=number] {
 }
 
 
+
+
+
+.review-list-item {
+  list-style-type: none;
+  margin: 0 0 7px 20px;
+  color: rgb(80, 80, 80);
+}
+
+
+
+.notofont {
+  font-family:notoR;
+  letter-spacing:1px;
+}

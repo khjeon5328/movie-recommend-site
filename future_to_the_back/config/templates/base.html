@@ -14,7 +14,7 @@
 <body class="background-blk">
   <nav class="navbar navbar-expand-lg navbar-bg d-flex justify-content-between sticky-top">
     <div>
-      <a class="navbar-brand p-0 m-0" href="{% url 'movies:home' %}">
+      <a class="navbar-brand p-0 m-0" href="{% url 'movies:home' %}" title="메인화면으로 이동">
         <img class="logo-size" src="/static/images/FUTURE_TO_THE_BACK_LOGO.png" alt="logo">
       </a>
     </div>
@@ -22,17 +22,17 @@
       <ul class="navbar-nav mr-5">
         {% if not request.user.is_authenticated %}
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:signup' %}">SignUp</a>
+            <a class="nav-link text-white" href="{% url 'accounts:signup' %}" title="회원가입">SignUp</a>
           </li>
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:login' %}">LogIn</a>
+            <a class="nav-link text-white" href="{% url 'accounts:login' %}" title="로그인">LogIn</a>
           </li>
         {% else %}
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-blue" href="{% url 'accounts:profile' request.user.username %}">{{request.user.username}}</a>
+            <a class="nav-link text-blue" href="{% url 'accounts:profile' request.user.username %}" title="나의 프로필 보기">{{request.user.username}}</a>
           </li>
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:logout' %}">Logout</a>
+            <a class="nav-link text-white" href="{% url 'accounts:logout' %}" title="로그아웃">Logout</a>
           </li>
         {% endif %}
       </ul>
