@@ -1,0 +1,127 @@
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+ 
+ 
+<div class="container detailcontainer p-0" style="max-width:820px;">
+
+    <div class="d-flex flex-column ">
+
+      <!-- 여기부터 바꿔치기-->
+      <div class="modal-content d-flex flex-column" style="border-radius:0; border:none;" > 
+        {% comment %} <div class="px-3 py-2" style=""><b> 리뷰 </b></div> {% endcomment %}
+        <div class="p-3">
+          <hr class="m-0">
+
+          <!--상단 제목부분 start-->
+          <div class="d-flex justify-content-between">
+            <div class="p-2" style="display:relative">
+              <span class="review-title">{{review.title}}</span>
+            
+              {% comment %} <span class="review-title-date">{{review.created_at}}</span> {% endcomment %}
+            </div>
+            {% if request.user != review.author %}
+            <div class="d-flex justify-content-center align-self-center m-2">
+              <span id="like-count-{{ review.pk }}">
+                {{ review.like_users.all|length }} 명이 이 글을 좋아합니다.
+              </span>
+              <form id="formlike" data-reviewId="{{ review.pk }}">
+                {% csrf_token %}
+                {% if request.user in review.like_users.all %}
+                  <!--star-fill-->
+                  <button class="iconbtn ">
+                    <i class="far fa-star star-{{review.id}}"></i>
+                  </button>
+                {% else %}
+                  <button class="iconbtn">
+                    <i class="fas fa-star star-{{review.id}}"></i>
+                  </button>
+                <!--star-->
+                {% endif %}
+              </form>
+            </div>
+            {% else %}
+            <div class="d-flex justify-content-center align-self-center m-2">
+              <a href="{% url 'reviews:update' review.id %}" title="수정하기">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-scissors icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M3.5 3.5c-.614-.884-.074-1.962.858-2.5L8 7.226 11.642 1c.932.538 1.472 1.616.858 2.5L8.81 8.61l1.556 2.661a2.5 2.5 0 1 1-.794.637L8 9.73l-1.572 2.177a2.5 2.5 0 1 1-.794-.637L7.19 8.61 3.5 3.5zm2.5 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm7 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                </svg>
+              </a>
+              <form action="{% url 'reviews:delete' review.id %}" method="POST">
+                {% csrf_token %}
+                <button class="iconbtn" title="삭제하기">
+                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+            {% endif %}
+          </div>
+          <!--상단 제목 부분 end-->
+
+          <hr class="m-0">
+          <div class="p-1">
+            {{review.content}}
+          </div>
+          
+        </div>
+        
+        <!-- 댓글 입력 -->
+        <hr>
+        <div class="px-3 comment-count"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
+        <div class="container m-0 p-3" style="max-width:800px; width=100%;"> 
+          <div class="row py-3">
+            <!-- 댓글입력-->
+            <div class="col-1">
+              <div class="mini-prf-container">
+                <!-- 로그인 된 유저 정보로 할 것-->
+                <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+              </div>
+            </div>
+            <div class="col-11" style="padding-left:0;">
+              <!--comment create start-->
+              {% if request.user.is_authenticated %}
+                <form id="create-comment-form" data-review-id="{{ review.pk }}">
+                  {% csrf_token %}
+                    <input id="comment-input-{{ review.pk }}" class="reviewinput" type="text" size="75">
+                  <button class="reviewbtn nobuttonfocus" name="comment">등록</button>
+                </form>
+              {% else %}
+                <a href="{% url 'accounts:login' %}">
+                  <h5>Write comments need login</h5>
+                </a>
+              {% endif %}
+              <!--comment create end-->
+
+            </div>
+          </div>
+          <!-- 댓글 보여주기 -->
+          <div class="comment-list-{{ review.pk }}">
+            {% for comment in review.comment_set.all %}
+            <div class="row py-3">
+              <div class="col-1" style="">
+                <div class="mini-prf-container">
+                  <!-- 로그인 된 유저 정보로 할 것-->
+                  <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+                </div>
+              </div>
+              <div class="col-11" style="padding-left:0;">
+                <p class="m-0" style="font-weight: 500;">{{ comment.author }}</p>
+                <p class="m-0" style="padding-right:40px;">{{ comment.content }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+        </div>
+
+      </div> <!-- modal-content end-->
+      <!-- 여기까지 바꿔치기-->
+
+    </div>
+  </div>
+
+  {% endblock %}
