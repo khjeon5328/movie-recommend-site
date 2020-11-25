@@ -20,7 +20,7 @@
         <div class="row">
 
           <div class="col-3 d-flex flex-column justify-content-center align-items-center">
-            <input class="digitalinput" type="number" id="year" name="year" min="1" max="2020">
+            <input class="digitalinput " type="number" id="year" name="year" min="1" max="2020">
             <h1 class="dymo">YEAR</h1>
           </div>
 
@@ -36,11 +36,11 @@
 
           <div class="col d-flex flex-column justify-content-center align-items-center">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="8" cy="8" r="8" id="amlight" class="light-grey">
+              <circle cx="8" cy="8" r="8" id="amlight" class="light-grey amlight">
             </svg>
             <h1 class="dymo p-0">AM</h1>
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="8" cy="8" r="8" id="pmlight" class="light-grey" >
+              <circle cx="8" cy="8" r="8" id="pmlight" class="light-grey pmlight" >
             </svg>
             <h1 class="dymo p-0">PM</h1>
           
@@ -60,8 +60,66 @@
         </div> <!-- input & tag 닫는 div-->  
     </div> <!-- timemachine container 닫는 div -->
 
+
+    <!-- 현재시간 정보-->
+
+    <div class="container homebox" style="background-color:grey; max-width:780px; margin-top:150px; ">
+      <!-- present title-->
+      <div class="row">
+        <div class="col-12 my-2 d-flex justify-content-center" style="text:center;">
+          <h1 class="label tracking-in-expand" style="">PRESENT TIME</h1>
+        </div>
+      </div>
+
+      <!-- input & tags-->
+      
+        <div class="row">
+
+          <div class="col-3 d-flex flex-column justify-content-center align-items-center">
+            <p class="digitalinput m-0 year" id="present-year">2008</p>
+            <h1 class="dymo">YEAR</h1>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <p class="digitalinput m-0 month" id="present-month">08</p>
+            <h1 class="dymo">MONTH</h1>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <p class="digitalinput m-0 day" id="present-day">08</p>
+            <h1 class="dymo">DAY</h1>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="8" id="amlight" class="light-grey amlight">
+            </svg>
+            <h1 class="dymo p-0">AM</h1>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="8" cy="8" r="8" id="pmlight" class="light-grey pmlight" >
+            </svg>
+            <h1 class="dymo p-0">PM</h1>
+          
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <p class="digitalinput m-0 hour" id="hour">08</p>
+            <h1 class="dymo">HOUR</h1>
+          </div>
+
+          <div class="col d-flex flex-column justify-content-center align-items-center">
+            <p class="digitalinput m-0 min" id="min">33</p>
+            <h1 class="dymo">MIN</h1>
+          </div>
+
+
+        </div> <!-- input & tag 닫는 div-->  
+    </div> <!-- timemachine container 닫는 div -->
+
+
+
     <div class="container d-flex justify-content-center align-items-center">
-      <button class="m-5 cumstom-button lg-button"> Let's Go! </button>
+      <button class="m-5 cumstom-button lg-button" id="button"> Let's Go! </button>
     </div>
   </form>
 
@@ -105,12 +163,17 @@
       return i;
     }
     const now = new Date()
+    console.log(now)
     
+    //현재 시간 변수들
+    const nowYear = now.getFullYear()
+    const nowMonth = addZero(now.getMonth() +1)
+    const nowDay = now.getDate()
     const nowHour = addZero(now.getHours())
     const nowMin = addZero(now.getMinutes())
 
-    const amLight = document.querySelector('#amlight')
-    const pmLight = document.querySelector('#pmlight') 
+    const amLight = document.querySelector('.amlight')
+    const pmLight = document.querySelector('.pmlight') 
       if (nowHour >= 0 && nowHour <12) {
         amLight.classList.replace('light-grey', 'light-green')
         pmLight.classList.replace('light-green', 'light-grey')
@@ -118,9 +181,57 @@
         amLight.classList.replace('light-green', 'light-grey')
         pmLight.classList.replace('light-grey', 'light-green')
       }
+
+      //현재시간
+      const presentYear = document.querySelector('#present-year')
+      const presentMonth = document.querySelector('#present-month')
+      const presentDay = document.querySelector('#present-day')
       const Hour = document.querySelector('#hour')
       const Min = document.querySelector('#min')
+
+      presentYear.innerText = nowYear
+      presentMonth.innerText = nowMonth
+      presentDay.innerText = nowDay
       Hour.innerText = nowHour
       Min.innerText = nowMin  
+
+      //목적시간
+      const destinationYear = document.querySelector('#year')
+      const destinationMonth = document.querySelector('#month')
+      const destinationDay = document.querySelector('#day')
+
+
+  // 타임머신 숫자 줄어드는 기능
+  const button = document.querySelector('#button')
+  button.addEventListener('click', ()=> {
+
+    timemachine(presentYear, destinationYear)
+    timemachine(presentMonth, destinationMonth)
+    timemachine(presentDay, destinationDay)
+  })
+  
+  function timemachine(present, destination) {
+    $(present).animate(destination), {
+    duration: 2000,
+    }
+  }
+
+/*
+
+  $({ val : 0 }).animate({ val : memberCountConTxt }, {
+    duration: 2000,
+    step: function() {
+      var num = numberWithCommas(Math.floor(this.val));
+      $(".memberCountCon").text(num);
+    },
+    complete: function() {
+      var num = numberWithCommas(Math.floor(this.val));
+      $(".memberCountCon").text(num);
+    }
+  }) */
+
+
+
+
   </script>
 {% endblock script %}
