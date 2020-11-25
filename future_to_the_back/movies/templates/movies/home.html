@@ -3,11 +3,36 @@
 
 {% block content %}
 
-  {% comment %} <div class="rotate-scale-up">
-    <img src="{% static 'images/timetravel.png' %}" style="visibility:hidden;">
+<div class="d-flex justify-content-center flex-wrap container align-items-center" style="width:1200px;">
+  <div href="{% url 'movies:movies' %}?year=2019&month=12&day=25" class=" targettime"
+    data-targetyear="2019" data-targetmonth="12" data-targetday="25">
+    #작년 크리스마스
   </div>
+  <div href="{% url 'movies:movies' %}?year=2019&month=02&day=13" class="targettime"
+  data-targetyear="2019" data-targetmonth="02" data-targetday="13">
+    #작년 발렌타인 1위가 궁금해!
+  </div>
+  <div href="{% url 'movies:movies' %}?year=2019&month=04&day=11" class=" targettime"
+  data-targetyear="2019" data-targetmonth="04" data-targetday="11">
+    #19년 중간고사 기간
+  </div>
+  <div href="{% url 'movies:movies' %}?year=2018&month=04&day=28" class=" targettime"
+  data-targetyear="2018" data-targetmonth="04" data-targetday="28">
+    #어벤져스 때문에 놓친 영화!
+  </div>
+  <div href="{% url 'movies:movies' %}?year=2019&month=05&day=08" class="targettime"
+  data-targetyear="2019" data-targetmonth="05" data-targetday="08">
+    #어버이날엔 어떤영화를 봤더라..
+  </div>
+  <div href="{% url 'movies:movies' %}?year=2019&month=08&day=15" class="targettime"
+  data-targetyear="2019" data-targetmonth="08" data-targetday="15">
+    #광복절 영화 복습
+  </div>
+</div>
+
+
+
   <form id="homeform" action="{% url 'movies:movies' %}" method="GET">
- {% endcomment %}
 
     <!-- time machine -->
     <div class="container homebox1" style="background-color:grey; max-width:780px; ">
@@ -126,7 +151,7 @@
     </div>
   </form>
 
-  <div class="d-flex justify-content-center">
+  <!-- <div class="d-flex justify-content-center">
     <div class="list-group">
       <a href="{% url 'movies:movies' %}?year=2019&month=12&day=25" class="list-group-item list-group-item-action active">
         작년 크리스마스 영화 순위
@@ -141,7 +166,14 @@
         어벤져스 영화가 언제 개봉했지?
       </a>
     </div>
-  </div>
+  </div> -->
+
+
+ 
+    
+
+
+  
 
         {% comment %} #20130302 입학
         # 20150927 추석
@@ -150,10 +182,13 @@
         # 20180428 어벤져스
 
         # 20190213 발렌타인
+
+
         # 20191111 빼뺴로
         # 20190508 어버이날
         # 20190815 광복절
         # 20190411 중간고사 {% endcomment %}
+
 
 
 {% endblock content %}
@@ -195,12 +230,12 @@
       return i;
     }
     const now = new Date()
-    console.log(now)
+    // console.log(now)
     
     //현재 시간 변수들
     const nowYear = now.getFullYear()
     const nowMonth = addZero(now.getMonth() +1)
-    const nowDay = now.getDate()
+    const nowDay = addZero(now.getDate())
     const nowHour = addZero(now.getHours())
     const nowMin = addZero(now.getMinutes())
 
@@ -231,70 +266,97 @@
 
 
 
-      //현재시간
-      const presentYear = document.querySelector('#present-year')
-      const presentMonth = document.querySelector('#present-month')
-      const presentDay = document.querySelector('#present-day')
+    //현재시간
+    const presentYear = document.querySelector('#present-year')
+    const presentMonth = document.querySelector('#present-month')
+    const presentDay = document.querySelector('#present-day')
 
 
-      const Hours = document.querySelectorAll('.hour')
-      const Mins = document.querySelectorAll('.min')
+    const Hours = document.querySelectorAll('.hour')
+    const Mins = document.querySelectorAll('.min')
 
 
-      presentYear.innerText = nowYear
-      presentMonth.innerText = nowMonth
-      presentDay.innerText = nowDay
+    presentYear.innerText = nowYear
+    presentMonth.innerText = nowMonth
+    presentDay.innerText = nowDay
 
-      Hours.forEach(Hour => {
-        Hour.innerText = nowHour 
+    Hours.forEach(Hour => {
+      Hour.innerText = nowHour 
+    })
+    Mins.forEach(Min => {
+      Min.innerText = nowMin  
+    })
+
+    //목적시간
+    const destinationYear = document.querySelector('#year')
+    const destinationMonth = document.querySelector('#month')
+    const destinationDay = document.querySelector('#day')
+
+
+    // 타임머신 숫자 줄어드는 기능
+    const button = document.querySelector('#button')
+    button.addEventListener('click', (e)=> {
+      e.preventDefault()
+      const homeForm = document.querySelector('#homeform')
+      timemachine(presentYear, destinationYear)
+      timemachine(presentMonth, destinationMonth)
+      timemachine(presentDay, destinationDay)
+      setTimeout(() => {
+        // document.querySelector('#homeform').submit()
+        homeForm.submit()
+      }, 1800)
+    })
+
+    function timemachine (present, destination) {
+      var $counter = $(present),
+          startVal = $counter.text(),
+          currentVal,
+          endVal = destination.value
+
+      currentVal = startVal
+      const i = setInterval(function ()
+      {
+          if (currentVal == endVal)
+          {
+              clearInterval(i)
+          }
+          else if (currentVal > endVal )
+          {   
+              currentVal--;
+              $counter.text(addZero(currentVal))
+          }
+          else {
+              currentVal++;
+              $counter.text(addZero(currentVal))
+          }
+      }, 100);
+    }
+
+
+
+    // 시간 자동입력
+    const targetDts = document.querySelectorAll('.targettime')
+    targetDts.forEach(targetDt => {
+      console.log(targetDt.dataset)
+      const targetYear = targetDt.dataset.targetyear
+      const targetMonth = targetDt.dataset.targetmonth
+      const targetDay = targetDt.dataset.targetday
+      console.log(targetYear)
+      console.log(targetMonth)
+      console.log(targetDay)
+
+      targetDt.addEventListener('click', (e) => {
+        e.preventDefault()
+        destinationYear.value = targetYear
+        destinationMonth.value = targetMonth
+        destinationDay.value = targetDay
       })
-      Mins.forEach(Min => {
-        Min.innerText = nowMin  
-      })
 
-      //목적시간
-      const destinationYear = document.querySelector('#year')
-      const destinationMonth = document.querySelector('#month')
-      const destinationDay = document.querySelector('#day')
+    })
 
 
-  // 타임머신 숫자 줄어드는 기능
-  const button = document.querySelector('#button')
-  button.addEventListener('click', (e)=> {
-    e.preventDefault()
-    timemachine(presentYear, destinationYear)
-    timemachine(presentMonth, destinationMonth)
-    timemachine(presentDay, destinationDay)
-    setTimeout(() => {
-      document.querySelector('#homeform').submit()
 
-    }, 1500);
-  })
-
-  function timemachine (present, destination) {
-    var $counter = $(present),
-        startVal = $counter.text(),
-        currentVal,
-        endVal = destination.value
-
-    currentVal = startVal
-    const i = setInterval(function ()
-    {
-        if (currentVal == endVal)
-        {
-            clearInterval(i)
-        }
-        else if (currentVal > endVal )
-        {   
-            currentVal--;
-            $counter.text(addZero(currentVal))
-        }
-        else {
-            currentVal++;
-            $counter.text(addZero(currentVal))
-        }
-    }, 100);
-  }
+   
 
 
 
