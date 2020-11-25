@@ -31,7 +31,8 @@
 
   <form id="homeform" class="" action="{% url 'movies:movies' %}" method="GET">
     <!-- time machine -->
-    <div class="container homebox1 " style="background-color:grey; max-width:780px; ">
+
+    <div class="container homebox1" id="destination-time" style="background-color:grey; max-width:780px; ">
       <!-- destination title-->
       <div class="row">
         <div class="col-12 my-2 d-flex justify-content-center" style="text:center;">
@@ -87,7 +88,7 @@
 
     <!-- 현재시간 정보-->
 
-    <div class="container homebox2 " style="background-color:grey; max-width:780px;">
+    <div class="container homebox2 " id="present-time" style="background-color:grey; max-width:780px;">
       <!-- present title-->
       <div class="row">
         <div class="col-12 my-2 d-flex justify-content-center" style="text:center;">
@@ -215,6 +216,7 @@
     
     //현재 시간 변수들
     const nowYear = now.getFullYear()
+    // console.log(nowYear)
     const nowMonth = addZero(now.getMonth() +1)
     const nowDay = addZero(now.getDate())
     const nowHour = addZero(now.getHours())
@@ -274,19 +276,53 @@
     const destinationDay = document.querySelector('#day')
 
 
+  
+
+    // 시간 자동입력
+    const targetDts = document.querySelectorAll('.targettime')
+    targetDts.forEach(targetDt => {
+      // console.log(targetDt.dataset)
+      const targetYear = targetDt.dataset.targetyear
+      const targetMonth = targetDt.dataset.targetmonth
+      const targetDay = targetDt.dataset.targetday
+      // console.log(targetYear)
+      // console.log(targetMonth)
+      // console.log(targetDay)
+
+      targetDt.addEventListener('click', (e) => {
+        e.preventDefault()
+        destinationYear.value = targetYear
+        destinationMonth.value = targetMonth
+        destinationDay.value = targetDay 
+      })
+    })
+
+
+
+
     // 타임머신 숫자 줄어드는 기능
     const button = document.querySelector('#button')
     button.addEventListener('click', (e)=> {
       e.preventDefault()
       const homeForm = document.querySelector('#homeform')
-      homeForm.classList.add('shake')
+
+      const machine1 = document.querySelector('#destination-time')
+      const machine2 = document.querySelector('#present-time')
+      
+      targetDts.forEach(targetDt => {
+        targetDt.classList.add('shake3')
+      })
+      
+      machine1.classList.add('shake1')
+      machine2.classList.add('shake2')
+      button.classList.add('shake3')
       timemachine(presentYear, destinationYear)
       timemachine(presentMonth, destinationMonth)
       timemachine(presentDay, destinationDay)
       setTimeout(() => {
         // document.querySelector('#homeform').submit()
         homeForm.submit()
-      }, 1800)
+      }, 2000)
     })
     
 
@@ -316,34 +352,6 @@
           }
       }, 100);
     }
-
-
-
-    // 시간 자동입력
-    const targetDts = document.querySelectorAll('.targettime')
-    targetDts.forEach(targetDt => {
-      console.log(targetDt.dataset)
-      const targetYear = targetDt.dataset.targetyear
-      const targetMonth = targetDt.dataset.targetmonth
-      const targetDay = targetDt.dataset.targetday
-      console.log(targetYear)
-      console.log(targetMonth)
-      console.log(targetDay)
-
-      targetDt.addEventListener('click', (e) => {
-        e.preventDefault()
-        destinationYear.value = targetYear
-        destinationMonth.value = targetMonth
-        destinationDay.value = targetDay
-        
-      })
-
-    })
-
-
-
-   
-
 
 
   </script>

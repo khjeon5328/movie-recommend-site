@@ -655,11 +655,24 @@ input[type=number] {
   90% { -webkit-transform: translate(2px, 2px) rotate(0deg); }
   100% { -webkit-transform: translate(1px, -2px) rotate(-1deg); }
 }
-.shake {
+.shake1 {
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 0.5s;
+  -webkit-transform-origin: 40% 100%;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.shake2 {
+  -webkit-animation-name: shake;
+  -webkit-animation-duration: 0.5s;
+  -webkit-transform-origin:100% 40%;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+.shake3 {
   -webkit-animation-name: shake;
   -webkit-animation-duration: 0.5s;
   -webkit-transform-origin:50% 50%;
   -webkit-animation-iteration-count: infinite;
-
 }
-
