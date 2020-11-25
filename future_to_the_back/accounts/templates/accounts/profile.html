@@ -7,17 +7,17 @@
 
     <header class="row d-flex p-3">
       <!--profile 사진-->
-      <section class="col-4">
-          {% if person.profile_image %}
-            <div class="mx-auto"><img class="profile-photo" src="{{ person.profile_image.url }}" alt="{{ person.profile_image}}"></div>
-          {% else %}
-            <div class="mx-auto profile-container" style="width:250px; height:250px;"><img class="profile-photo" src="{% static 'images/profile_dft.png' %}"  alt=""></div>
-          {% endif %}
-
-          <form action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
+      <section class="col-4 d-flex flex-column">
+        {% if person.profile_image %}
+          <div class="mx-auto profile-container"><img class="profile-photo" src="{{ person.profile_image.url }}" alt="{{ person.profile_image}}"></div>
+        {% else %}
+          <div class="mx-auto profile-container"><img class="profile-photo" src="{% static 'images/profile_dft.png' %}"  alt=""></div>
+        {% endif %}
+          <form class="d-flex" style="position:absolute; right:0; bottom:0;" action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {% bootstrap_form form layout='inline'%}
-            <input type="submit">
+            <input class="ml-5 form-control-file" type="file" name="profile_image" style="color:transparent;" accept="image/*" id="id_profile_image">
+            <!-- {% bootstrap_form form layout='inline'%} -->
+            <input class="mr-5" type="submit">
           </form>
       </section>
 

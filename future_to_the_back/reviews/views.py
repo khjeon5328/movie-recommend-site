@@ -98,12 +98,15 @@ def create_comment(request, review_id):
         comment.review = review
         comment.author = request.user
         comment.save()
+        photo = comment.author.profile_image
+        print(photo)
         data = {
             'content' : comment.content,
             'author' : str(comment.author),
             'count' : review.comment_set.count(),
             'review_id' : review_id,
             'comment_id' : comment.id,
+            'photo': str(photo),
         }
         return JsonResponse(data)
     context = {

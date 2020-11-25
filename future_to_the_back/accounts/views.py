@@ -183,7 +183,7 @@ def profile_image(request, username):
         'person' : person,
         'form' : form,
     }
-    return render(request, 'accounts/profile1.html', context) 
+    return render(request, 'accounts/profile.html', context) 
 
 
 @require_POST
