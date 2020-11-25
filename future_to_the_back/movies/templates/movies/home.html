@@ -26,12 +26,12 @@
 
 
 
-  <form id="homeform" action="{% url 'movies:movies' %}" method="GET">
+  <!-- <form id="homeform" action="{% url 'movies:movies' %}" method="GET"> -->
 
 
-  <form id="homeform" action="{% url 'movies:movies' %}" method="GET">
+  <form id="homeform" class="" action="{% url 'movies:movies' %}" method="GET">
     <!-- time machine -->
-    <div class="container homebox1" style="background-color:grey; max-width:780px; ">
+    <div class="container homebox1 " style="background-color:grey; max-width:780px; ">
       <!-- destination title-->
       <div class="row">
         <div class="col-12 my-2 d-flex justify-content-center" style="text:center;">
@@ -87,7 +87,7 @@
 
     <!-- 현재시간 정보-->
 
-    <div class="container homebox2" style="background-color:grey; max-width:780px;">
+    <div class="container homebox2 " style="background-color:grey; max-width:780px;">
       <!-- present title-->
       <div class="row">
         <div class="col-12 my-2 d-flex justify-content-center" style="text:center;">
@@ -279,6 +279,7 @@
     button.addEventListener('click', (e)=> {
       e.preventDefault()
       const homeForm = document.querySelector('#homeform')
+      homeForm.classList.add('shake')
       timemachine(presentYear, destinationYear)
       timemachine(presentMonth, destinationMonth)
       timemachine(presentDay, destinationDay)
@@ -287,6 +288,9 @@
         homeForm.submit()
       }, 1800)
     })
+    
+
+
 
     function timemachine (present, destination) {
       var $counter = $(present),
@@ -331,6 +335,7 @@
         destinationYear.value = targetYear
         destinationMonth.value = targetMonth
         destinationDay.value = targetDay
+        
       })
 
     })
