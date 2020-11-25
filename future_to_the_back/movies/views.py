@@ -27,7 +27,7 @@ def movies(request):
         movies_detail.append(MovieDetail.objects.get(movie=i))
 
     first_rank_movie_score = movies_detail[0].netizen_score + movies_detail[0].special_score
-    first_rank_movie_idx = 0
+    first_rank_movie_idx = 1
     for i in range(1, len(movies_detail)):
         score = movies_detail[i].netizen_score + movies_detail[i].special_score
         if score > first_rank_movie_score:
