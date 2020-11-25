@@ -98,7 +98,7 @@ def create_comment(request, review_id):
         comment.review = review
         comment.author = request.user
         comment.save()
-        photo = comment.author.profile_image
+        photo = comment.author.profile_image.url
         print(photo)
         data = {
             'content' : comment.content,
