@@ -204,26 +204,6 @@
     const nowHour = addZero(now.getHours())
     const nowMin = addZero(now.getMinutes())
 
-    // const amLights = document.querySelectorAll('.amlight')
-    // const pmLights = document.querySelectorAll('.pmlight') 
-    //   amLights.forEach(amLight => {
-    //     if (nowHour >= 0 && nowHour <12) {
-    //     amLight.classList.replace('light-grey', 'light-green')
-        
-    //   } else {
-    //     amLight.classList.replace('light-green', 'light-grey')
-    //   }
-    //   })
-
-    //   pmLights.forEach(pmLight => {
-    //     if (nowHour >= 0 && nowHour <12) {
-    //       pmLight.classList.replace('light-green', 'light-grey')
-        
-    //   } else {
-    //     pmLight.classList.replace('light-grey', 'light-green')
-    //   }
-    //   })
-
       
     const amLight1 = document.querySelector('#amlight1')
     const pmLight1 = document.querySelector('#pmlight1') 
@@ -256,10 +236,10 @@
       const presentMonth = document.querySelector('#present-month')
       const presentDay = document.querySelector('#present-day')
 
-      // const Hours = document.querySelectorall('.hour')
+
       const Hours = document.querySelectorAll('.hour')
       const Mins = document.querySelectorAll('.min')
-      // const Min = document.querySelector('.min')
+
 
       presentYear.innerText = nowYear
       presentMonth.innerText = nowMonth
@@ -297,9 +277,8 @@
         currentVal,
         endVal = destination.value
 
-
-    currentVal = startVal;
-    var i = setInterval(function ()
+    currentVal = startVal
+    const i = setInterval(function ()
     {
         if (currentVal == endVal)
         {

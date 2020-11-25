@@ -15,11 +15,18 @@
         {% endif %}
 
         {% if request.user == person %}
-          <form class="d-flex" style="position:absolute; right:0; bottom:0;" action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
+          <form class="d-flex align-self-center" style="position:absolute; bottom:0;" action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input class="ml-5 form-control-file profilebtn" title="수정" style="color:transparent;" type="file" name="profile_image" style="color:transparent;" accept="image/*" id="id_profile_image">
+            <label for="id_profile_image"  title="프로필 이미지 변경" class=" input-file-button d-flex align-items-center justify-content-center">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-camera icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M15 12V6a1 1 0 0 0-1-1h-1.172a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 9.173 3H6.828a1 1 0 0 0-.707.293l-.828.828A3 3 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                <path fill-rule="evenodd" d="M8 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                <path d="M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+              </svg>
+            </label>
+            <input class=" form-control-file" title="수정" style="display:none" type="file" name="profile_image" style="color:transparent;" accept="image/*" id="id_profile_image">
              {% comment %} {% bootstrap_form form layout='inline'%} {% endcomment %}
-            <input value="완료" class="mr-5 profilebtn" type="submit">
+            <input value="완료" class=" input-file-button" type="submit">
           </form>
         {% endif %}
       </section>
@@ -44,11 +51,6 @@
               <form action="{% url 'accounts:update' %}" method="">
                 <button class="btn btn-outline-secondary follow ml-3" style="color:black;"><b>프로필편집</b></button>
               </form>
-              <div class="pl-3 ">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-gear-wide" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"/>
-                </svg>
-              </div>
             {% endif %}
           {% else %}
               <div class="p-3">
