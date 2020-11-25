@@ -212,11 +212,11 @@
       return i;
     }
     const now = new Date()
-    // console.log(now)
+
     
     //현재 시간 변수들
     const nowYear = now.getFullYear()
-    // console.log(nowYear)
+
     const nowMonth = addZero(now.getMonth() +1)
     const nowDay = addZero(now.getDate())
     const nowHour = addZero(now.getHours())
@@ -281,13 +281,10 @@
     // 시간 자동입력
     const targetDts = document.querySelectorAll('.targettime')
     targetDts.forEach(targetDt => {
-      // console.log(targetDt.dataset)
       const targetYear = targetDt.dataset.targetyear
       const targetMonth = targetDt.dataset.targetmonth
       const targetDay = targetDt.dataset.targetday
-      // console.log(targetYear)
-      // console.log(targetMonth)
-      // console.log(targetDay)
+
 
       targetDt.addEventListener('click', (e) => {
         e.preventDefault()
