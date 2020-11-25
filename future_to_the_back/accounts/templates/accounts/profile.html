@@ -17,9 +17,9 @@
         {% if request.user == person %}
           <form class="d-flex" style="position:absolute; right:0; bottom:0;" action="{% url 'accounts:profile_image' request.user %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input class="ml-5 form-control-file" type="file" name="profile_image" style="color:transparent;" accept="image/*" id="id_profile_image">
-            <!-- {% bootstrap_form form layout='inline'%} -->
-            <input class="mr-5" type="submit">
+            <input class="ml-5 form-control-file profilebtn" title="수정" style="color:transparent;" type="file" name="profile_image" style="color:transparent;" accept="image/*" id="id_profile_image">
+             {% comment %} {% bootstrap_form form layout='inline'%} {% endcomment %}
+            <input value="완료" class="mr-5 profilebtn" type="submit">
           </form>
         {% endif %}
       </section>
