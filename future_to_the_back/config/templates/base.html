@@ -22,17 +22,17 @@
       <ul class="navbar-nav mr-5">
         {% if not request.user.is_authenticated %}
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:signup' %}" title="회원가입">SignUp</a>
+            <a class="nav-link text-white" href="{% url 'accounts:signup' %}?next={{ request.get_full_path | urlencode }}" title="회원가입">SignUp</a>
           </li>
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:login' %}" title="로그인">LogIn</a>
+            <a class="nav-link text-white" href="{% url 'accounts:login' %}?next={{ request.get_full_path | urlencode }}" title="로그인">LogIn</a>
           </li>
         {% else %}
           <li class="nav-item nav-item-name">
             <a class="nav-link text-blue" href="{% url 'accounts:profile' request.user.username %}" title="나의 프로필 보기">{{request.user.username}}</a>
           </li>
           <li class="nav-item nav-item-name">
-            <a class="nav-link text-white" href="{% url 'accounts:logout' %}?next={{ request.path | urlencode }}" title="로그아웃">Logout</a>
+            <a class="nav-link text-white" href="{% url 'accounts:logout' %}?next={{ request.get_full_path | urlencode }}" title="로그아웃">Logout</a>
           </li>
         {% endif %}
       </ul>

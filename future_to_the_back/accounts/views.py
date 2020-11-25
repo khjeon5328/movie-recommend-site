@@ -70,7 +70,6 @@ def signup(request):
                 profiledefault = base + color[idx]+ rest
                 user.profile_image = profiledefault
                 user.save()
-
             auth_login(request,user)
             messages.info(request, 'signup success')
             return redirect(request.GET.get('next') or 'movies:home')

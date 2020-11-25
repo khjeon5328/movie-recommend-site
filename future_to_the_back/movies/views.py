@@ -16,8 +16,12 @@ def movies(request):
     month = request.GET.get('month')
     year = request.GET.get('year')
     day = request.GET.get('day')
-    target_dt= year + month + day
+    if not year:
+        target_dt = request.GET.get('next')
+    else:
+        target_dt= year + month + day
 
+    print(target_dt)
     movies = []
     # movies = Movie.objects.filter(target_dt='20180428')
     movies = Movie.objects.filter(target_dt=target_dt)

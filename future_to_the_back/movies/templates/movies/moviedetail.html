@@ -218,10 +218,24 @@
         
         {% if reviews|length %}
         {% for review in reviews  %}
-          <ul class="d-flex m-0 p-0" style=""> 
-            <li class="review-list-item" style="list-style-type: none;"><a href="" id="reviewmodal" data-rvw-id="{{ review.pk }}"  data-movie-id="{{movie_detail.pk}}" title="이 리뷰 자세히 보기" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a></li>
-            <li class="review-list-item" style="list-style-type: none;">{{review.author}}</li>
-            <li class="review-list-item" style="list-style-type: none;">{{review.created_at | date:"Y-d-m"}}</li>
+          <!--review list-->
+          <ul class="d-flex m-0 p-0 justify-content-between" style=""> 
+            <div class="d-flex">
+              <li class="review-list-item" style="list-style-type: none;width:160px;">
+                <a href="" id="reviewmodal" data-rvw-id="{{ review.pk }}"  data-movie-id="{{movie_detail.pk}}" title="이 리뷰 자세히 보기" data-toggle="modal" data-target="#post-{{review.pk}}">{{review.title}}</a>
+              </li>
+              <li class="review-list-item" style="list-style-type: none;">
+                {{ review.content |truncatechars:30 }}
+              </li>
+            </div>
+            <div class="d-flex mr-3">
+              <li class="review-list-item" style="list-style-type: none;">
+                <a href="{% url 'accounts:profile' review.author %}">{{review.author}}</a>
+              </li>
+              <li class="review-list-item" style="list-style-type: none;">
+                {{review.created_at | date:"Y-m-d"}}
+              </li>
+            </div>
           </ul>
         
 
@@ -241,22 +255,24 @@
                       {% if request.user != review.author %}
                       <div class="d-flex justify-content-center align-self-center m-2">
                         <span id="like-count-{{ review.pk }}">
-                          {{ review.like_users.all|length }} 명이 이 글을 좋아합니다. 
+                          좋아요 {{ review.like_users.all|length }} 
                         </span>
-                        <form id="formlike" data-reviewId="{{ review.pk }}">
-                          {% csrf_token %}
-                          {% if request.user in review.like_users.all %}
-                            <!--star-fill iconbtn -->
-                            <button class="iconbtn">
-                              <i class="fas fa-star star-{{review.id}}" style="color:crimson;"></i>
-                            </button>
-                          {% else %}
-                            <button class="iconbtn">
-                              <i class="fas fa-star star-{{review.id}}" style="rgb(211,211,211);"></i>
-                            </button>
-                          <!--star-->
-                          {% endif %}
-                        </form>
+                        {% if request.user.is_authenticated %}
+                          <form id="formlike" data-reviewId="{{ review.pk }}">
+                            {% csrf_token %}
+                            {% if request.user in review.like_users.all %}
+                              <!--star-fill iconbtn -->
+                              <button class="iconbtn">
+                                <i class="fas fa-star star-{{review.id}}" style="color:crimson;"></i>
+                              </button>
+                            {% else %}
+                              <button class="iconbtn">
+                                <i class="fas fa-star star-{{review.id}}" style="rgb(211,211,211);"></i>
+                              </button>
+                            <!--star-->
+                            {% endif %}
+                          </form>
+                        {% endif %}
                       </div>
                       {% else %}
                       <div class="d-flex justify-content-center align-self-center m-2">
@@ -304,7 +320,7 @@
                 
                 <!-- 댓글 -->
 
-                <div class="m-3 pb-2 comment-count" style="border-bottom:1px solid rgb(190,190,190);"><b>댓글 {{review.comment_set.all | length }}개 </b></div>
+                <div class="m-3 pb-2 " style="border-bottom:1px solid rgb(190,190,190);"><b class="comment-count">댓글 {{review.comment_set.all | length }}개 </b></div>
                 <hr class="mt-1 mb-0">
                 <!-- 로그인한사람에게 뜨는 댓글입력창-->
                 {% if request.user.is_authenticated %}
@@ -382,13 +398,13 @@
                 {% else %}
                   <div class="p-3">
                     <div class="d-flex flex-column justify-content-center align-items-center empty-rv p-3" >
-                      <a href=""><p class="m-0" style="font-weight:lighter;">로그인하고 댓글 보기</p></a>
+                      <a href="{% url 'accounts:login' %}">
+                        <p class="m-0" style="font-weight:lighter;">로그인하고 댓글 보기</p>
+                      </a>
                     </div>
                   </div>
                 {% endif %}
                 <!-- 댓글보여주기 end-->
-
-
 
               </div> <!-- modal-content end-->
             </div> <!-- modal dialog end-->
@@ -497,7 +513,7 @@
           const {is_like, like_count } = res.data
           const likeStar = document.querySelector(`.star-${reviewId}`)
           const likeCount = document.querySelector(`#like-count-${reviewId}`)
-          likeCount.innerText = `${like_count} 명이 이 글을 좋아합니다.`
+          likeCount.innerText = `좋아요 ${like_count}`
 
           if (is_like) {
             likeStar.style.color = 'crimson'
@@ -556,7 +572,7 @@
                   const { is_delete, count } = res.data
                   if (is_delete) {
                     document.querySelector(`.previous-comment-${comment_id}`).remove()
-                    document.querySelector('.comment-count').innerText = count
+                    document.querySelector('.comment-count').innerText = `댓글 ${count}개`
                   } else{
                     alert('delte failed')
                   }
@@ -594,7 +610,7 @@
           if (is_delete) {
             previousComment.remove()
             const commentCount = document.querySelector('.comment-count')
-            commentCount.innerText = count
+            commentCount.innerText = `댓글 ${count}개`
           } else{
             alert('delte failed')
           }
