@@ -241,18 +241,18 @@
                       {% if request.user != review.author %}
                       <div class="d-flex justify-content-center align-self-center m-2">
                         <span id="like-count-{{ review.pk }}">
-                          {% comment %} {{ review.like_users.all|length }} 명이 이 글을 좋아합니다. {% endcomment %}
+                          {{ review.like_users.all|length }} 명이 이 글을 좋아합니다. 
                         </span>
                         <form id="formlike" data-reviewId="{{ review.pk }}">
                           {% csrf_token %}
                           {% if request.user in review.like_users.all %}
-                            <!--star-fill-->
-                            <button class="iconbtn ">
-                              <i class="far fa-star star-{{review.id}}"></i>
+                            <!--star-fill iconbtn -->
+                            <button class="iconbtn">
+                              <i class="fas fa-star star-{{review.id}}" style="color:crimson;"></i>
                             </button>
                           {% else %}
                             <button class="iconbtn">
-                              <i class="fas fa-star star-{{review.id}}"></i>
+                              <i class="fas fa-star star-{{review.id}}" style="rgb(211,211,211);"></i>
                             </button>
                           <!--star-->
                           {% endif %}
@@ -502,7 +502,7 @@
           if (is_like) {
             likeStar.style.color = 'crimson'
           } else {
-            likeStar.style.color = ''
+            likeStar.style.color = 'rgb(211,211,211)'
           }
         })
         .catch(err => {
@@ -631,30 +631,3 @@
 
 
 
-
-{% comment %} <script>
- const newCommentDeleteForm = document.querySelector('#new-comment-delete-form')
-            newCommentDeleteForm.addEventListener('submit', (e) => {
-              e.preventDefault()
-              const newCommentId = newCommentDeleteForm.dataset.commentId
-              const reviewIdForNewCommentDelete = newCommentDeleteForm.dataset.reviewId
-              const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${reviewIdForNewCommentDelete}/comments/${newCommentId}/delete/`
-              const previousNewComment = document.querySelector(`.previous-comment-${newCommentId}`)
-              const options = {headers: {'X-CSRFToken': csrfToken}}
-              axios.post(COMMENT_DELETE_URL, {}, options)
-                .then(res => {
-                  const { is_delete, count } = res.data
-                    if (is_delete) {
-                    previousNewComment.remove()
-                    const newCommentCount = document.querySelector('.comment-count')
-                    newCommentCount.innerText = count
-                  } else{
-                    alert('delte failed')
-                  }
-                })
-                .catch(error => {
-                  console.log(error)
-                })
-</script> {% endcomment %}
-
-{% comment %} }) {% endcomment %}

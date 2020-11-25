@@ -163,7 +163,7 @@ def profile(request, username):
     person = get_object_or_404(User, username=username)
     context = {
         'person' : person,
-        'form' : CustomUserProfileChangeForm(instance=request.user)
+        'form' : CustomUserProfileChangeForm()
     }
     return render(request, 'accounts/profile.html', context) 
 

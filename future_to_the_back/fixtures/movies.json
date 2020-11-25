@@ -3,196 +3,6 @@
     "model": "movies.movie",
     "pk": 1,
     "fields": {
-        "movie_name": "사도",
-        "rank": 1,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-16",
-        "sales_share": 38.6,
-        "sales_change": 39.1,
-        "sales_acc": 28548639766,
-        "audi_cnt": 571788,
-        "audi_change": 36.6,
-        "audi_acc": 3590519,
-        "scrn_cnt": 927,
-        "show_cnt": 4716
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 2,
-    "fields": {
-        "movie_name": "탐정 : 더 비기닝",
-        "rank": 2,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 18.4,
-        "sales_change": 52.2,
-        "sales_acc": 5107930113,
-        "audi_cnt": 275581,
-        "audi_change": 50.8,
-        "audi_acc": 628714,
-        "scrn_cnt": 641,
-        "show_cnt": 2580
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 3,
-    "fields": {
-        "movie_name": "메이즈 러너: 스코치 트라이얼",
-        "rank": 3,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-16",
-        "sales_share": 12.7,
-        "sales_change": 5.2,
-        "sales_acc": 15066866149,
-        "audi_cnt": 188997,
-        "audi_change": 2.4,
-        "audi_acc": 1896731,
-        "scrn_cnt": 589,
-        "show_cnt": 2482
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 4,
-    "fields": {
-        "movie_name": "인턴",
-        "rank": 4,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 9.4,
-        "sales_change": 19.7,
-        "sales_acc": 3240065165,
-        "audi_cnt": 136974,
-        "audi_change": 18.2,
-        "audi_acc": 391706,
-        "scrn_cnt": 481,
-        "show_cnt": 1693
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 5,
-    "fields": {
-        "movie_name": "서부전선",
-        "rank": 5,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 7.6,
-        "sales_change": 46.6,
-        "sales_acc": 2349480500,
-        "audi_cnt": 113683,
-        "audi_change": 43.0,
-        "audi_acc": 294480,
-        "scrn_cnt": 509,
-        "show_cnt": 1858
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 6,
-    "fields": {
-        "movie_name": "베테랑",
-        "rank": 6,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-08-05",
-        "sales_share": 5.1,
-        "sales_change": 59.7,
-        "sales_acc": 102060652950,
-        "audi_cnt": 75340,
-        "audi_change": 57.1,
-        "audi_acc": 13016259,
-        "scrn_cnt": 389,
-        "show_cnt": 812
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 7,
-    "fields": {
-        "movie_name": "에베레스트",
-        "rank": 7,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 3.9,
-        "sales_change": 23.0,
-        "sales_acc": 1432818248,
-        "audi_cnt": 50736,
-        "audi_change": 20.3,
-        "audi_acc": 154193,
-        "scrn_cnt": 322,
-        "show_cnt": 858
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 8,
-    "fields": {
-        "movie_name": "뮨: 달의 요정",
-        "rank": 8,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 1.5,
-        "sales_change": 0.1,
-        "sales_acc": 462454700,
-        "audi_cnt": 24563,
-        "audi_change": -3.8,
-        "audi_acc": 61784,
-        "scrn_cnt": 332,
-        "show_cnt": 543
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 9,
-    "fields": {
-        "movie_name": "앤트맨",
-        "rank": 9,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-03",
-        "sales_share": 0.9,
-        "sales_change": 1.2,
-        "sales_acc": 23130852537,
-        "audi_cnt": 13564,
-        "audi_change": -1.3,
-        "audi_acc": 2789439,
-        "scrn_cnt": 132,
-        "show_cnt": 221
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 10,
-    "fields": {
-        "movie_name": "더 매직: 리틀톰과 도둑공주",
-        "rank": 10,
-        "target_dt": "20150927",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2015-09-24",
-        "sales_share": 0.6,
-        "sales_change": -16.1,
-        "sales_acc": 195239300,
-        "audi_cnt": 9055,
-        "audi_change": -17.4,
-        "audi_acc": 26190,
-        "scrn_cnt": 188,
-        "show_cnt": 262
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 11,
-    "fields": {
         "movie_name": "신세계",
         "rank": 1,
         "target_dt": "20130302",
@@ -210,7 +20,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 12,
+    "pk": 2,
     "fields": {
         "movie_name": "7번방의 선물",
         "rank": 2,
@@ -229,7 +39,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 13,
+    "pk": 3,
     "fields": {
         "movie_name": "잭 더 자이언트 킬러",
         "rank": 3,
@@ -248,7 +58,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 14,
+    "pk": 4,
     "fields": {
         "movie_name": "베를린",
         "rank": 4,
@@ -267,7 +77,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 15,
+    "pk": 5,
     "fields": {
         "movie_name": "스토커",
         "rank": 5,
@@ -286,7 +96,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 16,
+    "pk": 6,
     "fields": {
         "movie_name": "차이니즈 조디악",
         "rank": 6,
@@ -305,7 +115,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 17,
+    "pk": 7,
     "fields": {
         "movie_name": "빌리와 용감한 녀석들 2 ",
         "rank": 7,
@@ -324,7 +134,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 18,
+    "pk": 8,
     "fields": {
         "movie_name": "더 자이언트",
         "rank": 8,
@@ -343,7 +153,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 19,
+    "pk": 9,
     "fields": {
         "movie_name": "스카이포스 3D",
         "rank": 9,
@@ -362,7 +172,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 20,
+    "pk": 10,
     "fields": {
         "movie_name": "분노의 윤리학",
         "rank": 10,
@@ -377,6 +187,196 @@
         "audi_acc": 211399,
         "scrn_cnt": 145,
         "show_cnt": 308
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 11,
+    "fields": {
+        "movie_name": "사도",
+        "rank": 1,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-16",
+        "sales_share": 38.6,
+        "sales_change": 39.1,
+        "sales_acc": 28548639766,
+        "audi_cnt": 571788,
+        "audi_change": 36.6,
+        "audi_acc": 3590519,
+        "scrn_cnt": 927,
+        "show_cnt": 4716
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 12,
+    "fields": {
+        "movie_name": "탐정 : 더 비기닝",
+        "rank": 2,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 18.4,
+        "sales_change": 52.2,
+        "sales_acc": 5107930113,
+        "audi_cnt": 275581,
+        "audi_change": 50.8,
+        "audi_acc": 628714,
+        "scrn_cnt": 641,
+        "show_cnt": 2580
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 13,
+    "fields": {
+        "movie_name": "메이즈 러너: 스코치 트라이얼",
+        "rank": 3,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-16",
+        "sales_share": 12.7,
+        "sales_change": 5.2,
+        "sales_acc": 15066866149,
+        "audi_cnt": 188997,
+        "audi_change": 2.4,
+        "audi_acc": 1896731,
+        "scrn_cnt": 589,
+        "show_cnt": 2482
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 14,
+    "fields": {
+        "movie_name": "인턴",
+        "rank": 4,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 9.4,
+        "sales_change": 19.7,
+        "sales_acc": 3240065165,
+        "audi_cnt": 136974,
+        "audi_change": 18.2,
+        "audi_acc": 391706,
+        "scrn_cnt": 481,
+        "show_cnt": 1693
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 15,
+    "fields": {
+        "movie_name": "서부전선",
+        "rank": 5,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 7.6,
+        "sales_change": 46.6,
+        "sales_acc": 2349480500,
+        "audi_cnt": 113683,
+        "audi_change": 43.0,
+        "audi_acc": 294480,
+        "scrn_cnt": 509,
+        "show_cnt": 1858
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 16,
+    "fields": {
+        "movie_name": "베테랑",
+        "rank": 6,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-08-05",
+        "sales_share": 5.1,
+        "sales_change": 59.7,
+        "sales_acc": 102060652950,
+        "audi_cnt": 75340,
+        "audi_change": 57.1,
+        "audi_acc": 13016259,
+        "scrn_cnt": 389,
+        "show_cnt": 812
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 17,
+    "fields": {
+        "movie_name": "에베레스트",
+        "rank": 7,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 3.9,
+        "sales_change": 23.0,
+        "sales_acc": 1432818248,
+        "audi_cnt": 50736,
+        "audi_change": 20.3,
+        "audi_acc": 154193,
+        "scrn_cnt": 322,
+        "show_cnt": 858
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 18,
+    "fields": {
+        "movie_name": "뮨: 달의 요정",
+        "rank": 8,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 1.5,
+        "sales_change": 0.1,
+        "sales_acc": 462454700,
+        "audi_cnt": 24563,
+        "audi_change": -3.8,
+        "audi_acc": 61784,
+        "scrn_cnt": 332,
+        "show_cnt": 543
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 19,
+    "fields": {
+        "movie_name": "앤트맨",
+        "rank": 9,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-03",
+        "sales_share": 0.9,
+        "sales_change": 1.2,
+        "sales_acc": 23130852537,
+        "audi_cnt": 13564,
+        "audi_change": -1.3,
+        "audi_acc": 2789439,
+        "scrn_cnt": 132,
+        "show_cnt": 221
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 20,
+    "fields": {
+        "movie_name": "더 매직: 리틀톰과 도둑공주",
+        "rank": 10,
+        "target_dt": "20150927",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2015-09-24",
+        "sales_share": 0.6,
+        "sales_change": -16.1,
+        "sales_acc": 195239300,
+        "audi_cnt": 9055,
+        "audi_change": -17.4,
+        "audi_acc": 26190,
+        "scrn_cnt": 188,
+        "show_cnt": 262
     }
 },
 {
@@ -573,196 +573,6 @@
     "model": "movies.movie",
     "pk": 31,
     "fields": {
-        "movie_name": "백두산",
-        "rank": 1,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-19",
-        "sales_share": 47.0,
-        "sales_change": 102.0,
-        "sales_acc": 35740411140,
-        "audi_cnt": 936372,
-        "audi_change": 87.9,
-        "audi_acc": 4177530,
-        "scrn_cnt": 1628,
-        "show_cnt": 7711
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 32,
-    "fields": {
-        "movie_name": "캣츠",
-        "rank": 2,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-24",
-        "sales_share": 15.9,
-        "sales_change": 77.4,
-        "sales_acc": 4362510610,
-        "audi_cnt": 312572,
-        "audi_change": 67.3,
-        "audi_acc": 501736,
-        "scrn_cnt": 1076,
-        "show_cnt": 4791
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 33,
-    "fields": {
-        "movie_name": "시동",
-        "rank": 3,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-18",
-        "sales_share": 14.4,
-        "sales_change": 81.9,
-        "sales_acc": 14454540620,
-        "audi_cnt": 286247,
-        "audi_change": 68.5,
-        "audi_acc": 1707550,
-        "scrn_cnt": 1000,
-        "show_cnt": 3436
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 34,
-    "fields": {
-        "movie_name": "겨울왕국 2",
-        "rank": 4,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-11-21",
-        "sales_share": 8.3,
-        "sales_change": 169.9,
-        "sales_acc": 108770768090,
-        "audi_cnt": 167542,
-        "audi_change": 152.5,
-        "audi_acc": 13025631,
-        "scrn_cnt": 816,
-        "show_cnt": 1944
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 35,
-    "fields": {
-        "movie_name": "신비아파트 극장판 하늘도깨비 대 요르문간드",
-        "rank": 5,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-19",
-        "sales_share": 6.7,
-        "sales_change": 1224.2,
-        "sales_acc": 3860184600,
-        "audi_cnt": 145488,
-        "audi_change": 1144.3,
-        "audi_acc": 484819,
-        "scrn_cnt": 714,
-        "show_cnt": 1475
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 36,
-    "fields": {
-        "movie_name": "눈의 여왕4",
-        "rank": 6,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-24",
-        "sales_share": 2.7,
-        "sales_change": 621.6,
-        "sales_acc": 550019060,
-        "audi_cnt": 56875,
-        "audi_change": 525.5,
-        "audi_acc": 68010,
-        "scrn_cnt": 541,
-        "show_cnt": 846
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 37,
-    "fields": {
-        "movie_name": "프린스 코기",
-        "rank": 7,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-24",
-        "sales_share": 2.4,
-        "sales_change": 723.5,
-        "sales_acc": 484189500,
-        "audi_cnt": 50489,
-        "audi_change": 563.9,
-        "audi_acc": 61417,
-        "scrn_cnt": 455,
-        "show_cnt": 751
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 38,
-    "fields": {
-        "movie_name": "포드 V 페라리",
-        "rank": 8,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-04",
-        "sales_share": 0.9,
-        "sales_change": 38.7,
-        "sales_acc": 9783604320,
-        "audi_cnt": 16455,
-        "audi_change": 25.1,
-        "audi_acc": 1113617,
-        "scrn_cnt": 147,
-        "show_cnt": 212
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 39,
-    "fields": {
-        "movie_name": "나이브스 아웃",
-        "rank": 9,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-04",
-        "sales_share": 0.7,
-        "sales_change": 29.9,
-        "sales_acc": 5039925070,
-        "audi_cnt": 13323,
-        "audi_change": 20.1,
-        "audi_acc": 596114,
-        "scrn_cnt": 119,
-        "show_cnt": 188
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 40,
-    "fields": {
-        "movie_name": "쥬만지: 넥스트 레벨",
-        "rank": 10,
-        "target_dt": "20191225",
-        "rank_old_and_new": "OLD",
-        "open_dt": "2019-12-11",
-        "sales_share": 0.2,
-        "sales_change": 19.6,
-        "sales_acc": 8705255150,
-        "audi_cnt": 4786,
-        "audi_change": -0.8,
-        "audi_acc": 1045842,
-        "scrn_cnt": 60,
-        "show_cnt": 75
-    }
-},
-{
-    "model": "movies.movie",
-    "pk": 41,
-    "fields": {
         "movie_name": "어벤져스: 인피니티 워",
         "rank": 1,
         "target_dt": "20180428",
@@ -780,7 +590,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 42,
+    "pk": 32,
     "fields": {
         "movie_name": "그날, 바다",
         "rank": 2,
@@ -799,7 +609,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 43,
+    "pk": 33,
     "fields": {
         "movie_name": "램페이지",
         "rank": 3,
@@ -818,7 +628,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 44,
+    "pk": 34,
     "fields": {
         "movie_name": "살인소설",
         "rank": 4,
@@ -837,7 +647,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 45,
+    "pk": 35,
     "fields": {
         "movie_name": "레오나르도 다 빈치",
         "rank": 5,
@@ -856,7 +666,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 46,
+    "pk": 36,
     "fields": {
         "movie_name": "콰이어트 플레이스",
         "rank": 6,
@@ -875,7 +685,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 47,
+    "pk": 37,
     "fields": {
         "movie_name": "당갈",
         "rank": 7,
@@ -894,7 +704,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 48,
+    "pk": 38,
     "fields": {
         "movie_name": "아기곰 보보 구출 대작전",
         "rank": 8,
@@ -913,7 +723,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 49,
+    "pk": 39,
     "fields": {
         "movie_name": "박하사탕",
         "rank": 9,
@@ -932,7 +742,7 @@
 },
 {
     "model": "movies.movie",
-    "pk": 50,
+    "pk": 40,
     "fields": {
         "movie_name": "바람 바람 바람",
         "rank": 10,
@@ -947,6 +757,1146 @@
         "audi_acc": 1190780,
         "scrn_cnt": 57,
         "show_cnt": 88
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 41,
+    "fields": {
+        "movie_name": "백두산",
+        "rank": 1,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-19",
+        "sales_share": 47.0,
+        "sales_change": 102.0,
+        "sales_acc": 35740411140,
+        "audi_cnt": 936372,
+        "audi_change": 87.9,
+        "audi_acc": 4177530,
+        "scrn_cnt": 1628,
+        "show_cnt": 7711
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 42,
+    "fields": {
+        "movie_name": "캣츠",
+        "rank": 2,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-24",
+        "sales_share": 15.9,
+        "sales_change": 77.4,
+        "sales_acc": 4362510610,
+        "audi_cnt": 312572,
+        "audi_change": 67.3,
+        "audi_acc": 501736,
+        "scrn_cnt": 1076,
+        "show_cnt": 4791
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 43,
+    "fields": {
+        "movie_name": "시동",
+        "rank": 3,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-18",
+        "sales_share": 14.4,
+        "sales_change": 81.9,
+        "sales_acc": 14454540620,
+        "audi_cnt": 286247,
+        "audi_change": 68.5,
+        "audi_acc": 1707550,
+        "scrn_cnt": 1000,
+        "show_cnt": 3436
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 44,
+    "fields": {
+        "movie_name": "겨울왕국 2",
+        "rank": 4,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-11-21",
+        "sales_share": 8.3,
+        "sales_change": 169.9,
+        "sales_acc": 108770768090,
+        "audi_cnt": 167542,
+        "audi_change": 152.5,
+        "audi_acc": 13025631,
+        "scrn_cnt": 816,
+        "show_cnt": 1944
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 45,
+    "fields": {
+        "movie_name": "신비아파트 극장판 하늘도깨비 대 요르문간드",
+        "rank": 5,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-19",
+        "sales_share": 6.7,
+        "sales_change": 1224.2,
+        "sales_acc": 3860184600,
+        "audi_cnt": 145488,
+        "audi_change": 1144.3,
+        "audi_acc": 484819,
+        "scrn_cnt": 714,
+        "show_cnt": 1475
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 46,
+    "fields": {
+        "movie_name": "눈의 여왕4",
+        "rank": 6,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-24",
+        "sales_share": 2.7,
+        "sales_change": 621.6,
+        "sales_acc": 550019060,
+        "audi_cnt": 56875,
+        "audi_change": 525.5,
+        "audi_acc": 68010,
+        "scrn_cnt": 541,
+        "show_cnt": 846
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 47,
+    "fields": {
+        "movie_name": "프린스 코기",
+        "rank": 7,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-24",
+        "sales_share": 2.4,
+        "sales_change": 723.5,
+        "sales_acc": 484189500,
+        "audi_cnt": 50489,
+        "audi_change": 563.9,
+        "audi_acc": 61417,
+        "scrn_cnt": 455,
+        "show_cnt": 751
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 48,
+    "fields": {
+        "movie_name": "포드 V 페라리",
+        "rank": 8,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-04",
+        "sales_share": 0.9,
+        "sales_change": 38.7,
+        "sales_acc": 9783604320,
+        "audi_cnt": 16455,
+        "audi_change": 25.1,
+        "audi_acc": 1113617,
+        "scrn_cnt": 147,
+        "show_cnt": 212
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 49,
+    "fields": {
+        "movie_name": "나이브스 아웃",
+        "rank": 9,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-04",
+        "sales_share": 0.7,
+        "sales_change": 29.9,
+        "sales_acc": 5039925070,
+        "audi_cnt": 13323,
+        "audi_change": 20.1,
+        "audi_acc": 596114,
+        "scrn_cnt": 119,
+        "show_cnt": 188
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 50,
+    "fields": {
+        "movie_name": "쥬만지: 넥스트 레벨",
+        "rank": 10,
+        "target_dt": "20191225",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-12-11",
+        "sales_share": 0.2,
+        "sales_change": 19.6,
+        "sales_acc": 8705255150,
+        "audi_cnt": 4786,
+        "audi_change": -0.8,
+        "audi_acc": 1045842,
+        "scrn_cnt": 60,
+        "show_cnt": 75
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 121,
+    "fields": {
+        "movie_name": "극한직업",
+        "rank": 1,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-23",
+        "sales_share": 42.9,
+        "sales_change": -12.9,
+        "sales_acc": 115981192982,
+        "audi_cnt": 172086,
+        "audi_change": -13.1,
+        "audi_acc": 13423352,
+        "scrn_cnt": 1193,
+        "show_cnt": 6439
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 122,
+    "fields": {
+        "movie_name": "증인",
+        "rank": 2,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-02-13",
+        "sales_share": 20.0,
+        "sales_change": 3500.7,
+        "sales_acc": 964073910,
+        "audi_cnt": 81424,
+        "audi_change": 3499.6,
+        "audi_acc": 117449,
+        "scrn_cnt": 884,
+        "show_cnt": 3833
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 123,
+    "fields": {
+        "movie_name": "알리타: 배틀 엔젤",
+        "rank": 3,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-02-05",
+        "sales_share": 13.7,
+        "sales_change": -20.7,
+        "sales_acc": 13763624039,
+        "audi_cnt": 48230,
+        "audi_change": -24.0,
+        "audi_acc": 1434585,
+        "scrn_cnt": 673,
+        "show_cnt": 2679
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 124,
+    "fields": {
+        "movie_name": "기묘한 가족",
+        "rank": 4,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-02-13",
+        "sales_share": 10.5,
+        "sales_change": 6008.7,
+        "sales_acc": 443839900,
+        "audi_cnt": 42736,
+        "audi_change": 5675.1,
+        "audi_acc": 57358,
+        "scrn_cnt": 625,
+        "show_cnt": 2741
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 125,
+    "fields": {
+        "movie_name": "드래곤 길들이기 3",
+        "rank": 5,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-30",
+        "sales_share": 3.8,
+        "sales_change": -36.0,
+        "sales_acc": 10364886076,
+        "audi_cnt": 16226,
+        "audi_change": -35.3,
+        "audi_acc": 1245691,
+        "scrn_cnt": 445,
+        "show_cnt": 809
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 126,
+    "fields": {
+        "movie_name": "뺑반",
+        "rank": 6,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-30",
+        "sales_share": 3.0,
+        "sales_change": -59.1,
+        "sales_acc": 15025055678,
+        "audi_cnt": 11793,
+        "audi_change": -59.3,
+        "audi_acc": 1802599,
+        "scrn_cnt": 369,
+        "show_cnt": 879
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 127,
+    "fields": {
+        "movie_name": "극장판 헬로카봇: 옴파로스 섬의 비밀",
+        "rank": 7,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-31",
+        "sales_share": 0.6,
+        "sales_change": -33.4,
+        "sales_acc": 4180404430,
+        "audi_cnt": 3272,
+        "audi_change": -31.1,
+        "audi_acc": 534680,
+        "scrn_cnt": 168,
+        "show_cnt": 211
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 128,
+    "fields": {
+        "movie_name": "신밧드와 마법 양탄자",
+        "rank": 8,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-02-13",
+        "sales_share": 0.6,
+        "sales_change": 9014.4,
+        "sales_acc": 18889600,
+        "audi_cnt": 3056,
+        "audi_change": 7353.7,
+        "audi_acc": 3097,
+        "scrn_cnt": 206,
+        "show_cnt": 234
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 129,
+    "fields": {
+        "movie_name": "가버나움",
+        "rank": 9,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-24",
+        "sales_share": 0.5,
+        "sales_change": -49.7,
+        "sales_acc": 811563896,
+        "audi_cnt": 2167,
+        "audi_change": -51.3,
+        "audi_acc": 96692,
+        "scrn_cnt": 61,
+        "show_cnt": 124
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 130,
+    "fields": {
+        "movie_name": "그린 북",
+        "rank": 10,
+        "target_dt": "20190213",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-01-09",
+        "sales_share": 0.4,
+        "sales_change": -29.9,
+        "sales_acc": 2481195144,
+        "audi_cnt": 1767,
+        "audi_change": -31.8,
+        "audi_acc": 283695,
+        "scrn_cnt": 53,
+        "show_cnt": 90
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 131,
+    "fields": {
+        "movie_name": "신의 한 수: 귀수편",
+        "rank": 1,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-11-07",
+        "sales_share": 51.6,
+        "sales_change": -63.7,
+        "sales_acc": 10442554120,
+        "audi_cnt": 132862,
+        "audi_change": -60.3,
+        "audi_acc": 1203827,
+        "scrn_cnt": 1184,
+        "show_cnt": 6046
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 132,
+    "fields": {
+        "movie_name": "82년생 김지영",
+        "rank": 2,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-23",
+        "sales_share": 17.6,
+        "sales_change": -63.2,
+        "sales_acc": 26563466600,
+        "audi_cnt": 46795,
+        "audi_change": -59.1,
+        "audi_acc": 3220820,
+        "scrn_cnt": 974,
+        "show_cnt": 4014
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 133,
+    "fields": {
+        "movie_name": "터미네이터: 다크 페이트",
+        "rank": 3,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-30",
+        "sales_share": 14.5,
+        "sales_change": -75.4,
+        "sales_acc": 17552649940,
+        "audi_cnt": 37875,
+        "audi_change": -73.2,
+        "audi_acc": 2098231,
+        "scrn_cnt": 894,
+        "show_cnt": 3535
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 134,
+    "fields": {
+        "movie_name": "날씨의 아이",
+        "rank": 4,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-30",
+        "sales_share": 3.9,
+        "sales_change": -73.6,
+        "sales_acc": 4381449530,
+        "audi_cnt": 9706,
+        "audi_change": -72.9,
+        "audi_acc": 530073,
+        "scrn_cnt": 440,
+        "show_cnt": 840
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 135,
+    "fields": {
+        "movie_name": "아담스 패밀리",
+        "rank": 5,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-11-07",
+        "sales_share": 2.2,
+        "sales_change": -93.8,
+        "sales_acc": 1744164870,
+        "audi_cnt": 6214,
+        "audi_change": -93.4,
+        "audi_acc": 215983,
+        "scrn_cnt": 480,
+        "show_cnt": 791
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 136,
+    "fields": {
+        "movie_name": "닥터 슬립",
+        "rank": 6,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-11-07",
+        "sales_share": 2.3,
+        "sales_change": -58.9,
+        "sales_acc": 458532020,
+        "audi_cnt": 5924,
+        "audi_change": -54.5,
+        "audi_acc": 52267,
+        "scrn_cnt": 457,
+        "show_cnt": 900
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 137,
+    "fields": {
+        "movie_name": "감쪽같은 그녀",
+        "rank": 7,
+        "target_dt": "20191111",
+        "rank_old_and_new": "NEW",
+        "open_dt": "2019-12-04",
+        "sales_share": 1.9,
+        "sales_change": 100.0,
+        "sales_acc": 44820000,
+        "audi_cnt": 5076,
+        "audi_change": 100.0,
+        "audi_acc": 6016,
+        "scrn_cnt": 23,
+        "show_cnt": 23
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 138,
+    "fields": {
+        "movie_name": "조커",
+        "rank": 8,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-02",
+        "sales_share": 1.3,
+        "sales_change": -57.3,
+        "sales_acc": 45197896680,
+        "audi_cnt": 3345,
+        "audi_change": -54.0,
+        "audi_acc": 5226539,
+        "scrn_cnt": 207,
+        "show_cnt": 322
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 139,
+    "fields": {
+        "movie_name": "말레피센트 2",
+        "rank": 9,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-17",
+        "sales_share": 0.9,
+        "sales_change": -81.1,
+        "sales_acc": 12107842450,
+        "audi_cnt": 2440,
+        "audi_change": -80.1,
+        "audi_acc": 1434461,
+        "scrn_cnt": 215,
+        "show_cnt": 321
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 140,
+    "fields": {
+        "movie_name": "가장 보통의 연애",
+        "rank": 10,
+        "target_dt": "20191111",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-10-02",
+        "sales_share": 0.5,
+        "sales_change": -56.3,
+        "sales_acc": 24859405410,
+        "audi_cnt": 1771,
+        "audi_change": -54.8,
+        "audi_acc": 2920307,
+        "scrn_cnt": 156,
+        "show_cnt": 235
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 141,
+    "fields": {
+        "movie_name": "어벤져스: 엔드게임",
+        "rank": 1,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-24",
+        "sales_share": 61.5,
+        "sales_change": -25.2,
+        "sales_acc": 103287237560,
+        "audi_cnt": 120161,
+        "audi_change": -26.9,
+        "audi_acc": 11876179,
+        "scrn_cnt": 2167,
+        "show_cnt": 8662
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 142,
+    "fields": {
+        "movie_name": "나의 특별한 형제",
+        "rank": 2,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-01",
+        "sales_share": 26.1,
+        "sales_change": -20.9,
+        "sales_acc": 7973322260,
+        "audi_cnt": 58566,
+        "audi_change": -26.2,
+        "audi_acc": 976585,
+        "scrn_cnt": 855,
+        "show_cnt": 3582
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 143,
+    "fields": {
+        "movie_name": "호텔 뭄바이",
+        "rank": 3,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-08",
+        "sales_share": 2.5,
+        "sales_change": 444.3,
+        "sales_acc": 67409500,
+        "audi_cnt": 5723,
+        "audi_change": 471.7,
+        "audi_acc": 9359,
+        "scrn_cnt": 207,
+        "show_cnt": 787
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 144,
+    "fields": {
+        "movie_name": "악인전",
+        "rank": 4,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-15",
+        "sales_share": 1.6,
+        "sales_change": -68.3,
+        "sales_acc": 118332600,
+        "audi_cnt": 3514,
+        "audi_change": -64.7,
+        "audi_acc": 13738,
+        "scrn_cnt": 20,
+        "show_cnt": 20
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 145,
+    "fields": {
+        "movie_name": "뽀로로 극장판 보물섬 대모험",
+        "rank": 5,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-25",
+        "sales_share": 1.4,
+        "sales_change": -41.6,
+        "sales_acc": 5137646350,
+        "audi_cnt": 3466,
+        "audi_change": -42.4,
+        "audi_acc": 669082,
+        "scrn_cnt": 359,
+        "show_cnt": 516
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 146,
+    "fields": {
+        "movie_name": "고양이 여행 리포트",
+        "rank": 6,
+        "target_dt": "20190508",
+        "rank_old_and_new": "NEW",
+        "open_dt": "2019-05-09",
+        "sales_share": 0.6,
+        "sales_change": 100.0,
+        "sales_acc": 25226000,
+        "audi_cnt": 1088,
+        "audi_change": 100.0,
+        "audi_acc": 3181,
+        "scrn_cnt": 6,
+        "show_cnt": 6
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 147,
+    "fields": {
+        "movie_name": "배심원들",
+        "rank": 7,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-15",
+        "sales_share": 0.6,
+        "sales_change": -46.2,
+        "sales_acc": 58609000,
+        "audi_cnt": 1083,
+        "audi_change": -46.3,
+        "audi_acc": 6571,
+        "scrn_cnt": 6,
+        "show_cnt": 6
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 148,
+    "fields": {
+        "movie_name": "미스 스티븐스",
+        "rank": 8,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-02",
+        "sales_share": 0.4,
+        "sales_change": -0.3,
+        "sales_acc": 106233260,
+        "audi_cnt": 942,
+        "audi_change": 0.2,
+        "audi_acc": 13095,
+        "scrn_cnt": 52,
+        "show_cnt": 104
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 149,
+    "fields": {
+        "movie_name": "어린 의뢰인",
+        "rank": 9,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-05-22",
+        "sales_share": 0.4,
+        "sales_change": -46.1,
+        "sales_acc": 71500000,
+        "audi_cnt": 924,
+        "audi_change": -42.3,
+        "audi_acc": 8024,
+        "scrn_cnt": 5,
+        "show_cnt": 5
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 150,
+    "fields": {
+        "movie_name": "판의 미로 - 오필리아와 세 개의 열쇠",
+        "rank": 10,
+        "target_dt": "20190508",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2006-11-30",
+        "sales_share": 0.4,
+        "sales_change": 11.2,
+        "sales_acc": 2908940848,
+        "audi_cnt": 898,
+        "audi_change": 5.4,
+        "audi_acc": 486208,
+        "scrn_cnt": 37,
+        "show_cnt": 90
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 151,
+    "fields": {
+        "movie_name": "분노의 질주: 홉스&쇼",
+        "rank": 1,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-14",
+        "sales_share": 34.1,
+        "sales_change": 69.6,
+        "sales_acc": 7929726860,
+        "audi_cnt": 551246,
+        "audi_change": 56.8,
+        "audi_acc": 904085,
+        "scrn_cnt": 1291,
+        "show_cnt": 5898
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 152,
+    "fields": {
+        "movie_name": "봉오동 전투",
+        "rank": 2,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-07",
+        "sales_share": 28.5,
+        "sales_change": 142.0,
+        "sales_acc": 26712644583,
+        "audi_cnt": 479598,
+        "audi_change": 123.7,
+        "audi_acc": 3148747,
+        "scrn_cnt": 1234,
+        "show_cnt": 5213
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 153,
+    "fields": {
+        "movie_name": "엑시트",
+        "rank": 3,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-07-31",
+        "sales_share": 23.3,
+        "sales_change": 109.6,
+        "sales_acc": 56925227562,
+        "audi_cnt": 392871,
+        "audi_change": 95.1,
+        "audi_acc": 6781123,
+        "scrn_cnt": 1029,
+        "show_cnt": 4772
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 154,
+    "fields": {
+        "movie_name": "안녕, 티라노: 영원히, 함께",
+        "rank": 4,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-14",
+        "sales_share": 3.1,
+        "sales_change": 336.1,
+        "sales_acc": 631445980,
+        "audi_cnt": 56596,
+        "audi_change": 294.4,
+        "audi_acc": 79977,
+        "scrn_cnt": 512,
+        "show_cnt": 857
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 155,
+    "fields": {
+        "movie_name": "암전",
+        "rank": 5,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-15",
+        "sales_share": 1.9,
+        "sales_change": 97083.0,
+        "sales_acc": 311941860,
+        "audi_cnt": 30566,
+        "audi_change": 87231.4,
+        "audi_acc": 35004,
+        "scrn_cnt": 423,
+        "show_cnt": 844
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 156,
+    "fields": {
+        "movie_name": "마이펫의 이중생활 2",
+        "rank": 6,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-07-31",
+        "sales_share": 1.6,
+        "sales_change": 177.7,
+        "sales_acc": 7740404735,
+        "audi_cnt": 29681,
+        "audi_change": 146.2,
+        "audi_acc": 1014491,
+        "scrn_cnt": 312,
+        "show_cnt": 399
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 157,
+    "fields": {
+        "movie_name": "원더랜드",
+        "rank": 7,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-14",
+        "sales_share": 1.6,
+        "sales_change": 256.7,
+        "sales_acc": 320479850,
+        "audi_cnt": 28544,
+        "audi_change": 204.5,
+        "audi_acc": 41677,
+        "scrn_cnt": 404,
+        "show_cnt": 537
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 158,
+    "fields": {
+        "movie_name": "레드슈즈",
+        "rank": 8,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-07-25",
+        "sales_share": 0.9,
+        "sales_change": 238.8,
+        "sales_acc": 5472165470,
+        "audi_cnt": 15574,
+        "audi_change": 207.7,
+        "audi_acc": 703870,
+        "scrn_cnt": 164,
+        "show_cnt": 196
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 159,
+    "fields": {
+        "movie_name": "사자",
+        "rank": 9,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-07-31",
+        "sales_share": 0.8,
+        "sales_change": 119.3,
+        "sales_acc": 12679958665,
+        "audi_cnt": 13726,
+        "audi_change": 111.0,
+        "audi_acc": 1581372,
+        "scrn_cnt": 226,
+        "show_cnt": 397
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 160,
+    "fields": {
+        "movie_name": "앵그리 버드 2: 독수리 왕국의 침공",
+        "rank": 10,
+        "target_dt": "20190815",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-08-07",
+        "sales_share": 0.5,
+        "sales_change": 235.2,
+        "sales_acc": 1282369233,
+        "audi_cnt": 10323,
+        "audi_change": 190.7,
+        "audi_acc": 168241,
+        "scrn_cnt": 137,
+        "show_cnt": 155
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 161,
+    "fields": {
+        "movie_name": "생일",
+        "rank": 1,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-03",
+        "sales_share": 17.4,
+        "sales_change": -25.2,
+        "sales_acc": 4416755061,
+        "audi_cnt": 32524,
+        "audi_change": -25.0,
+        "audi_acc": 530691,
+        "scrn_cnt": 717,
+        "show_cnt": 2526
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 162,
+    "fields": {
+        "movie_name": "헬보이",
+        "rank": 2,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-10",
+        "sales_share": 15.6,
+        "sales_change": -22.0,
+        "sales_acc": 522653470,
+        "audi_cnt": 28247,
+        "audi_change": -21.6,
+        "audi_acc": 64661,
+        "scrn_cnt": 658,
+        "show_cnt": 2142
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 163,
+    "fields": {
+        "movie_name": "미성년",
+        "rank": 3,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-11",
+        "sales_share": 12.9,
+        "sales_change": 186440.1,
+        "sales_acc": 229637040,
+        "audi_cnt": 23357,
+        "audi_change": 116685.0,
+        "audi_acc": 27610,
+        "scrn_cnt": 586,
+        "show_cnt": 2499
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 164,
+    "fields": {
+        "movie_name": "돈",
+        "rank": 4,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-03-20",
+        "sales_share": 8.3,
+        "sales_change": -39.3,
+        "sales_acc": 27330284232,
+        "audi_cnt": 15029,
+        "audi_change": -39.6,
+        "audi_acc": 3209315,
+        "scrn_cnt": 525,
+        "show_cnt": 1445
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 165,
+    "fields": {
+        "movie_name": "공포의 묘지",
+        "rank": 5,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-10",
+        "sales_share": 7.2,
+        "sales_change": -32.5,
+        "sales_acc": 267712520,
+        "audi_cnt": 12690,
+        "audi_change": -32.9,
+        "audi_acc": 32202,
+        "scrn_cnt": 529,
+        "show_cnt": 1655
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 166,
+    "fields": {
+        "movie_name": "바이스",
+        "rank": 6,
+        "target_dt": "20190411",
+        "rank_old_and_new": "NEW",
+        "open_dt": "2019-04-11",
+        "sales_share": 5.9,
+        "sales_change": 100.0,
+        "sales_acc": 176717300,
+        "audi_cnt": 11016,
+        "audi_change": 100.0,
+        "audi_acc": 21621,
+        "scrn_cnt": 227,
+        "show_cnt": 938
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 167,
+    "fields": {
+        "movie_name": "아이 엠 마더",
+        "rank": 7,
+        "target_dt": "20190411",
+        "rank_old_and_new": "NEW",
+        "open_dt": "2019-04-11",
+        "sales_share": 4.7,
+        "sales_change": 100.0,
+        "sales_acc": 70067200,
+        "audi_cnt": 9013,
+        "audi_change": 100.0,
+        "audi_acc": 9162,
+        "scrn_cnt": 169,
+        "show_cnt": 722
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 168,
+    "fields": {
+        "movie_name": "샤잠!",
+        "rank": 8,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-03",
+        "sales_share": 5.2,
+        "sales_change": -41.2,
+        "sales_acc": 5052824741,
+        "audi_cnt": 8971,
+        "audi_change": -43.3,
+        "audi_acc": 578185,
+        "scrn_cnt": 554,
+        "show_cnt": 1530
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 169,
+    "fields": {
+        "movie_name": "어스",
+        "rank": 9,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-03-27",
+        "sales_share": 4.9,
+        "sales_change": -38.1,
+        "sales_acc": 11937723384,
+        "audi_cnt": 8471,
+        "audi_change": -38.5,
+        "audi_acc": 1402122,
+        "scrn_cnt": 410,
+        "show_cnt": 891
+    }
+},
+{
+    "model": "movies.movie",
+    "pk": 170,
+    "fields": {
+        "movie_name": "파이브 피트",
+        "rank": 10,
+        "target_dt": "20190411",
+        "rank_old_and_new": "OLD",
+        "open_dt": "2019-04-10",
+        "sales_share": 4.6,
+        "sales_change": -19.0,
+        "sales_acc": 218463830,
+        "audi_cnt": 7998,
+        "audi_change": -20.4,
+        "audi_acc": 25911,
+        "scrn_cnt": 417,
+        "show_cnt": 1146
     }
 }
 ]
