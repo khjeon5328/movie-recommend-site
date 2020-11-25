@@ -119,8 +119,11 @@ body {
 .movierank {
   font-size:60px;
   position: absolute;
-  color: #E4801D;
-  color:  #f4f814;
+  /* color: #E4801D;
+  color: #F0A81A; */
+  color: #fffe37;
+  /* color: #ed0003; */
+  /* color:  #f4f814; */
   padding: 5px 15px;
   text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
 }
@@ -237,43 +240,24 @@ body {
 /*  home */
 
 .dymo1 {
-  
   font-family: dymo;
-
   line-height: 62%;
-  /* color : rgb(143,24,5); */
-  /* color : #B50D13; */
   color : #f4f814;
   margin-top:10px;
   object-fit: cover;
-  /* background-color: lightblue; */
   background-color: rgb(114, 18, 3);
-  /* color : #1e0492; */
-  /* color : #D85116; */
+
   
 }
 
 
 .dymo2 {
-  
   font-family: dymo;
-
   line-height: 62%;
-  /* color : rgb(143,24,5); */
-  /* color : #B50D13; */
-  color : #5dc9b6;
-  color :#42e360;
-  color :#ffa089;
   color :#DB4C77;
-
-  
   margin-top:10px;
   object-fit: cover;
-  /* background-color: lightblue; */
   background-color: white;
-  /* color : #1e0492; */
-  /* color : #D85116; */
-  
 }
 
 
@@ -284,7 +268,6 @@ body {
   background-color: lightblue;
   line-height: 1.0;
   color : rgb(44, 46, 46);
-  /* color : #2D9CCE;  */
   margin: 10px 0px 10px;
 }
 
@@ -296,7 +279,6 @@ body {
   background-color: lightblue;
   line-height: 1.0;
   color : rgb(44, 46, 46);
-  /* color : #2D9CCE;  */
   margin: 10px 0px 10px;
 }
 
@@ -311,7 +293,6 @@ body {
   background-color: black;
   text-align: center;
   font-style:italic;
-  /* color : greenyellow; */
   letter-spacing: 10px;
   line-height: 100%;
 }
@@ -331,31 +312,21 @@ body {
   transform-style: preserve-3d;
   transform: translateZ(-100px);
   margin-top:75px; 
-  /* border: 8px solid rgb(64, 65, 65); */
-  /* background-image: url(../images/orange-leather.jpg);
-  border: 8px solid #B50D13; */
-
   background-image: url(../images/pink-leather.jpg);
-  /* border: 8px solid #2D9CCE; */
-  /* border: 8px solid #f57125;
-  border: 8px solid #B50D13; */
   border: 8px solid #E4801D;
 
 }
+
+
+
 
 .homebox2 {
   transform-style: preserve-3d;
   transform: translateZ(-100px);
   margin-top:75px; 
-  /* border: 8px solid rgb(64, 65, 65); */
-  /* background-image: url(../images/orange-leather.jpg);
-  border: 8px solid #B50D13; */
+  background-image: url(../images/blue-leather.jpg);
 
-  background-image: url(../images/dblue-leather.jpg);
-  /* border: 8px solid #2D9CCE; */
-  /* border: 8px solid #f57125;
-  border: 8px solid #B50D13; */
-  border: 8px solid#f88379;
+  border: 8px solid #296f62;
 }
 
 
@@ -454,12 +425,27 @@ body {
 }
 
 
-.profilebtn {
-  border:none;
-  outline:none;
-
+.input-file-button{
+  padding: 0;
+  font-family: notoT;
+  margin: 10px 30px 0px;
+  /* font-weight: bold; */
+  width:45px;
+  height:45px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgb(180, 180, 180);
+  border-radius: 70%;
+  color: white;
+  cursor: pointer;
+  border: 0;
+  outline: none;
 }
 
+
+.input-file-button:hover {
+  background-color: rgb(120,120,120);
+}
 
 
 
