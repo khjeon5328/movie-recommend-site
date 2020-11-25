@@ -9,7 +9,7 @@
     </button>
   </div>
 
-  <div class="container detailcontainer p-0" style="max-width:820px;">
+  <div class="container detailcontainer p-0 mt-3" style="max-width:820px;">
 
     <div class="d-flex flex-column ">
       <!-- 디테일 화면 이미지-->
@@ -463,9 +463,6 @@
   </div>
 </script>
 
-<script>
-</script>
-
 
 <script>
   const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value
@@ -600,19 +597,19 @@
 
   /* add modal url */
 
-  // const reviewModals = document.querySelectorAll('#reviewmodal')
-  // reviewModals.forEach(reviewModal =>{
-  //   const rvwId = reviewModal.dataset.rvwId
-  //   reviewModal.addEventListener('click', (e) => {
-  //     history.replaceState({ data: 'replace' }, '', `/reviews/${rvwId}/`)
-  //   })
-  //   const movieId = reviewModal.dataset.movieId
-  //   const modalcontent = document.querySelector(`#post-${rvwId}`)
-  //   console.log(modalcontent)
-  //   modalcontent.addEventListener('click', (e) => {
-  //     history.replaceState({ data: 'replace' }, '', `/movies/${movieId}/`)
-  //   })
-  // })
+  const reviewModals = document.querySelectorAll('#reviewmodal')
+  reviewModals.forEach(reviewModal =>{
+    const rvwId = reviewModal.dataset.rvwId
+    reviewModal.addEventListener('click', (e) => {
+      history.replaceState({ data: 'replace' }, '', `/reviews/${rvwId}/`)
+    })
+    const movieId = reviewModal.dataset.movieId
+    const modalcontent = document.querySelector(`#post-${rvwId}`)
+    console.log(modalcontent)
+    modalcontent.addEventListener('click', (e) => {
+      history.replaceState({ data: 'replace' }, '', `/movies/${movieId}/`)
+    })
+  })
   
 
 
