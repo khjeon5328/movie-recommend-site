@@ -3,7 +3,7 @@
 
 {% block content %}
 
-  <form action="{% url 'movies:movies' %}" method="GET">
+  <form id="homeform" action="{% url 'movies:movies' %}" method="GET">
 
 
     <!-- time machine -->
@@ -47,12 +47,12 @@
           </div>
 
           <div class="col d-flex flex-column justify-content-center align-items-center">
-            <p class="digitalinput m-0" id="hour">08</p>
+            <p class="digitalinput m-0 hour" id="hour">08</p>
             <h1 class="dymo">HOUR</h1>
           </div>
 
           <div class="col d-flex flex-column justify-content-center align-items-center">
-            <p class="digitalinput m-0" id="min">33</p>
+            <p class="digitalinput m-0 min" id="min">33</p>
             <h1 class="dymo">MIN</h1>
           </div>
 
@@ -172,28 +172,46 @@
     const nowHour = addZero(now.getHours())
     const nowMin = addZero(now.getMinutes())
 
-    const amLight = document.querySelector('.amlight')
-    const pmLight = document.querySelector('.pmlight') 
-      if (nowHour >= 0 && nowHour <12) {
+    const amLights = document.querySelectorAll('.amlight')
+    const pmLights = document.querySelectorAll('.pmlight') 
+      amLights.forEach(amLight => {
+        if (nowHour >= 0 && nowHour <12) {
         amLight.classList.replace('light-grey', 'light-green')
-        pmLight.classList.replace('light-green', 'light-grey')
+        
       } else {
         amLight.classList.replace('light-green', 'light-grey')
+      }
+      })
+
+      pmLights.forEach(pmLight => {
+        if (nowHour >= 0 && nowHour <12) {
+          pmLight.classList.replace('light-green', 'light-grey')
+        
+      } else {
         pmLight.classList.replace('light-grey', 'light-green')
       }
+      })
 
       //현재시간
       const presentYear = document.querySelector('#present-year')
       const presentMonth = document.querySelector('#present-month')
       const presentDay = document.querySelector('#present-day')
-      const Hour = document.querySelector('#hour')
-      const Min = document.querySelector('#min')
+
+      // const Hours = document.querySelectorall('.hour')
+      const Hours = document.querySelectorAll('.hour')
+      const Mins = document.querySelectorAll('.min')
+      // const Min = document.querySelector('.min')
 
       presentYear.innerText = nowYear
       presentMonth.innerText = nowMonth
       presentDay.innerText = nowDay
-      Hour.innerText = nowHour
-      Min.innerText = nowMin  
+
+      Hours.forEach(Hour => {
+        Hour.innerText = nowHour 
+      })
+      Mins.forEach(Min => {
+        Min.innerText = nowMin  
+      })
 
       //목적시간
       const destinationYear = document.querySelector('#year')
@@ -203,33 +221,41 @@
 
   // 타임머신 숫자 줄어드는 기능
   const button = document.querySelector('#button')
-  button.addEventListener('click', ()=> {
-
+  button.addEventListener('click', (e)=> {
+    e.preventDefault()
     timemachine(presentYear, destinationYear)
     timemachine(presentMonth, destinationMonth)
     timemachine(presentDay, destinationDay)
+    setTimeout(() => {
+      document.querySelector('#homeform').submit()
+    }, 1500);
   })
-  
-  function timemachine(present, destination) {
-    $(present).animate(destination), {
-    duration: 2000,
-    }
+
+  function timemachine (present, destination) {
+    var $counter = $(present),
+        startVal = $counter.text(),
+        currentVal,
+        endVal = destination.value
+
+
+    currentVal = startVal;
+    var i = setInterval(function ()
+    {
+        if (currentVal == endVal)
+        {
+            clearInterval(i)
+        }
+        else if (currentVal > endVal )
+        {   
+            currentVal--;
+            $counter.text(addZero(currentVal))
+        }
+        else {
+            currentVal++;
+            $counter.text(addZero(currentVal))
+        }
+    }, 100);
   }
-
-/*
-
-  $({ val : 0 }).animate({ val : memberCountConTxt }, {
-    duration: 2000,
-    step: function() {
-      var num = numberWithCommas(Math.floor(this.val));
-      $(".memberCountCon").text(num);
-    },
-    complete: function() {
-      var num = numberWithCommas(Math.floor(this.val));
-      $(".memberCountCon").text(num);
-    }
-  }) */
-
 
 
 
