@@ -236,7 +236,7 @@ body {
 
 /*  home */
 
-.dymo {
+.dymo1 {
   
   font-family: dymo;
 
@@ -254,8 +254,31 @@ body {
 }
 
 
+.dymo2 {
+  
+  font-family: dymo;
 
-.label {
+  line-height: 62%;
+  /* color : rgb(143,24,5); */
+  /* color : #B50D13; */
+  color : #5dc9b6;
+  color :#42e360;
+  color :#ffa089;
+  color :#DB4C77;
+
+  
+  margin-top:10px;
+  object-fit: cover;
+  /* background-color: lightblue; */
+  background-color: white;
+  /* color : #1e0492; */
+  /* color : #D85116; */
+  
+}
+
+
+
+.label1 {
   font-family: label;
   display: inline;
   background-color: lightblue;
@@ -265,6 +288,17 @@ body {
   margin: 10px 0px 10px;
 }
 
+
+
+.label2 {
+  font-family: label;
+  display: inline;
+  background-color: lightblue;
+  line-height: 1.0;
+  color : rgb(44, 46, 46);
+  /* color : #2D9CCE;  */
+  margin: 10px 0px 10px;
+}
 
 
 .digitalinput {
@@ -277,17 +311,26 @@ body {
   background-color: black;
   text-align: center;
   font-style:italic;
-  color : greenyellow;
+  /* color : greenyellow; */
   letter-spacing: 10px;
   line-height: 100%;
 }
 
+.digitalcolor1 {
+  color : greenyellow;
+}
+
+
+.digitalcolor2 {
+  color : #FFA500;
+}
 
 
 
-.homebox {
+.homebox1 {
   transform-style: preserve-3d;
   transform: translateZ(-100px);
+  margin-top:75px; 
   /* border: 8px solid rgb(64, 65, 65); */
   /* background-image: url(../images/orange-leather.jpg);
   border: 8px solid #B50D13; */
@@ -300,13 +343,24 @@ body {
 
 }
 
+.homebox2 {
+  transform-style: preserve-3d;
+  transform: translateZ(-100px);
+  margin-top:75px; 
+  /* border: 8px solid rgb(64, 65, 65); */
+  /* background-image: url(../images/orange-leather.jpg);
+  border: 8px solid #B50D13; */
+
+  background-image: url(../images/dblue-leather.jpg);
+  /* border: 8px solid #2D9CCE; */
+  /* border: 8px solid #f57125;
+  border: 8px solid #B50D13; */
+  border: 8px solid#f88379;
+}
+
 
 .light-grey {
   color:black;
-}
-
-.light-green {
-  color: greenyellow;
 }
 
 
@@ -398,6 +452,14 @@ body {
   border-radius:0.25rem;
   outline: none;
 }
+
+
+.profilebtn {
+  border:none;
+  outline:none;
+
+}
+
 
 
 
