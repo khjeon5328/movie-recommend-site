@@ -373,9 +373,9 @@
                         </div>
                         {% if request.user == comment.author %}
                           <div class="d-flex justify-content-center align-items-center">
-                            <form id="comment-delete-form" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}">
+                            <form id="comment-delete-form" data-review-id="{{ review.pk }}" data-comment-id="{{ comment.pk }}" onsubmit="return false">
                               {% csrf_token %}
-                              <button class="iconbtn" title="삭제하기">
+                              <button class="iconbtn" title="삭제하기" onclick="newCommentDelete({{ review.pk }}, {{ comment.pk }})">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle  icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                   <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                   <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -431,23 +431,27 @@
 
 {% block script %}
 
-{% comment %} <script id="template-comment-list-item" type="text/template"> {% endcomment %}
-  {% comment %} <div class="row py-3 previous-comment-{comment_id}">
+<script id="template-comment-list-item" type="text/template">
+  <div class="row pt-3 previous-comment-{comment_id}">
     <div class="col-1" style="">
       <div class="mini-prf-container">
-        <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
+        <!-- 로그인 된 유저 정보로 할 것-->
+        <img class="profile-photo" src="{photo}" alt="profile">
       </div>
     </div>
     <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
-      <div>
-        <p class="m-0" style="font-weight: 500;">{author}</p>
+      <div class="">
+        <p class="m-0" style="font-weight: 500; font-family:notoR;">{author}</p>
         <p class="m-0" style="padding-right:40px;">{content}</p>
       </div>
-      
-      <div class="mr-3">
-        <form id="comment-delete-form-{review_id}-{comment_id}" data-review-id="{review_id}" data-comment-id="{comment_id}">
+      <div class="d-flex justify-content-center align-items-center">
+        <form id="comment-delete-form-{review_id}-{comment_id}" 
+          data-review-id="{review_id}" 
+          data-comment-id="{comment_id}"
+          onsubmit="return false"
+        >
           {% csrf_token %}
-          <button class="btn btn-link">
+          <button class="iconbtn" title="삭제하기" onclick="newCommentDelete({review_id}, {comment_id})">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle  icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
               <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -456,48 +460,36 @@
         </form>
       </div>
     </div>
-  </div> {% endcomment %}
-<script id="template-comment-list-item" type="text/template">
-  <div class="row pt-3 previous-comment-{comment.id}">
-    <div class="col-1" style="">
-      <div class="mini-prf-container">
-        <!-- 로그인 된 유저 정보로 할 것-->
-        {% if comment.author.profile_image %}
-          <img class="profile-photo" src="{photo}" alt="profile">
-        {% else %}
-          <img class="profile-photo" src="{% static 'images/profile_default.jpg' %}" alt="profile">
-        {% endif %}
-      </div>
-    </div>
-    <div class="col-11 d-flex justify-content-between" style="padding-left:0;">
-      <div class="">
-        <p class="m-0" style="font-weight: 500; font-family:notoR;">{author}</p>
-        <p class="m-0" style="padding-right:40px;">{content}</p>
-      </div>
-      {% if request.user == comment.author %}
-        <div class="d-flex justify-content-center align-items-center">
-          <form id="comment-delete-form-{review_id}-{comment_id}" data-review-id="{review_id}" data-comment-id="{comment_id}">
-            {% csrf_token %}
-            <button class="iconbtn" title="삭제하기">
-              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle  icon iconcolor" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
-            </button>
-          </form>
-        </div>
-      {% endif %}
-    </div>
   </div>
-
-
-
 </script>
 
+<script>
+</script>
 
 
 <script>
   const csrfToken = document.querySelector('input[name=csrfmiddlewaretoken]').value
+
+  function newCommentDelete(value1, value2) {
+    const review_id = value1
+    const comment_id = value2
+    const newComment = document.querySelector(`#comment-delete-form-${review_id}-${comment_id}`)
+    const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${review_id}/comments/${comment_id}/delete/`
+    const options = {headers: {'X-CSRFToken': csrfToken}}
+    axios.post(COMMENT_DELETE_URL, {}, options)
+      .then(res => {
+        const { is_delete, count } = res.data
+        if (is_delete) {
+          document.querySelector(`.previous-comment-${comment_id}`).remove()
+          document.querySelector('.comment-count').innerText = `댓글 ${count}개`
+        } else{
+          alert('delte failed')
+        }
+      })
+      .catch(error => {
+          console.log(error)
+        })
+    }//addEventListener
   
   const likeBtnForms = document.querySelectorAll('#formlike')
   likeBtnForms.forEach(likeBtnForm => {
@@ -550,37 +542,20 @@
             console.log(photo)
 
             const html = document.querySelector("#template-comment-list-item").innerHTML;
-            const resultHtml = html.replace("{author}", author)
+            const resultHtml = html.replace("{comment_id}", comment_id)
+                                    .replace("{photo}", photo)
+                                    .replace("{author}", author)
                                     .replace("{content}", content)
                                     .replace("{review_id}", review_id)
+                                    .replace("{comment_id}", comment_id)
+                                    .replace("{review_id}", review_id)
                                     .replace("{review_id}", review_id)
                                     .replace("{comment_id}", comment_id)
                                     .replace("{comment_id}", comment_id)
-                                    .replace("{comment_id}", comment_id)
-                                    .replace("{photo}", photo)
-
             commentList.innerHTML += resultHtml
             const commentCount = document.querySelector('.comment-count')
             commentCount.innerText = `댓글 ${count}개`
             document.querySelector(`#comment-input-${reviewIdForComment}`).value = ''
-            document.querySelector(`#comment-delete-form-${review_id}-${comment_id}`).addEventListener('submit', (e) =>{
-              e.preventDefault()
-              const COMMENT_DELETE_URL = `http://127.0.0.1:8000/reviews/${review_id}/comments/${comment_id}/delete/`
-              const options = {headers: {'X-CSRFToken': csrfToken}}
-              axios.post(COMMENT_DELETE_URL, {}, options)
-                .then(res => {
-                  const { is_delete, count } = res.data
-                  if (is_delete) {
-                    document.querySelector(`.previous-comment-${comment_id}`).remove()
-                    document.querySelector('.comment-count').innerText = `댓글 ${count}개`
-                  } else{
-                    alert('delte failed')
-                  }
-                  })
-                  .catch(error => {
-                    console.log(error)
-                  })
-            })//addEventListener
 
           })
           .catch(error => {
