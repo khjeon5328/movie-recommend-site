@@ -276,7 +276,7 @@ body {
 .label2 {
   font-family: label;
   display: inline;
-  background-color: lightblue;
+  background-color: lightpink;
   line-height: 1.0;
   color : rgb(44, 46, 46);
   margin: 10px 0px 10px;
@@ -634,11 +634,12 @@ input[type=number] {
   margin: 0 15px 25px;
   display:inline;
   padding: 5px 25px;
-
+  cursor:pointer;
   border-radius: 50px;
   text-align:center;
   vertical-align: center;
 }
+
 
 
 
@@ -673,6 +674,6 @@ input[type=number] {
 .shake3 {
   -webkit-animation-name: shake;
   -webkit-animation-duration: 0.5s;
-  -webkit-transform-origin:50% 50%;
+  -webkit-transform-origin:70% 70%;
   -webkit-animation-iteration-count: infinite;
 }

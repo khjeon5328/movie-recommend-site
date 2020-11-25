@@ -4,12 +4,13 @@
 {% block content %}
   
 
-  <div class="container">
-    <h1 class="mt-4 pt-4 mb-0 pb-0" style="color:white; text-align:center; font-family:dh;">{{ rank_1_movie_title }}에 가려진 명작 
+  <div class="container d-flex justify-content-center">
+    <h1 class="mt-2 pt-2 mb-0 pb-0" style="color:orange; text-align:center; font-family:dh;">{{ rank_1_movie_title }}
+    <h1 class="mt-2 pt-2 mb-0 pb-0" style="color:white; text-align:center; font-family:dh;">에 가려진 명작 
     <a href="{% url 'movies:moviedetail' hidden_movie.movie_id %}">{{ hidden_movie.movie.movie_name }}</a></h1>
   </div>
 
-  <div class="container moviecontainer mx-auto d-flex flex-column justify-content-center">
+  <div class="container moviecontainer mx-auto mt-5 d-flex flex-column justify-content-center">
     <div class="row row-cols-5 d-flex justify-content-around">
       {% for movie in movies_detail %}
         <div class="col moviecard d-flex justify-content-start">
