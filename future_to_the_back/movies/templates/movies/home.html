@@ -3,8 +3,11 @@
 
 {% block content %}
 
+  {% comment %} <div class="rotate-scale-up">
+    <img src="{% static 'images/timetravel.png' %}" style="visibility:hidden;">
+  </div>
   <form id="homeform" action="{% url 'movies:movies' %}" method="GET">
-
+ {% endcomment %}
 
     <!-- time machine -->
     <div class="container homebox1" style="background-color:grey; max-width:780px; ">
@@ -122,6 +125,35 @@
       <button class="m-5 cumstom-button lg-button" id="button"> Let's Go! </button>
     </div>
   </form>
+
+  <div class="d-flex justify-content-center">
+    <div class="list-group">
+      <a href="{% url 'movies:movies' %}?year=2019&month=12&day=25" class="list-group-item list-group-item-action active">
+        작년 크리스마스 영화 순위
+      </a>
+      <a href="{% url 'movies:movies' %}?year=2019&month=02&day=13" class="list-group-item list-group-item-action">
+        작년 발렌타인 어떤 영화가 1위 했을까?
+      </a>
+      <a href="{% url 'movies:movies' %}?year=2019&month=04&day=11" class="list-group-item list-group-item-action">
+        19년 중간고사 기간에 놓쳤던 영화들 
+      </a>
+      <a href="{% url 'movies:movies' %}?year=2018&month=04&day=28" class="list-group-item list-group-item-action">
+        어벤져스 영화가 언제 개봉했지?
+      </a>
+    </div>
+  </div>
+
+        {% comment %} #20130302 입학
+        # 20150927 추석
+        # 20170213 발렌타인
+        # 20191225 크리스마스
+        # 20180428 어벤져스
+
+        # 20190213 발렌타인
+        # 20191111 빼뺴로
+        # 20190508 어버이날
+        # 20190815 광복절
+        # 20190411 중간고사 {% endcomment %}
 
 
 {% endblock content %}
