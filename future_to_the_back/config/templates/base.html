@@ -38,17 +38,32 @@
       </ul>
     </div>
   </nav>
-  {% if messages %}
-    {% for message in messages %}
+
+{% if messages %}
+  {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-center" role="alert">
+        <strong {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+          {{ message.message }}
+        </strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {% comment %} <img src="" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" /> {% endcomment %}
+      </div>
+    {% else %}
       <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-        <strong>{{ message.message }}</strong> You should check in on some of those fields below.
+        <strong {% if message.tags %} class="{{ message.tags }}"{% endif %} style="text-align:center;">
+          {{ message.message }}
+        </strong> 
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <img src="" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
       </div>
-    {% endfor %}
-  {% endif %} 
+    {% endif %}
+  {% endfor %}
+{% endif %} 
 
 
 
