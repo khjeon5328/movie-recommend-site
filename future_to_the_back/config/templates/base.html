@@ -38,22 +38,24 @@
       </ul>
     </div>
   </nav>
-{% if messages %}
-  {% for message in messages %}
-    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-      <strong>{{ message.message }}</strong> You should check in on some of those fields below.
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-       <img src="" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
-    </div>
-  {% endfor %}
-{% endif %} 
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        <strong>{{ message.message }}</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <img src="" style="display:none;" onerror="(function(el){ setTimeout(function(){ el.parentNode.parentNode.removeChild(el.parentNode); },2000 ); })(this);" />
+      </div>
+    {% endfor %}
+  {% endif %} 
 
 
 
   {% block content %}
   {% endblock content %}
+
+
 
 
   {% block script %}
