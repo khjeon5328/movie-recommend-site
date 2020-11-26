@@ -27,7 +27,7 @@ from random import *
 @require_http_methods(['GET', 'POST'])
 def signup(request):
     if request.user.is_authenticated:
-        return redirect('accounts:index')
+        return redirect('movies:home')
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
@@ -41,7 +41,7 @@ def signup(request):
                 user.profile_image = profiledefault
                 user.save()
             auth_login(request,user)
-            messages.info(request, 'signup success')
+            messages.info(request, '👍 Signup Success 😍')
             return redirect(request.GET.get('next') or 'movies:home')
     else:
         form = CustomUserCreationForm()
@@ -59,14 +59,14 @@ def signup(request):
 @require_http_methods(['GET', 'POST'])
 def login(request):
     if request.user.is_authenticated:
-        return redirect('accounts:index')
+        return redirect('movies:home')
 
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
             auth_login(request, form.get_user())
             print(request.GET.get('next'))
-            messages.info(request, 'login success')
+            messages.info(request, '✔ Login success 👏')
             return redirect(request.GET.get('next') or 'movies:home')
     else:
         form = AuthenticationForm()
@@ -82,7 +82,7 @@ def login(request):
 # @require_POST
 def logout(request):
     auth_logout(request)
-    messages.info(request, 'logout success')
+    messages.info(request, '🙌 Logout Success 🤦‍♀️')
     print(request.GET.get('next'))
     return redirect(request.GET.get('next') or 'movies:home')
 
