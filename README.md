@@ -77,13 +77,13 @@ $python manage.py runserver
 
    프로필 페이지에서 회원의 사진 및 회원정보, 비밀번호를 변경 가능
 
-   ![profile_edit](.\images\profile_edit.gif)
+   ![profile_edit](./images/profile_edit.gif)
 
 4. **영화 검색 기능**
 
    영화 검색 시 영화의 상세 페이지로 이동
 
-   ![search](.\images\search.gif)
+   ![search](./images/search.gif)
 
 
 
@@ -91,7 +91,7 @@ $python manage.py runserver
 
    로그인 유저의 한 해 리뷰작성 기능 제공
 
-   ![review](.\images\review.gif)
+   ![review](./images/review.gif)
 
 
 
@@ -99,7 +99,7 @@ $python manage.py runserver
 
    AJAX 통신을 통해 화면 새로고침없이 댓글 생성 및 삭제 가능
 
-   ![comment](.\images\comment.gif)
+   ![comment](./images/comment.gif)
 
 
 
@@ -109,7 +109,7 @@ $python manage.py runserver
 
    작성자의 정보 및 작성자 follow가능
 
-   ![like_and_follow](.\images\like_and_follow.gif)
+   ![like_and_follow](./images/like_and_follow.gif)
 
    
 
@@ -117,7 +117,7 @@ $python manage.py runserver
 
    유저 프로필 페이지에서 유저가 작성한 글 혹은 타유저의 계시글에 좋아요를 클릭한 정보를 볼 수 있는 기능
 
-   ![profile_review](.\images\profile_review.gif)
+   ![profile_review](./images/profile_review.gif)
 
 
 
