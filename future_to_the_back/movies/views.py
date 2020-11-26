@@ -10,7 +10,14 @@ from reviews.forms import Review, CommentForm
 from django.contrib import messages
 
 # Create your views here.
-
+def search(request):
+    movie_name = request.GET.get('search')
+    search_movie = Movie.objects.all().filter(movie_name__startswith=movie_name)
+    if search_movie:
+        return redirect('movies:moviedetail', search_movie[0].id)
+    else:
+        messages.error(request, '😢Sorry there are no movie data 🐱‍🚀')
+        return redirect('movies:home')
 
 def movies(request):
     # home에서 받은 정보로 dt만들기
