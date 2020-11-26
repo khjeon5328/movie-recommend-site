@@ -19,10 +19,10 @@
       </a>
     </div>
    
-   
+   {% comment %} btn my-sm-0 search {% endcomment %}
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <form class="form-inline my-2 my-lg-0 mx-4" action="{% url 'movies:search' %}">
-        <input class="form-control mr-sm-2 searchinput" name="search" type="search" placeholder="영화명을 입력하세요" aria-label="Search">
+        <input class="searchinput form-control mr-sm-2 " name="search" type="" placeholder="영화명을 입력하세요" aria-label="Search">
         <button class="btn my-sm-0 search" type="submit">SEARCH</button>
       </form>
       <ul class="navbar-nav mr-5">
